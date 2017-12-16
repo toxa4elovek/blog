@@ -6,7 +6,7 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model backend\modules\post\models\Post */
 /* @var $form yii\widgets\ActiveForm */
-use backend\modules\category\models\Category;
+use backend\modules\references\models\Category;
 use yii\helpers\ArrayHelper;
 $this->registerJsFile( '/js/ckeditor_plugins/codesnippet/lib/highlight/highlight.pack.js');
 

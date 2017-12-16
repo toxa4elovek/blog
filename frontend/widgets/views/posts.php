@@ -8,7 +8,7 @@
 ?>
     <?php foreach ($posts as $post):?>
         <div class="post_block">
-            <a href="#"><h3><?php echo $post->title?></h3></a>
+            <a href="<?php echo \yii\helpers\Url::to(['/post/view' , 'slug' => $post->slug])?>"><h3><?php echo $post->title?></h3></a>
             <div class="crumbs">
                 <ol class="breadcrumb">
                     <?php

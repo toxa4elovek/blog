@@ -21,12 +21,10 @@ use Yii;
  *
  * @property PostCategory[] $postCategories
  * @property Category[] $categories
+ * @property PostOptions[] $postOptions
  */
 class Post extends \yii\db\ActiveRecord
 {
-    const STATUS_ACTIVE = 1;
-    const STATUS_MODERATION = 0;
-    const STATUS_DELETED = 2;
 
     /**
      * @inheritdoc
@@ -42,10 +40,9 @@ class Post extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id'], 'integer'],
-            [['user_id', 'title'], 'required'],
+            [['user_id', 'category_id'], 'integer'],
             [['text'], 'string'],
-            [['categories'], 'safe'],
+            [['created_at', 'updated_at'], 'safe'],
             [['title', 'slug', 'status', 'img'], 'string', 'max' => 100],
             [['short_text'], 'string', 'max' => 255],
         ];
@@ -66,6 +63,8 @@ class Post extends \yii\db\ActiveRecord
             'img' => 'Img',
             'text' => 'Text',
             'short_text' => 'Short Text',
+            'created_at' => 'Created At',
+            'updated_at' => 'Updated At',
         ];
     }
 
@@ -83,6 +82,14 @@ class Post extends \yii\db\ActiveRecord
     public function getCategories()
     {
         return $this->hasMany(Category::className(), ['id' => 'category_id'])->viaTable('post_category', ['post_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getOptions()
+    {
+        return $this->hasOne(PostOptions::className(), ['post_id' => 'id']);
     }
 
     /**

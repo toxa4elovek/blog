@@ -2,11 +2,11 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use backend\modules\category\models\Category;
+use backend\modules\references\models\Category;
 use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
-/* @var $model backend\modules\category\models\Category */
+/* @var $model backend\modules\references\models\Category */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 

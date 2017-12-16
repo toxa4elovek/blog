@@ -1,14 +1,14 @@
 <?php
 
-namespace backend\modules\category\models;
+namespace backend\modules\references\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\modules\category\models\Category;
+use backend\modules\references\models\Category;
 
 /**
- * CategorySearch represents the model behind the search form about `backend\modules\category\models\Category`.
+ * CategorySearch represents the model behind the search form about `backend\modules\references\models\Category`.
  */
 class CategorySearch extends Category
 {

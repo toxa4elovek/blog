@@ -5,7 +5,7 @@
  */
 ?>
 
-<div class="catalog left-block">
+<div class="catalog left-block catalog_full">
     <div class="catalog-block uppercase">
         <h6>каталог тем</h6>
         <div class="list-group clear">

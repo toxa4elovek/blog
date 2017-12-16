@@ -10,14 +10,16 @@ namespace backend\modules\post\models;
 
 use common\behaviors\SlugBehavior;
 use common\behaviors\UploadBehavior;
-use common\models\Post as BasePost;
-use common\models\PostCategory;
+use common\models\db\Post as BasePost;
+use common\models\db\PostCategory;
+use common\models\db\PostOptions;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
 
 class Post extends BasePost
 {
     private $_categories = null;
+    private $_options;
     public $fileImg;
 
     public function behaviors()
@@ -57,6 +59,21 @@ class Post extends BasePost
         $this->_categories = $value;
     }
 
+    public function setOptions($value)
+    {
+        if($value instanceof PostOptions) {
+            $this->_options = $value;
+        }else $this->_options = new PostOptions();
+    }
+
+    public function saveOptions()
+    {
+        if($this->_options instanceof PostOptions) {
+            $this->_options->post_id = $this->id;
+            $this->_options->save();
+        }
+    }
+
     public function afterSave($insert, $changedAttributes)
     {
         if (!$insert) {
@@ -71,6 +88,10 @@ class Post extends BasePost
                 ];
                 $model->save();
             }
+        }
+
+        if($this->_options !== null) {
+            $this->saveOptions();
         }
 
         parent::afterSave($insert, $changedAttributes);

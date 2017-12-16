@@ -13,8 +13,8 @@ return [
     'bootstrap' => ['log'],
     'language' => 'Ru-ru',
     'modules' => [
-        'category' => [
-            'class' => 'backend\modules\category\Category',
+        'references' => [
+            'class' => 'backend\modules\references\References',
         ],
         'post' => [
             'class' => 'backend\modules\post\Post',

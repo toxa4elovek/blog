@@ -1,12 +1,12 @@
 <?php
 
-namespace backend\modules\category\controllers;
+namespace backend\modules\references\controllers;
 
 use backend\controllers\BackendController;
 use common\classes\Debug;
 use Yii;
-use backend\modules\category\models\Category;
-use backend\modules\category\models\CategorySearch;
+use backend\modules\references\models\Category;
+use backend\modules\references\models\CategorySearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

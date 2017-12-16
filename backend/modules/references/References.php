@@ -1,18 +1,18 @@
 <?php
 
-namespace backend\modules\category;
+namespace backend\modules\references;
 
 use yii\filters\AccessControl;
 
 /**
  * category module definition class
  */
-class Category extends \yii\base\Module
+class References extends \yii\base\Module
 {
     /**
      * @inheritdoc
      */
-    public $controllerNamespace = 'backend\modules\category\controllers';
+    public $controllerNamespace = 'backend\modules\references\controllers';
 
     /**
      * @inheritdoc

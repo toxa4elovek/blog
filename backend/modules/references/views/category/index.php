@@ -2,11 +2,11 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
-use backend\modules\category\models\Category;
+use backend\modules\references\models\Category;
 use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\modules\category\models\CategorySearch */
+/* @var $searchModel backend\modules\references\models\CategorySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Категории';
@@ -16,7 +16,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php //  echo $this->render('_search', ['model' => $searchModel]); ?>
-    <?php \common\classes\Debug::prn('aasd')?>
 
     <p>
         <?= Html::a('Добавить категорию', ['create'], ['class' => 'btn btn-success']) ?>

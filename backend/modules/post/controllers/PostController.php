@@ -3,13 +3,11 @@
 namespace backend\modules\post\controllers;
 
 use backend\controllers\BackendController;
-use backend\models\File;
-use backend\modules\category\models\Category;
+use backend\modules\post\models\PostOptions;
 use common\classes\Debug;
 use Yii;
 use backend\modules\post\models\Post;
 use backend\modules\post\models\PostSearch;
-use yii\helpers\ArrayHelper;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
@@ -71,7 +69,7 @@ class PostController extends BackendController
     public function actionCreate()
     {
         $model = new Post();
-
+        $model->options = New PostOptions();
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {

@@ -20,15 +20,6 @@ use Yii;
 class Category extends \yii\db\ActiveRecord
 {
     /**
-     * @var array
-     */
-    const CATEGORY_TYPES = [self::PARENT_CATEGORY => 'Нет', self::NEWS_CATEGORY => 'Новости', self::POSTS_CATEGORY => 'Посты'];
-    const ACTIVE_CATEGORY = 1;
-    const DISABLE_CATEGORY = 0;
-    const PARENT_CATEGORY = 0;
-    const NEWS_CATEGORY = 1;
-    const POSTS_CATEGORY = 2;
-    /**
      * @inheritdoc
      */
     public static function tableName()

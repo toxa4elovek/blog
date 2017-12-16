@@ -6,14 +6,14 @@
  * Time: 15:01
  */
 
-namespace backend\modules\category\models;
+namespace backend\modules\references\models;
 
 use common\behaviors\SlugBehavior;
-use common\models\Category as BaseCategory;
+use common\models\db\Category as BaseCategory;
 
 /**
  * Class Category
- * @package backend\modules\category\models
+ * @package backend\modules\references\models
  */
 class Category extends BaseCategory
 {

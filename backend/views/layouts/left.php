@@ -31,7 +31,15 @@
                 'options' => ['class' => 'sidebar-menu tree', 'data-widget'=> 'tree'],
                 'items' => [
                     ['label' => 'Пользователи', 'icon' => 'user-o', 'url' => ['/user/admin/']],
-                    ['label' => 'Категории', 'icon' => 'dashboard', 'url' => ['/category/category']],
+                    [
+                        'label' => 'Справочники',
+                        'icon' => 'object-group',
+                        'url' => '#',
+                        'items' => [
+                            ['label' => 'Категории', 'icon' => 'dashboard', 'url' => ['/references/category'],],
+                            ['label' => 'Опции', 'icon' => 'fa fa-gears', 'url' => ['/references/options'],],
+                        ],
+                    ],
                     ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
                     [
                         'label' => 'Контент',
