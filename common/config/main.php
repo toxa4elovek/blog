@@ -4,7 +4,7 @@ return [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
         '@img' => '@frontend/web/img/category',
-        '@web_img' => '/img/category',
+        '@web_img' => '/img/content',
     ],
     'language' => 'ru-Ru',
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
