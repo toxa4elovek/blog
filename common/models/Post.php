@@ -9,7 +9,6 @@ use Yii;
  *
  * @property integer $id
  * @property integer $user_id
- * @property integer $category_id
  * @property string $title
  * @property string $slug
  * @property string $status
@@ -19,13 +18,13 @@ use Yii;
  * @property string $created_at
  * @property string $updated_at
  *
+ * @property User $user
  * @property PostCategory[] $postCategories
  * @property Category[] $categories
- * @property PostOptions[] $postOptions
+ * @property PostOptions $postOptions
  */
 class Post extends \yii\db\ActiveRecord
 {
-
     /**
      * @inheritdoc
      */
@@ -40,11 +39,12 @@ class Post extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'category_id'], 'integer'],
+            [['user_id'], 'integer'],
             [['text'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
             [['title', 'slug', 'status', 'img'], 'string', 'max' => 100],
             [['short_text'], 'string', 'max' => 255],
+            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
 
@@ -54,18 +54,25 @@ class Post extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'user_id' => 'User ID',
-            'category_id' => 'Category ID',
-            'title' => 'Title',
-            'slug' => 'Slug',
-            'status' => 'Status',
-            'img' => 'Img',
-            'text' => 'Text',
-            'short_text' => 'Short Text',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+            'id' => Yii::t('app', 'ID'),
+            'user_id' => Yii::t('app', 'User ID'),
+            'title' => Yii::t('app', 'Title'),
+            'slug' => Yii::t('app', 'Slug'),
+            'status' => Yii::t('app', 'Status'),
+            'img' => Yii::t('app', 'Img'),
+            'text' => Yii::t('app', 'Text'),
+            'short_text' => Yii::t('app', 'Short Text'),
+            'created_at' => Yii::t('app', 'Created At'),
+            'updated_at' => Yii::t('app', 'Updated At'),
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 
     /**
@@ -87,16 +94,8 @@ class Post extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getOptions()
+    public function getPostOptions()
     {
         return $this->hasOne(PostOptions::className(), ['post_id' => 'id']);
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getUser()
-    {
-        return $this->hasOne(\dektrium\user\models\User::className(), ['id' => 'user_id']);
     }
 }

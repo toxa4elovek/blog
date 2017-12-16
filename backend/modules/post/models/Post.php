@@ -50,6 +50,7 @@ class Post extends BasePost
 
         return array_merge([
             ['slug', 'unique'],
+            [['categories'], 'safe'],
             [['fileImg'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg']
         ], $rules);
     }

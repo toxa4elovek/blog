@@ -9,7 +9,7 @@
 namespace frontend\models;
 
 
-class Post extends \backend\modules\post\models\Post
+class Post extends \common\models\db\Post
 {
 
 }

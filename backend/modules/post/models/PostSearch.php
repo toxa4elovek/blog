@@ -2,10 +2,10 @@
 
 namespace backend\modules\post\models;
 
+use common\classes\Debug;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\modules\post\models\Post;
 
 /**
  * PostSearch represents the model behind the search form about `backend\modules\post\models\Post`.
@@ -18,8 +18,8 @@ class PostSearch extends Post
     public function rules()
     {
         return [
-            [['id', 'user_id', 'category_id'], 'integer'],
-            [['title', 'slug', 'status', 'img', 'text', 'short_text'], 'safe'],
+            [['id', 'user_id'], 'integer'],
+            [['title', 'slug', 'status', 'img', 'text', 'short_text', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -43,6 +43,7 @@ class PostSearch extends Post
     {
         $query = Post::find();
         $query->with('categories');
+
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
@@ -61,7 +62,8 @@ class PostSearch extends Post
         $query->andFilterWhere([
             'id' => $this->id,
             'user_id' => $this->user_id,
-            'category_id' => $this->category_id,
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])

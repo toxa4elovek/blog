@@ -7,7 +7,6 @@ use Yii;
 /**
  * This is the model class for table "post_options".
  *
- * @property integer $id
  * @property integer $post_id
  * @property integer $views
  * @property integer $comment_count
@@ -33,6 +32,7 @@ class PostOptions extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['post_id'], 'required'],
             [['post_id', 'views', 'comment_count', 'likes', 'dislikes', 'favorites_count'], 'integer'],
             [['post_id'], 'exist', 'skipOnError' => true, 'targetClass' => Post::className(), 'targetAttribute' => ['post_id' => 'id']],
         ];
@@ -44,7 +44,6 @@ class PostOptions extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
             'post_id' => 'Post ID',
             'views' => 'Views',
             'comment_count' => 'Comment Count',

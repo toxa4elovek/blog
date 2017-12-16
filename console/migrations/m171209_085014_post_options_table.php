@@ -13,8 +13,7 @@ class m171209_085014_post_options_table extends Migration
     public function up()
     {
         $this->createTable('post_options', [
-            'id' => $this->primaryKey(),
-            'post_id' => $this->integer(11),
+            'post_id' => $this->integer()->notNull()->append('PRIMARY KEY'),
             'views' => $this->integer(11)->defaultValue(0),
             'comment_count' => $this->integer(11)->defaultValue(0),
             'likes' => $this->integer(11)->defaultValue(0),
@@ -29,7 +28,7 @@ class m171209_085014_post_options_table extends Migration
             'post',
             'id',
             'CASCADE',
-            'CASCADE'
+            'RESTRICT'
         );
 
     }

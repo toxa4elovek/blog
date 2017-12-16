@@ -3,7 +3,7 @@
 namespace frontend\modules\pages\controllers;
 
 use common\classes\Debug;
-use common\models\Post;
+use frontend\models\Post;
 use frontend\controllers\FrontEndController;
 
 
