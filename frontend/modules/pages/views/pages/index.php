@@ -5,17 +5,24 @@
  */
 ?>
 <?php $this->params['items'] = $sliderItems ?>
-<div class="right-block">
-    <div class="namе_group">
+
+<?php echo \frontend\widgets\HeaderSlideWidget::widget(['items' => $this->params['items']])?>
+
+<?php echo \frontend\widgets\LeftCategoryWidget::widget()?>
+
+<div class="col-9">
+    <div class="body-header">
         <h2 class="namе-group">Администрирование</h2>
     </div>
 
         <?php echo \frontend\widgets\PostsWidget::widget(['posts' => $posts]) ?>
 
-    <div class="namе_group">
+    <div class="body-header">
         <h2 class="namе-group">Вопросы</h2>
     </div>
 
         <?php echo \frontend\widgets\QuestionsWidget::widget() ?>
 </div>
+
+<?php echo \frontend\widgets\FooterSlideWidget::widget(['items' => $this->params['items']])?>
 

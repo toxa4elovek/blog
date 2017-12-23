@@ -21,7 +21,11 @@ use Yii;
  * @property User $user
  * @property PostCategory[] $postCategories
  * @property Category[] $categories
- * @property PostOptions $postOptions
+ * @property PostFavourites[] $postFavourites
+ * @property User[] $users
+ * @property PostLikes[] $postLikes
+ * @property User[] $users0
+ * @property PostViews[] $postViews
  */
 class Post extends \yii\db\ActiveRecord
 {
@@ -94,8 +98,26 @@ class Post extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getPostOptions()
+    public function getPostFavourites()
     {
-        return $this->hasOne(PostOptions::className(), ['post_id' => 'id']);
+        return $this->hasMany(PostFavourites::className(), ['post_id' => 'id']);
+    }
+
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPostLikes()
+    {
+        return $this->hasMany(PostLikes::className(), ['post_id' => 'id']);
+    }
+
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPostViews()
+    {
+        return $this->hasMany(PostViews::className(), ['post_id' => 'id']);
     }
 }

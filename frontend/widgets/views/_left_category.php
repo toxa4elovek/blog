@@ -5,19 +5,22 @@
  */
 ?>
 
-<div class="catalog left-block catalog_full">
-    <div class="catalog-block uppercase">
-        <h6>каталог тем</h6>
-        <div class="list-group clear">
-
+<div class="col-3">
+    <div class="category-block">
+        <div class="category-block-header">
+            <span class="category-block-header-title">Каталог тем</span>
+        </div>
+        <div class="category-block-content">
+            <ul class="tab">
             <?php foreach ($categories as $category) :?>
-            <div class="flex">
-                <a class="list-group-item left-text" href="<?php echo \yii\helpers\Url::to('/category/'.$category->slug)?>">
-                    <?php echo $category->name?>
-                    <span class="badge">15</span></a>
-            </div>
+            <li class="tab-menu">
+                <a class="tab-menu-link" href="<?php echo \yii\helpers\Url::to('/category/'.$category->slug)?>">
+                    <span class="tab-menu-content"><?php echo $category->name?></span>
+                    <span class="tab-menu-count">508</span>
+                </a>
+            </li>
             <?php endforeach;?>
-
+            </ul>
         </div>
     </div>
 </div>

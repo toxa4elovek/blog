@@ -26,44 +26,21 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 <div id="wrapper">
-    <div class="middle">
+    <div class="container-fluid container-fluid-content">
         <?php echo \frontend\widgets\HeaderWidget::widget()?>
 
-        <?php $isMainPage = Yii::$app->controller->id === 'pages' && Yii::$app->controller->action->id === 'index'?>
-        <?php if($isMainPage):?>
-            <div class="container-fluid">
-                <div class="row">
-                    <?php echo \frontend\widgets\HeaderSlideWidget::widget(['items' => $this->params['items']])?>
-                </div>
-            </div>
-        <?php endif;?>
+        <div class="row row-wrapper-body">
+            <div class="column">
 
-        <div class="container-fluid main_catalog">
-            <div class="row">
-                <div class="col-sm-3">
+                <?= $content  ?>
 
-                    <?php echo \frontend\widgets\LeftCategoryWidget::widget()?>
-
-                </div>
-                <div class="col-sm-9">
-
-                    <?= $content  ?>
-
-                </div>
             </div>
         </div>
+
+        <?php echo \frontend\widgets\FooterWidget::widget()?>
 
         <a href="#" class="scrollup">Наверх</a>
-
-        <?php if($isMainPage):?>
-        <div class="container-fluid">
-            <div class="row">
-                <?php echo \frontend\widgets\FooterSlideWidget::widget(['items' => $this->params['items']])?>
-            </div>
-        </div>
-        <?php endif;?>
     </div>
-<?php echo \frontend\widgets\FooterWidget::widget()?>
 </div>
 <?php $this->endBody() ?>
 </body>

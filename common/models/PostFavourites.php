@@ -5,25 +5,22 @@ namespace common\models;
 use Yii;
 
 /**
- * This is the model class for table "post_options".
+ * This is the model class for table "post_favourites".
  *
  * @property integer $post_id
- * @property integer $views
- * @property integer $comment_count
- * @property integer $likes
- * @property integer $dislikes
- * @property integer $favorites_count
+ * @property integer $user_id
  *
  * @property Post $post
+ * @property User $user
  */
-class PostOptions extends \yii\db\ActiveRecord
+class PostFavourites extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'post_options';
+        return 'post_favourites';
     }
 
     /**
@@ -32,9 +29,10 @@ class PostOptions extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['post_id'], 'required'],
-            [['post_id', 'views', 'comment_count', 'likes', 'dislikes', 'favorites_count'], 'integer'],
+            [['post_id', 'user_id'], 'required'],
+            [['post_id', 'user_id'], 'integer'],
             [['post_id'], 'exist', 'skipOnError' => true, 'targetClass' => Post::className(), 'targetAttribute' => ['post_id' => 'id']],
+            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
 
@@ -44,12 +42,8 @@ class PostOptions extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'post_id' => 'Post ID',
-            'views' => 'Views',
-            'comment_count' => 'Comment Count',
-            'likes' => 'Likes',
-            'dislikes' => 'Dislikes',
-            'favorites_count' => 'Favorites Count',
+            'post_id' => Yii::t('app', 'Post ID'),
+            'user_id' => Yii::t('app', 'User ID'),
         ];
     }
 
@@ -59,5 +53,13 @@ class PostOptions extends \yii\db\ActiveRecord
     public function getPost()
     {
         return $this->hasOne(Post::className(), ['id' => 'post_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 }

@@ -6,9 +6,11 @@
 ?>
 
 
-    <div class="right-block">
-        <div class="post_block full">
-            <a href="#"><h3><?php echo $post->title?></h3></a>
+    <div class="col-9">
+        <div class="body-header">
+            <h1 class="namе-group"><?php echo $post->title?></h1>
+        </div>
+        <div class="body-list">
             <div class="crumbs">
                 <ol class="breadcrumb">
                     <?php
@@ -39,7 +41,7 @@
                 </div>
                 <div class="post_statistics">
                     <a href="#" class="fa fa-eye"></a>
-                    <span><?php echo $post->options->views?></span>
+                    <span>2</span>
                 </div>
                 <div class="post_statistics">
                     <a href="#" class="fa fa-star"></a>
@@ -272,5 +274,6 @@
             <?php if (Yii::$app->user->isGuest):?>
             <div class="not-authorized">Вы должны авторизоваться, чтобы оставлять комментарии!</div>
             <?php endif;?>
+
         </div>
     </div>

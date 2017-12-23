@@ -7,6 +7,8 @@
 use evgeniyrru\yii2slick\Slick;
 
 ?>
+
+    <div class="col-xs-12 col-slider">
     <?= Slick::widget([
         'itemContainer' => 'div',
         'containerOptions' => ['class' => 'slider-float'],
@@ -27,3 +29,4 @@ use evgeniyrru\yii2slick\Slick;
             'slidesToScroll' => 1
         ],
     ]); ?>
+    </div>
