@@ -54,19 +54,20 @@
                             <span>53</span>
                         </div>
                         <div class="post_statistics">
-                            <a href="<?php echo \yii\helpers\Url::to(['/likes/like'])?>" data-value="1"
+                            <a href="<?php echo \yii\helpers\Url::to(['/likes/like'])?>" id="like<?php echo $post->id?>" data-value="1"
                                data-id="<?php echo $post->id ?>"
-                               class="fa fa-thumbs-up post-like">
+                               data-like="1"
+                               class="fa fa-thumbs-up post-like <?php echo ($post->userLike->like === 1) ? 'like-active' : ''?>">
                             </a>
                         </div>
-                        <span id="likes-count<?php echo $post->id ?>">20</span>
+                        <span id="likes-count<?php echo $post->id ?>"><?php echo $post->getDifferenceCountLikes()?></span>
                         <div class="post_statistics">
-                            <a href="<?php echo \yii\helpers\Url::to(['/likes/dislike'])?>" data-value="0"
+                            <a href="<?php echo \yii\helpers\Url::to(['/likes/like'])?>" id="dislike<?php echo $post->id?>"
+                               data-value="0"
                                data-id="<?php echo $post->id ?>"
-                               class="fa fa-thumbs-down post-dislike">
-
+                               data-like="0"
+                               class="fa fa-thumbs-down post-dislike <?php echo ($post->userLike->like === 0) ? 'like-active' : ''?>">
                             </a>
-
                         </div>
                     </div>
                 </div>

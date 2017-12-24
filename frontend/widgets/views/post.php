@@ -8,54 +8,63 @@
 
     <div class="col-9">
         <div class="body-header">
-            <h1 class="namе-group"><?php echo $post->title?></h1>
+            <h1 class="namе-group"><?php echo $post->categories[0]->name ?></h1>
         </div>
         <div class="body-list">
-            <div class="crumbs">
-                <ol class="breadcrumb">
+            <article class="block-list-article block-list-item block block-review">
+                <h1 class="block-review-header"><?php echo $post->title ?></h1>
+                <ul class="crumbs inline-block">
                     <?php
                     $categories = $post->categories;
                     \yii\helpers\ArrayHelper::multisort($categories, 'parent_id', SORT_ASC)?>
                     <?php foreach ($categories as $category):?>
-                        <li><a href="<?php echo \yii\helpers\Url::to(['/'.$category->slug])?>"><?php echo $category->name?></a></li>
+                        <li class="inline-block-item inline-block-breadcrumb">
+                            <a class="breadcrumb-link" href="<?php echo \yii\helpers\Url::to(['/'.$category->slug])?>"><?php echo $category->name?></a>
+                        </li>
                     <?php endforeach;?>
-                </ol>
-            </div>
-            <div class="tags">
-                <a href="#">Комната</a>
-                <a href="#">Муфта</a>
-                <a href="#">Чепуха</a>
-                <a href="#">Замза</a>
-            </div>
-            <div class="post_content">
-                <?php echo $post->text?>
-            </div>
-            <div class="statistics clear">
-                <div class="post_statistics">
-                    <a href="#" class="fa fa-calendar"></a>
-                    <time><?php echo Yii::$app->formatter->asDate($post->updated_at)?></time>
+                </ul>
+                <div class="block-review-body block-review-body-post">
+                    <div class="body-post body-post-text">
+                        <?php if (!empty($post->img)):?>
+                            <img src="<?php echo  $post->img ?>" alt="post">
+                        <?php endif;?>
+                        <p><?php echo $post->short_text?></p>
+                    </div>
+
+                    <div class="statistics clear">
+                        <div class="post_statistics">
+                            <a href="#" class="fa fa-calendar"></a>
+                            <time><?php echo Yii::$app->formatter->asDate($post->updated_at)?></time>
+                        </div>
+                        <div class="post_statistics">
+                            <a href="#" class="fa fa-user"></a>
+                            <span><?php echo $post->user->username?></span>
+                        </div>
+                        <div class="post_statistics">
+                            <a href="#" class="fa fa-eye"></a>
+                            <span>585</span>
+                        </div>
+                        <div class="post_statistics">
+                            <a href="#" class="fa fa-star"></a>
+                            <span>53</span>
+                        </div>
+                        <div class="post_statistics">
+                            <a href="<?php echo \yii\helpers\Url::to(['/likes/like'])?>" data-value="1"
+                               data-id="<?php echo $post->id ?>"
+                               class="fa fa-thumbs-up post-like">
+                            </a>
+                        </div>
+                        <span id="likes-count<?php echo $post->id ?>">20</span>
+                        <div class="post_statistics">
+                            <a href="<?php echo \yii\helpers\Url::to(['/likes/dislike'])?>" data-value="0"
+                               data-id="<?php echo $post->id ?>"
+                               class="fa fa-thumbs-down post-dislike">
+
+                            </a>
+
+                        </div>
+                    </div>
                 </div>
-                <div class="post_statistics">
-                    <a href="#" class="fa fa-user"></a>
-                    <span><?php echo $post->user->username?></span>
-                </div>
-                <div class="post_statistics">
-                    <a href="#" class="fa fa-eye"></a>
-                    <span>2</span>
-                </div>
-                <div class="post_statistics">
-                    <a href="#" class="fa fa-star"></a>
-                    <span>53</span>
-                </div>
-                <div class="post_statistics">
-                    <a href="#" class="fa fa-thumbs-up"></a>
-                    <span>412</span>
-                </div>
-                <div class="post_statistics">
-                    <a href="#" class="fa fa-thumbs-down"></a>
-                    <span>20</span>
-                </div>
-            </div>
 
             <!--БЛОК КОММЕНТАРИЕВ-->
 
@@ -271,9 +280,13 @@
 
                 </ul>
             </div>
+
             <?php if (Yii::$app->user->isGuest):?>
-            <div class="not-authorized">Вы должны авторизоваться, чтобы оставлять комментарии!</div>
+
+                <div class="not-authorized">Вы должны авторизоваться, чтобы оставлять комментарии!</div>
+
             <?php endif;?>
 
+            </article>
         </div>
     </div>

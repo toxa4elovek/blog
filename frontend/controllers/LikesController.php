@@ -36,8 +36,7 @@ class LikesController extends FrontEndController
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'like' => ['post'],
-                    'dislike' => ['post']
+                    'like' => ['post']
                 ],
             ],
         ];
@@ -48,40 +47,17 @@ class LikesController extends FrontEndController
      */
     public function actionLike()
     {
-        $id = \Yii::$app->request->post('id');
+        $request = \Yii::$app->request->post();
 
-        if(\Yii::$app->user->isGuest){
-            return json_encode(['error' => \Yii::t('app', 'Please log in')]);
-        }
-
-        $post = Post::findOne(['id' => $id]);
+        $post = Post::find()->where(['id' => $request['id']])->with('userLike')->one();
 
         if(!empty($post)){
-            /**@var $post->like PostLikes*/
-            $post->like = PostLikes::TYPE_LIKE;
-            return json_encode(['success' => $post->like->save(), 'value' => $post->getDifferenceCountLikes()]);
-        }
+            if(!empty($post->userLike) && $request['active'] === "true"){
+                return json_encode(['success' => $post->userLike->delete(), 'value' => $post->getDifferenceCountLikes()]);
+            }
 
-        return json_encode(['error' => \Yii::t('app', "This Post doesn't exists")]);
-    }
-
-    /**
-     * @return string
-     */
-    public function actionDislike()
-    {
-        $id = \Yii::$app->request->post('id');
-
-        if(\Yii::$app->user->isGuest){
-            return json_encode(['error' => \Yii::t('app', 'Please log in')]);
-        }
-
-        $post = Post::findOne(['id' => $id]);
-
-        if(!empty($post)){
-            /**@var $post->like PostLikes*/
-            $post->like = PostLikes::TYPE_DISLIKE;
-            return json_encode(['success' => $post->like->save(), 'value' => $post->getDifferenceCountLikes()]);
+            $post->userLikeValue = ((int)$request['like'] > 0) ? PostLikes::TYPE_LIKE : PostLikes::TYPE_DISLIKE;
+            return json_encode(['success' => $post->userLike->save(), 'value' => $post->getDifferenceCountLikes()]);
         }
 
         return json_encode(['error' => \Yii::t('app', "This Post doesn't exists")]);

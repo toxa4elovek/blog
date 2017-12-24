@@ -18,6 +18,9 @@
         <div class="header-main-right">
             <a href="<?php echo \yii\helpers\Url::to('/signup')?>" class="logo st-button">Регистрация</a>
             <a href="<?php echo \yii\helpers\Url::to('/login')?>" class="logo st-button">Личный кабинет</a>
+            <?php if(!Yii::$app->user->isGuest) :?>
+                <a data-method="post" href="<?php echo \yii\helpers\Url::to('/user/security/logout')?>" class="logo st-button">Выйти</a>
+            <?php endif;?>
         </div>
     </header>
 </div>

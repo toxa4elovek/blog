@@ -313,6 +313,10 @@ h2.namе-group{
 	-moz-box-shadow: 0 0 10px 0 rgba(48,48,48,0.61);
 	box-shadow: 0 0 10px 0 rgba(48,48,48,0.61);
 }
+.block-list-article {
+	padding-left:15px;
+	padding-right:15px;
+}
 .block-list-item-post {padding:15px;}
 .block h3 {
 	border-bottom: 2px solid #f0f0f0;
@@ -328,6 +332,7 @@ h2.namе-group{
 	-webkit-margin-end: 0;
 }
 .block-review-header {color: #545454;}
+.block-review-header:hover {color: inherit;}
 .inline-block {
 	display: -webkit-box;
 	display: -ms-flexbox;
@@ -474,4 +479,8 @@ h2.namе-group{
 	display:none;
 	text-indent:-9999px;
 	background: url(../img/source/icon_top.png) no-repeat;
+}
+
+.like-active{
+    color: #46b690!important;
 }

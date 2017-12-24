@@ -2,60 +2,62 @@
 
 namespace common\models\db;
 
-use common\classes\Debug;
 use Yii;
 
-
+/**
+ * @property PostLikes->like $userLikeValue
+ * @property PostLikes $userLike
+ * Class Post
+ * @package common\models\db
+ */
 class Post extends \common\models\Post
 {
     const STATUS_ACTIVE = 1;
     const STATUS_MODERATION = 0;
     const STATUS_DELETED = 2;
 
-    private $_like;
+    /**
+     * @param $value
+     */
+    public function setUserLike($value)
+    {
+        $this->userLike = $value;
+    }
 
     /**
-     * @param $value PostLikes::TYPE_LIKE|PostLikes::TYPE_DISLIKE
+     * @param $value
      */
-    public function setLike($value)
+    public function setUserLikeValue($value)
     {
-        $this->_like = $this->like;
-
-        if(!empty($this->_like)){
-            $this->_like->like = $value;
-        }else {
-            $this->_like = new PostLikes();
-            $this->_like->post_id = $this->id;
-            $this->_like->like = $value;
+        if(!empty($this->userLike)){
+            $this->userLike->like = $value;
+        }else{
+            $this->userLike = $this->createUserLike($value);
         }
     }
 
     /**
-     * @return \yii\db\ActiveRecord
+     * @param $value
+     * @return PostLikes
      */
-    public function getLike()
+    public function createUserLike($value)
     {
-        if(empty($this->_like)){
-            return PostLikes::find()->where(['post_id' => $this->id, 'user_id' => Yii::$app->user->id])->one();
-        }
-        return $this->_like;
+        $like = new PostLikes();
+        $like->setAttributes([
+            'post_id' => $this->id,
+            'user_id' => Yii::$app->user->id,
+            'like' => $value
+        ]);
 
+        return $like;
     }
 
     /**
      * @return int|string
      */
-    public function getCountLikes()
+    public function getUserLike()
     {
-        return PostLikes::find()->where(['post_id' => $this->id, 'like' => 1])->count();
-    }
-
-    /**
-     * @return int|string
-     */
-    public function getCountDislikes()
-    {
-        return PostLikes::find()->where(['post_id' => $this->id, 'like' => 0])->count();
+        return $this->hasOne(PostLikes::className(), ['post_id' => 'id'])->where(['user_id' => Yii::$app->user->id]);
     }
 
     /**
@@ -63,11 +65,10 @@ class Post extends \common\models\Post
      */
     public function getDifferenceCountLikes()
     {
-        $user_id = Yii::$app->user->id;
         $count = Yii::$app->getDb()->createCommand(
             "SELECT t1.count - t2.count as count FROM 
-            (SELECT COUNT(*) as count FROM `post_likes` WHERE `user_id` = {$user_id} AND `post_id` = {$this->id} AND `like` = 1) as t1, 
-            (SELECT COUNT(*) as count FROM `post_likes` WHERE `user_id` = {$user_id} AND `post_id` = {$this->id} AND `like` = 0) as t2 ");
+            (SELECT COUNT(*) as count FROM `post_likes` WHERE `post_id` = {$this->id} AND `like` = 1) as t1, 
+            (SELECT COUNT(*) as count FROM `post_likes` WHERE `post_id` = {$this->id} AND `like` = 0) as t2 ");
         $count = $count->queryOne();
 
         return $count['count'];
