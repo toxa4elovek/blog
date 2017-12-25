@@ -33,4 +33,27 @@ $(document).ready(function () {
             }
         }
     }
+
+    $('.user-favourite').on('click', function () {
+        var elem = $(this);
+        var activeClass = 'info-active';
+        var data = {
+            active: elem.hasClass(activeClass)
+        };
+        data[param] = token;
+        $.post(elem.attr('href'), data, function (response) {
+            var result = JSON.parse(response);
+
+            if(result.success === true){
+                if(result.action === 'save'){
+                    elem.addClass(activeClass);
+                }else if(result.action === 'delete'){
+                    elem.removeClass(activeClass);
+                }
+                elem.find('span').text(result.count)
+            }
+        });
+
+        return false;
+    })
 });

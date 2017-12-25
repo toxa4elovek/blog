@@ -15,7 +15,7 @@ use frontend\models\Post;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 
-class LikesController extends FrontEndController
+class PostInfoController extends FrontEndController
 {
     public $layout = false;
 
@@ -24,10 +24,10 @@ class LikesController extends FrontEndController
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['like', 'dislike'],
+                'only' => ['like', 'favourites'],
                 'rules' => [
                     [
-                        'actions' => ['like', 'dislike'],
+                        'actions' => ['like', 'favourites'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -36,7 +36,8 @@ class LikesController extends FrontEndController
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'like' => ['post']
+                    'like' => ['post'],
+                    'favourites' => ['post']
                 ],
             ],
         ];
@@ -61,5 +62,25 @@ class LikesController extends FrontEndController
         }
 
         return json_encode(['error' => \Yii::t('app', "This Post doesn't exists")]);
+    }
+
+    public function actionFavourites($id)
+    {
+        $post = Post::find()->where(['id' => $id])->with('userFavourite')->one();
+
+        if(empty($post->userFavourite) && \Yii::$app->request->post('active') === 'false'){
+            $post->setUserFavourite();
+            return json_encode([
+                'success' => (bool)$post->userFavourite->save(),
+                'action' => 'save',
+                'count' => $post->countFavourites
+            ]);
+        }else {
+            return json_encode([
+                'success' => (bool)$post->userFavourite->delete(),
+                'action' => 'delete',
+                'count' => $post->countFavourites
+            ]);
+        }
     }
 }

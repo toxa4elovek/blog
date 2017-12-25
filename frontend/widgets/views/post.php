@@ -31,39 +31,7 @@
                         <p><?php echo $post->short_text?></p>
                     </div>
 
-                    <div class="statistics clear">
-                        <div class="post_statistics">
-                            <a href="#" class="fa fa-calendar"></a>
-                            <time><?php echo Yii::$app->formatter->asDate($post->updated_at)?></time>
-                        </div>
-                        <div class="post_statistics">
-                            <a href="#" class="fa fa-user"></a>
-                            <span><?php echo $post->user->username?></span>
-                        </div>
-                        <div class="post_statistics">
-                            <a href="#" class="fa fa-eye"></a>
-                            <span>585</span>
-                        </div>
-                        <div class="post_statistics">
-                            <a href="#" class="fa fa-star"></a>
-                            <span>53</span>
-                        </div>
-                        <div class="post_statistics">
-                            <a href="<?php echo \yii\helpers\Url::to(['/likes/like'])?>" data-value="1"
-                               data-id="<?php echo $post->id ?>"
-                               class="fa fa-thumbs-up post-like">
-                            </a>
-                        </div>
-                        <span id="likes-count<?php echo $post->id ?>">20</span>
-                        <div class="post_statistics">
-                            <a href="<?php echo \yii\helpers\Url::to(['/likes/dislike'])?>" data-value="0"
-                               data-id="<?php echo $post->id ?>"
-                               class="fa fa-thumbs-down post-dislike">
-
-                            </a>
-
-                        </div>
-                    </div>
+                    <?php echo \frontend\widgets\PostInfoWidget::widget(['post' => $post])?>
                 </div>
 
             <!--БЛОК КОММЕНТАРИЕВ-->

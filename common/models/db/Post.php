@@ -3,10 +3,17 @@
 namespace common\models\db;
 
 use Yii;
+use yii\db\ActiveQuery;
+
 
 /**
  * @property PostLikes->like $userLikeValue
  * @property PostLikes $userLike
+ * @property integer $countViews
+ * @property PostViews $postView
+ * @property PostFavourites $userFavourite
+ * @property integer $countFavourites
+ * @property integer $views
  * Class Post
  * @package common\models\db
  */
@@ -72,6 +79,57 @@ class Post extends \common\models\Post
         $count = $count->queryOne();
 
         return $count['count'];
+    }
+
+    /**
+     * @return ActiveQuery
+     */
+    public function getPostView()
+    {
+        return $this->hasOne(PostViews::className(), ['post_id' => 'id'])
+            ->where(['ip_address' => ip2long('123.12.12.12'/*\Yii::$app->request->userIP*/)]);
+    }
+
+    /**
+     * Сохранение уникального просмотра
+     */
+    public function setUserView()
+    {
+        if(empty($this->postView)){
+           $view = New PostViews();
+           $view->post_id = $this->id;
+           $view->save();
+        }
+    }
+
+    /**
+     * @return int
+     */
+    public function getCountUserViews()
+    {
+        return count($this->postViews);
+    }
+
+    /**
+     * @return ActiveQuery
+     */
+    public function getUserFavourite()
+    {
+        return $this->hasOne(PostFavourites::className(), ['post_id' => 'id'])->where(['user_id' => Yii::$app->user->id]);
+    }
+
+    public function setUserFavourite()
+    {
+        $this->userFavourite = new PostFavourites();
+        $this->userFavourite->setAttributes([
+            'post_id' => $this->id,
+            'user_id' => Yii::$app->user->id
+        ]);
+    }
+
+    public function getCountFavourites()
+    {
+        return count($this->postFavourites);
     }
 
 }

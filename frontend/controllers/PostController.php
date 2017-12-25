@@ -8,6 +8,7 @@
 
 namespace frontend\controllers;
 
+use common\classes\Debug;
 use frontend\models\Post;
 
 class PostController extends FrontEndController
@@ -15,7 +16,11 @@ class PostController extends FrontEndController
     public function actionView($slug)
     {
         $post = Post::find()->where(['slug' => $slug])->with(['categories'])->one();
-        //$post->options->updateCounters(['views' => 1]);
+        $post->updateCounters(['views' => 1]);
+
+        if(!$post->postView){
+            $post->setUserView();
+        }
 
         return $this->render('view', ['post' => $post]);
     }

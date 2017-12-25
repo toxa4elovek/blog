@@ -12,6 +12,9 @@ return [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
+        /*'memCache' => [
+            'class' => 'yii\caching\MemCache',
+        ],*/
         'authManager' => [
             'class' => 'dektrium\rbac\components\DbManager',
         ],
