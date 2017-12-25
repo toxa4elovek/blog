@@ -8,28 +8,6 @@ body{
 	margin: 0;
 }
 a, a:hover,a:link, a:visited{text-decoration:none !important;}
-
-/*
-.left{float:left;}
-.right{float:right;}
-.right-block{float: right!important;}
-.left-block{float: left!important;}
-.right-text{text-align:right;}
-.left-text {text-align: left;}
-.margin {margin-right: 5%;}
-.clearfix:before,
-.clearfix:after,
-.clearfix{
-	content:"";
-	display:table;
-
-}
-.clear {clear: both;}
-.center{text-align:center;margin:0 auto;}
-.uppercase {text-transform: uppercase;}
-.capitalize {text-transform: capitalize;}
-.justify {text-align: justify; text-align-last: justify;}
-*/
 #wrapper{
 	height:100%;
 	position: relative;
@@ -352,6 +330,7 @@ h2.namе-group{
 	padding: 10px 0 10px 0;
 }
 .inline-block-item {margin: 8px 8px 0 0;}
+.inline-block-item:first-child {padding-left: .5em;}
 .inline-block-breadcrumb {
 	margin: 0 .5em 0 0;
 	color: #545454;
@@ -374,11 +353,13 @@ h2.namе-group{
 	padding-right: 5px;
 	color: #545454;
 }
-.body-post-text br+img {
-	margin: 0;
+.media-text {
+	text-indent: 25px;
+	line-height: 1.5em;
+	margin-bottom: 0.25rem;
+	font-size: 16px;
 }
 .body-post-text img {
-	margin: 0;
 	vertical-align: middle;
 }
 .body-post-text img[align=left] {
@@ -475,14 +456,14 @@ h2.namе-group{
 	opacity:0.3;
 	position:fixed;
 	bottom:250px;
-	right:8px;
+	left:35px;
 	display:none;
 	text-indent:-9999px;
 	background: url(../img/source/icon_top.png) no-repeat;
 }
 
 .like-active{
-    color: #46b690!important;
+	color: #46b690!important;
 }
 
 .info-active{

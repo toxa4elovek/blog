@@ -8,7 +8,6 @@
 
 namespace frontend\controllers;
 
-use common\classes\Debug;
 use frontend\models\Post;
 
 class PostController extends FrontEndController
