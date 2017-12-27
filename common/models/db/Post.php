@@ -2,6 +2,7 @@
 
 namespace common\models\db;
 
+use frontend\helpers\RecursiveHelper;
 use Yii;
 use yii\db\ActiveQuery;
 
@@ -130,6 +131,19 @@ class Post extends \common\models\Post
     public function getCountFavourites()
     {
         return count($this->postFavourites);
+    }
+
+    /**
+     * @return ActiveQuery
+     */
+    public function getComments()
+    {
+        return $this->hasMany(PostComments::className(), ['post_id' => 'id'])->orderBy('created_at DESC');
+    }
+
+    public function getCommentsTree()
+    {
+        return RecursiveHelper::recursiveComments($this->comments);
     }
 
 }

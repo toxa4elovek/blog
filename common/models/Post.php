@@ -17,10 +17,12 @@ use Yii;
  * @property string $short_text
  * @property string $created_at
  * @property string $updated_at
+ * @property integer $views
  *
  * @property User $user
  * @property PostCategory[] $postCategories
  * @property Category[] $categories
+ * @property PostComments[] $postComments
  * @property PostFavourites[] $postFavourites
  * @property PostLikes[] $postLikes
  * @property PostViews[] $postViews
@@ -41,7 +43,7 @@ class Post extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id'], 'integer'],
+            [['user_id', 'views'], 'integer'],
             [['text'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
             [['title', 'slug', 'status', 'img'], 'string', 'max' => 100],
@@ -66,6 +68,7 @@ class Post extends \yii\db\ActiveRecord
             'short_text' => Yii::t('app', 'Short Text'),
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
+            'views' => Yii::t('app', 'Views'),
         ];
     }
 
@@ -91,6 +94,14 @@ class Post extends \yii\db\ActiveRecord
     public function getCategories()
     {
         return $this->hasMany(Category::className(), ['id' => 'category_id'])->viaTable('post_category', ['post_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPostComments()
+    {
+        return $this->hasMany(PostComments::className(), ['post_id' => 'id']);
     }
 
     /**

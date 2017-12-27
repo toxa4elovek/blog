@@ -9,7 +9,7 @@ body{
 }
 a, a:hover,a:link, a:visited{text-decoration:none !important;}
 #wrapper{
-	height:100%;
+	min-height:100%;
 	position: relative;
 	min-width: 1024px;
 	width: 100%;
@@ -118,10 +118,6 @@ a, a:hover,a:link, a:visited{text-decoration:none !important;}
 }
 .header-main-right .logo:nth-child(2) {margin-left: 15px;}
 /*ТЕЛО СТРАНИЦЫ*/
-.container-fluid-body {
-	padding: 0;
-	height: auto;
-}
 .row-wrapper-body {
 	box-sizing: border-box;
 	margin: 0 auto;
@@ -422,7 +418,7 @@ h2.namе-group{
 .questions-link:hover {color: #46b690;}
 .questions-link:active {color: #545454;}
 /*НИЖНИЙ СЛАЙДЕР*/
-.col-slider {margin-top: 40px;}
+.col-slider {margin-top: 40px;margin-bottom: 20px;}
 /*ФУТТЕР*/
 .row-wrapper-footer {
 	background: #4c6989;
@@ -433,6 +429,9 @@ h2.namе-group{
 	text-align:center;
 	margin: 0;
 	height: 40px;
+	position: absolute;
+	left: 0;
+	bottom: 0;
 }
 .footer-block-ul {
 	display: -webkit-box;
@@ -461,11 +460,5 @@ h2.namе-group{
 	text-indent:-9999px;
 	background: url(../img/source/icon_top.png) no-repeat;
 }
-
-.like-active{
-	color: #46b690!important;
-}
-
-.info-active{
-	color: #46b690!important;
-}
+.like-active{color: #46b690!important;}
+.info-active{color: #46b690!important;}

@@ -61,7 +61,23 @@ $(document).ready(function () {
     });
 
     $(".block-comments-show").on("click", function () {
-        $(".block-comments-hide").toggle();
+        var elem = $(this).siblings();
+        var textarea = elem.find('textarea');
+        textarea[0].selectionStart = textarea.val().length;
+        if (elem.css('display') === 'none'){
+            elem.toggle('fast', function () {
+                textarea.focus();
+            });
+        }
+
+        return false;
+    });
+
+    $(document).on('mouseup', function (e) {
+        var container = $(".block-comments-hide");
+        if (container.has(e.target).length === 0){
+            container.hide();
+        }
     });
 
     /*$("#select").select2({

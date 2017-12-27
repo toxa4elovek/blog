@@ -20,7 +20,8 @@ class AppAsset extends AssetBundle
     public $js = [
         'js/main.js',
         //'js/slick/slick.js'
-        'js/ajax.js'
+        'js/ajax.js',
+        'js/comment.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',

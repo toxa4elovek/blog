@@ -69,7 +69,7 @@ class PostController extends BackendController
     public function actionCreate()
     {
         $model = new Post();
-        $model->options = New PostOptions();
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {

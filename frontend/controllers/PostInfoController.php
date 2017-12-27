@@ -17,8 +17,6 @@ use yii\filters\VerbFilter;
 
 class PostInfoController extends FrontEndController
 {
-    public $layout = false;
-
     public function behaviors()
     {
         return [
