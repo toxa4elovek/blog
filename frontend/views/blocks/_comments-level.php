@@ -20,9 +20,21 @@
                         <time><?php echo Yii::$app->formatter->asDatetime($comment->created_at)?></time>
                     </div>
                     <div class="post_statistics">
-                        <a href="#" class="fa fa-thumbs-up"></a>
-                        <span>12</span>
-                        <a href="#" class="fa fa-thumbs-down"></a>
+                        <a href="<?php echo \yii\helpers\Url::to(['/likes/like-comment'])?>" id="like<?php echo $comment->id?>"
+                           data-value="1"
+                           data-id="<?php echo $comment->id ?>"
+                           data-like="1"
+                           class="fa fa-thumbs-up post-like <?php echo ($comment->userLike->like === 1) ? 'like-active' : ''?>">
+                        </a>
+                    </div>
+                    <span id="likes-count<?php echo $comment->id ?>"><?php echo $comment->getDifferenceCountLikes()?></span>
+                    <div class="post_statistics">
+                        <a href="<?php echo \yii\helpers\Url::to(['/likes/like-comment'])?>" id="dislike<?php echo $comment->id?>"
+                           data-value="0"
+                           data-id="<?php echo $comment->id ?>"
+                           data-like="0"
+                           class="fa fa-thumbs-down post-dislike <?php echo ($comment->userLike->like === 0) ? 'like-active' : ''?>">
+                        </a>
                     </div>
                 </div>
             </div>

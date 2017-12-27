@@ -48,15 +48,11 @@ class CommentsController extends FrontEndController
             ['user_id' => \Yii::$app->user->id]
             ));
 
-
-
-        if($comment->save()){
+        if(!empty($comment->text) && $comment->save()){
             $comment = PostComments::findOne($comment->id);
             $html = $this->renderPartial('@frontend/views/blocks/_comments-level', ['comment' => $comment]);
 
             return json_encode(['result' => true, 'html' => $html]);
-        }
-        Debug::prn($comment->parent->user->username);
-
+        }else return json_encode(['result' => false]);
     }
 }

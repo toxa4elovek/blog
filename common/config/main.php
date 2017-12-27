@@ -18,9 +18,10 @@ return [
         'authManager' => [
             'class' => 'dektrium\rbac\components\DbManager',
         ],
-        /*'formatter' => [
-            'locale' => 'ru-Ru'
-        ]*/
+        'formatter' => [
+            'class' => 'yii\i18n\Formatter',
+            'defaultTimeZone' => 'Europe/Moscow',
+        ],
     ],
     'modules' => [
         'rbac' => 'dektrium\rbac\RbacWebModule',

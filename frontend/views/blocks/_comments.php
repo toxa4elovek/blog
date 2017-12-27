@@ -16,13 +16,13 @@
 
     <?php else:?>
 
-        <form action="#" method="post">
+        <form action="<?php echo \yii\helpers\Url::to(['/comments/add'])?>" method="post" class="comment-form">
             <div class="form-group">
                 <input type="hidden" value="<?php echo $post->id?>">
                 <label for="comment"></label>
-                <textarea class="form-control" id="comment" rows="3" placeholder="Оставьте Ваш комментарий"></textarea>
+                <textarea class="form-control" rows="3" name="text" placeholder="Оставьте Ваш комментарий"></textarea>
                 <div class="footer-comment">
-                    <a class="btn btn-default" href="javascript: void 0">Опубликовать</a>
+                    <input type="submit" class="reply" value="Ответить">
                 </div>
             </div>
         </form>

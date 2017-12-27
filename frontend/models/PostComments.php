@@ -9,7 +9,7 @@
 namespace frontend\models;
 
 
-class PostComments extends \common\models\db\Post
+class PostComments extends \common\models\db\PostComments
 {
 
 }

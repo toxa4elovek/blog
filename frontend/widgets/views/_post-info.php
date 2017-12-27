@@ -26,7 +26,7 @@
         </a>
     </div>
     <div class="post_statistics">
-        <a href="<?php echo \yii\helpers\Url::to(['/post-info/like'])?>" id="like<?php echo $post->id?>" data-value="1"
+        <a href="<?php echo \yii\helpers\Url::to(['/likes/like-post'])?>" id="like<?php echo $post->id?>" data-value="1"
            data-id="<?php echo $post->id ?>"
            data-like="1"
            class="fa fa-thumbs-up post-like <?php echo ($post->userLike->like === 1) ? 'like-active' : ''?>">
@@ -34,7 +34,7 @@
     </div>
     <span id="likes-count<?php echo $post->id ?>"><?php echo $post->getDifferenceCountLikes()?></span>
     <div class="post_statistics">
-        <a href="<?php echo \yii\helpers\Url::to(['/post-info/like'])?>" id="dislike<?php echo $post->id?>"
+        <a href="<?php echo \yii\helpers\Url::to(['/likes/like-post'])?>" id="dislike<?php echo $post->id?>"
            data-value="0"
            data-id="<?php echo $post->id ?>"
            data-like="0"

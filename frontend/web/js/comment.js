@@ -11,13 +11,26 @@ $(document).ready(function () {
         };
 
         $.post(elem.attr('action'), data, function (response) {
-            result = JSON.parse(response);
+            var result = JSON.parse(response);
             if(result.result === true){
                 elem.parent().next().after(result.html);
-                //elem.find('textarea').val(clearTextarea(elem.find('textarea')));
+                elem.find('textarea').val(clearTextarea(elem.find('textarea')));
                 elem.hide();
             }
-             console.log();
+        });
+
+        return false;
+    });
+
+    $('.comment-form').on('submit', function () {
+        var elem = $(this);
+        var post_id = $('input[name=post_id]').val();
+        $.post(elem.attr('action'), elem.serialize() + '&post_id=' + post_id, function (response) {
+            var result = JSON.parse(response);
+            if(result.result === true){
+                elem.next().prepend(result.html);
+                elem.find('textarea').val('');
+            }
         });
 
         return false;
@@ -25,7 +38,6 @@ $(document).ready(function () {
 
     function clearTextarea(elem) {
         var text = elem.val().slice(',')[0];
-        console.log(text);
         return text + ', ';
     }
 });
