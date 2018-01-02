@@ -42,7 +42,9 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'format' => 'raw',
                 'attribute' => 'title',
-                'value' => $model->title
+                'value' => function($model){
+                    return $model->title;
+                }
             ],
             'status',
             [
@@ -58,7 +60,9 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'format' => 'text',
                 'attribute' => 'short_text',
-                'value' => $model->short_text,
+                'value' => function($model){
+                    return $model->short_text;
+                }
             ],
 
             ['class' => 'yii\grid\ActionColumn'],

@@ -3,7 +3,7 @@ return [
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
-        '@img' => '@frontend/web/img/category',
+        '@img' => '@frontend/web/img/content',
         '@web_img' => '/img/content',
     ],
     'language' => 'ru-Ru',

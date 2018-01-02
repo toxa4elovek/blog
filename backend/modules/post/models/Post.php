@@ -60,21 +60,6 @@ class Post extends BasePost
         $this->_categories = $value;
     }
 
-    public function setOptions($value)
-    {
-        if($value instanceof PostOptions) {
-            $this->_options = $value;
-        }else $this->_options = new PostOptions();
-    }
-
-    public function saveOptions()
-    {
-        if($this->_options instanceof PostOptions) {
-            $this->_options->post_id = $this->id;
-            $this->_options->save();
-        }
-    }
-
     public function afterSave($insert, $changedAttributes)
     {
         if (!$insert) {
@@ -89,10 +74,6 @@ class Post extends BasePost
                 ];
                 $model->save();
             }
-        }
-
-        if($this->_options !== null) {
-            $this->saveOptions();
         }
 
         parent::afterSave($insert, $changedAttributes);

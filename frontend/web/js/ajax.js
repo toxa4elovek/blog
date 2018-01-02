@@ -2,7 +2,7 @@ $(document).ready(function () {
     var token = yii.getCsrfToken();
     var param = yii.getCsrfParam();
 
-    $('.post-like, .post-dislike').on('click', function () {
+    $(document).on('click', '.post-like, .post-dislike', function () {
         var elem = $(this);
         var countElemSelector = '#likes-count' + elem.data('id');
 
@@ -11,7 +11,7 @@ $(document).ready(function () {
             like: elem.data('like'),
             active: elem.hasClass('like-active')
         };
-        data[param] = token;
+        // data[param] = token;
         $.post(elem.attr('href'), data, function (response) {
             response = JSON.parse(response);
             $(countElemSelector).text(response.value);

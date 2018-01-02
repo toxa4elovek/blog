@@ -29,7 +29,7 @@
                         <?php if (!empty($post->img)):?>
                             <img src="<?php echo  $post->img ?>" alt="post">
                         <?php endif;?>
-                        <p><?php echo $post->short_text?></p>
+                        <p><?php echo $post->text?></p>
                     </div>
 
                     <?php echo \frontend\widgets\PostInfoWidget::widget(['post' => $post])?>

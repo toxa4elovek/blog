@@ -67,7 +67,7 @@ class PostSearch extends Post
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'slug', $this->slug])
+//            ->andFilterWhere(['like', 'slug', $this->slug])
             ->andFilterWhere(['like', 'status', $this->status])
             ->andFilterWhere(['like', 'img', $this->img])
             ->andFilterWhere(['like', 'text', $this->text])
