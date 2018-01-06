@@ -4,6 +4,7 @@ namespace frontend\modules\pages\controllers;
 
 use common\classes\Debug;
 use common\models\db\PostLikes;
+use console\models\VkApi;
 use frontend\helpers\RecursiveHelper;
 use frontend\models\Post;
 use frontend\controllers\FrontEndController;
@@ -13,6 +14,8 @@ class PagesController extends FrontEndController
 {
     public function actionIndex()
     {
+        $model = new VkApi();
+        Debug::dd($model->getRegions(2));
         $posts = Post::find()->where(['status' => Post::STATUS_ACTIVE])->with(['categories', 'user', 'userLike'])->all();
 
         $sliderItems = [];
