@@ -60,7 +60,12 @@ class VkApi extends Model
         ]));
 
         if($result['count'] > $limit){
-            $page_count = $this->_getPageCount($result['count'], $limit);
+            $result['items'] = array_merge($result['items'], $this->_pagination(self::METHOD_GET_CITIES, [
+                'country_id' => $country_id,
+                'region_id' => $region_id,
+                'count' => $limit
+            ], $result['count']));
+            /*$page_count = $this->_getPageCount($result['count'], $limit);
 
             for ($i = 1; $i < $page_count; $i++){
                 $page = $this->_getResponse($this->_getRequestUrl(self::METHOD_GET_CITIES, [
@@ -71,7 +76,7 @@ class VkApi extends Model
                 ]));
 
                 $result['items'] = array_merge($result['items'], $page['items']);
-            }
+            }*/
         }
 
         return $result;
@@ -84,6 +89,74 @@ class VkApi extends Model
             'need_all' => 0,
             'count' => 100
         ]));
+    }
+
+    /**
+     * @param $city_id
+     * @param int $limit
+     * @return mixed|null
+     */
+    public function getSchools($city_id, $limit = 1000)
+    {
+        $result = $this->_getResponse($this->_getRequestUrl(self::METHOD_GET_SCHOOLS, [
+            'city_id' => $city_id,
+            'count' => $limit
+        ]));
+
+        if($result['count'] > $limit){
+            $result['items'] = array_merge($result['items'], $this->_pagination(self::METHOD_GET_SCHOOLS,[
+                'city_id' => $city_id,
+                'count' => $limit
+            ], $result['count']));
+        }
+
+        return $result;
+    }
+
+    /**
+     * @param $country_id
+     * @param $city_id
+     * @param int $limit
+     * @return mixed|null
+     */
+    public function getUniversities($country_id, $city_id, $limit = 1000)
+    {
+        $result = $this->_getResponse($this->_getRequestUrl(self::METHOD_GET_UNIVERSITIES, [
+            'country_id' => $country_id,
+            'city_id' => $city_id,
+            'count' => $limit
+        ]));
+
+        if($result['count'] > $limit){
+            $result['items'] = array_merge($result['items'], $this->_pagination(self::METHOD_GET_UNIVERSITIES,[
+                'country_id' => $country_id,
+                'city_id' => $city_id,
+                'count' => $limit
+            ], $result['count']));
+        }
+
+        return $result;
+    }
+
+    /**
+     * @param $method
+     * @param $params
+     * @param $count
+     * @return array
+     */
+    private function _pagination($method, $params, $count)
+    {
+        $page_count = $this->_getPageCount($count, $params['count']);
+        $result = [];
+        for ($i = 1; $i < $page_count; $i++){
+            $page = $this->_getResponse($this->_getRequestUrl($method,array_merge($params, [
+                'offset' => $params['count'] * $i
+            ])));
+
+            $result = array_merge($result, $page['items']);
+        }
+
+        return $result;
     }
 
     /**

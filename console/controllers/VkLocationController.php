@@ -123,8 +123,12 @@ class VkLocationController extends Controller
         $this->stdout('Save ' . count($cityData) . ' main cities' . PHP_EOL, Console::FG_BLUE);
     }
 
-    private function _dataBaseExecute(array $columns, array $values, $tableName)
+    protected function _dataBaseExecute(array $columns, array $values, $tableName)
     {
+        if(empty($values)){
+            return false;
+        }
+
         $db = \Yii::$app->db;
         $sql = $db->queryBuilder->batchInsert($tableName, $columns, $values);
         $updateParams = '';
@@ -143,7 +147,7 @@ class VkLocationController extends Controller
     /**
      * @return VkApi
      */
-    private function _getApi()
+    protected function _getApi()
     {
         return new VkApi();
     }
