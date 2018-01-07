@@ -10,10 +10,12 @@ namespace backend\controllers;
 
 
 use backend\models\File;
+use common\classes\Debug;
 use yii\web\UploadedFile;
 
 class FilesUploadController extends BackendController
 {
+    public $enableCsrfValidation = false;
 
     public function actionUpload($CKEditorFuncNum)
     {
@@ -28,6 +30,26 @@ class FilesUploadController extends BackendController
         }
         else
             return "Файл не загружен\n";
+    }
+
+    public function actionTestUpload()
+    {
+        $file = UploadedFile::getInstanceByName('file');
+
+        if ($file)
+        {
+            if ($result = File::upload($file, File::PATH_OTHERS)){
+                return json_encode(['location' => $result]);
+            }
+            else{
+                \Yii::$app->getResponse()->getHeaders()->set('Status Code', "500 Invalid file upload");
+                return \Yii::$app->getResponse();
+            }
+        }
+        else {
+            \Yii::$app->getResponse()->getHeaders()->set('Status Code', "500 Invalid file");
+            return \Yii::$app->getResponse();
+        }
     }
 
 }

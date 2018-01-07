@@ -26,12 +26,21 @@ AppAsset::register($this);
 <body>
 <?php $this->beginBody() ?>
 <div id="wrapper">
-    <div class="middle">
-<?php echo \frontend\widgets\HeaderWidget::widget()?>
+    <div class="container-fluid container-fluid-content">
+        <?php echo \frontend\widgets\HeaderWidget::widget()?>
 
-        <?= $content  ?>
+        <div class="row row-wrapper-body">
+            <div class="column">
+
+                <?= $content  ?>
+
+            </div>
+        </div>
+
+        <?php echo \frontend\widgets\FooterWidget::widget()?>
+
+        <a href="#" class="scrollup">Наверх</a>
     </div>
-<?php echo \frontend\widgets\FooterWidget::widget()?>
 </div>
 <?php $this->endBody() ?>
 </body>

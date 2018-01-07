@@ -9,7 +9,6 @@ use Yii;
  *
  * @property integer $id
  * @property integer $user_id
- * @property integer $category_id
  * @property string $title
  * @property string $slug
  * @property string $status
@@ -18,16 +17,18 @@ use Yii;
  * @property string $short_text
  * @property string $created_at
  * @property string $updated_at
+ * @property integer $views
  *
+ * @property User $user
  * @property PostCategory[] $postCategories
  * @property Category[] $categories
+ * @property PostComments[] $postComments
+ * @property PostFavourites[] $postFavourites
+ * @property PostLikes[] $postLikes
+ * @property PostViews[] $postViews
  */
 class Post extends \yii\db\ActiveRecord
 {
-    const STATUS_ACTIVE = 1;
-    const STATUS_MODERATION = 0;
-    const STATUS_DELETED = 2;
-
     /**
      * @inheritdoc
      */
@@ -42,12 +43,12 @@ class Post extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id'], 'integer'],
-            [['user_id', 'title'], 'required'],
+            [['user_id', 'views'], 'integer'],
             [['text'], 'string'],
-            [['categories'], 'safe'],
+            [['created_at', 'updated_at'], 'safe'],
             [['title', 'slug', 'status', 'img'], 'string', 'max' => 100],
             [['short_text'], 'string', 'max' => 255],
+            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
 
@@ -57,16 +58,26 @@ class Post extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'user_id' => 'User ID',
-            'category_id' => 'Category ID',
-            'title' => 'Title',
-            'slug' => 'Slug',
-            'status' => 'Status',
-            'img' => 'Img',
-            'text' => 'Text',
-            'short_text' => 'Short Text',
+            'id' => Yii::t('app', 'ID'),
+            'user_id' => Yii::t('app', 'User ID'),
+            'title' => Yii::t('app', 'Title'),
+            'slug' => Yii::t('app', 'Slug'),
+            'status' => Yii::t('app', 'Status'),
+            'img' => Yii::t('app', 'Img'),
+            'text' => Yii::t('app', 'Text'),
+            'short_text' => Yii::t('app', 'Short Text'),
+            'created_at' => Yii::t('app', 'Created At'),
+            'updated_at' => Yii::t('app', 'Updated At'),
+            'views' => Yii::t('app', 'Views'),
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 
     /**
@@ -88,8 +99,32 @@ class Post extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getUser()
+    public function getPostComments()
     {
-        return $this->hasOne(\dektrium\user\models\User::className(), ['id' => 'user_id']);
+        return $this->hasMany(PostComments::className(), ['post_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPostFavourites()
+    {
+        return $this->hasMany(PostFavourites::className(), ['post_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPostLikes()
+    {
+        return $this->hasMany(PostLikes::className(), ['post_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPostViews()
+    {
+        return $this->hasMany(PostViews::className(), ['post_id' => 'id']);
     }
 }

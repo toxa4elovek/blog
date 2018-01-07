@@ -4,15 +4,39 @@
  * @var $questions array
  */
 ?>
-
-<div class="post_block uppercase justify">
-    <div class="questions"><a href="#">Что такое BIOS</a></div>
-    <div class="questions"><a href="#">Почему тормозит ПК</a></div>
-    <div class="questions"><a href="#">Я пишу код,а он кривой.почему</a></div>
-    <div class="questions"><a href="#">Я вхожу в монитор,а он не пускает</a></div>
-    <div class="questions"><a href="#">Как отключить режим сна</a></div>
-    <div class="questions"><a href="#">Что такое PHP</a></div>
-    <div class="questions"><a href="#">Вирус Петя</a></div>
-    <div class="questions"><a href="#">Логины,пароли клиенсткой базы приват-банка</a></div>
-    <div class="questions"><a href="#">EROR 404</a></div>
+<div class="body-list">
+    <ul class="block-list-item block-list-item-questions inline-block">
+        <li class="inline-block-questions">
+            <a href="#" class="questions-link">Что такое BIOS</a>
+        </li>
+        <li class="inline-block-questions">
+            <a href="#" class="questions-link">Почему тормозит ПК</a>
+        </li>
+        <li class="inline-block-questions">
+            <a href="#" class="questions-link">Я пишу код,а он кривой.почему?</a>
+        </li>
+        <li class="inline-block-questions">
+            <a href="#" class="questions-link">Я вхожу в монитор,а он не пускает</a>
+        </li>
+        <li class="inline-block-questions">
+            <a href="#" class="questions-link">Как отключить режим сна</a>
+        </li>
+        <li class="inline-block-questions">
+            <a href="#" class="questions-link">Что такое PHP</a>
+        </li>
+        <li class="inline-block-questions">
+            <a href="#" class="questions-link">Вирус Петя</a>
+        </li>
+        <li class="inline-block-questions">
+            <a href="#" class="questions-link">Логины,пароли клиенсткой базы приват-банка</a>
+        </li>
+        <li class="inline-block-questions">
+            <a href="#" class="questions-link">EROR 404</a>
+        </li>
+    </ul>
+</div>
+<div class="more-post">
+    <a class="more-post-button st-button">
+        Мне нужно больше вопросов
+    </a>
 </div>

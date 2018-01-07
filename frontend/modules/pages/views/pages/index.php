@@ -4,44 +4,25 @@
  * @var $posts array
  */
 ?>
-<div class="container-fluid">
-    <div class="row">
-        <?php echo \frontend\widgets\HeaderSlideWidget::widget(['items' => $sliderItems])?>
-    </div>
-</div>
+<?php $this->params['items'] = $sliderItems ?>
 
-<div class="container-fluid main_catalog">
-    <div class="row">
-        <div class="col-sm-3">
+<?php echo \frontend\widgets\HeaderSlideWidget::widget(['items' => $this->params['items']])?>
 
-            <?php echo \frontend\widgets\LeftCategoryWidget::widget()?>
+<?php echo \frontend\widgets\LeftCategoryWidget::widget()?>
 
-        </div>
-        <div class="col-sm-9">
-            <div class="right-block">
-                <div class="namе_group">
-                    <h2 class="namе-group">Администрирование</h2>
-                </div>
-
-                <?php echo \frontend\widgets\PostsWidget::widget(['posts' => $posts])?>
-
-                <div class="namе_group">
-                    <h2 class="namе-group">Вопросы</h2>
-                </div>
-
-                <?php echo \frontend\widgets\QuestionsWidget::widget()?>
-
-            </div>
-        </div>
-
+<div class="col-9">
+    <div class="body-header">
+        <h2 class="namе-group">Администрирование</h2>
     </div>
 
-</div>
+        <?php echo \frontend\widgets\PostsWidget::widget(['posts' => $posts]) ?>
 
-    <a href="#" class="scrollup">Наверх</a>
-
-<div class="container-fluid">
-    <div class="row">
-        <?php echo \frontend\widgets\FooterSlideWidget::widget(['items' => $sliderItems])?>
+    <div class="body-header">
+        <h2 class="namе-group">Вопросы</h2>
     </div>
+
+        <?php echo \frontend\widgets\QuestionsWidget::widget() ?>
 </div>
+
+<?php echo \frontend\widgets\FooterSlideWidget::widget(['items' => $this->params['items']])?>
+

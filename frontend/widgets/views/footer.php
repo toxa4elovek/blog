@@ -7,16 +7,16 @@
  */
 ?>
 
-<footer>
-    <div class="container">
-        <ul>
-            <li><a href="#">Обратная связь</a></li>
-            <li><a href="#">О нас</a></li>
-            <li><a href="#">Карта сайта</a></li>
-            <li><a href="#">Помощь</a></li>
-            <li><a href="#">Правила</a></li>
-            <li><a href="#">Регистрация</a></li>
-            <li><a href="#">Условия использования</a></li>
+<div class="row row-wrapper-footer">
+    <div class="footer-block">
+        <ul class="footer-block-ul">
+            <li class ="footer-block-list"><a href="#">Обратная связь</a></li>
+            <li class ="footer-block-list"><a href="#">О нас</a></li>
+            <li class ="footer-block-list"><a href="#">Карта сайта</a></li>
+            <li class ="footer-block-list"><a href="#">Помощь</a></li>
+            <li class ="footer-block-list"><a href="#">Правила</a></li>
+            <li class ="footer-block-list"><a href="#">Регистрация</a></li>
+            <li class ="footer-block-list"><a href="#">Условия использования</a></li>
         </ul>
     </div>
-</footer>
+</div>

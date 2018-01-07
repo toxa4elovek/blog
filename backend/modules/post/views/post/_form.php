@@ -6,13 +6,16 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model backend\modules\post\models\Post */
 /* @var $form yii\widgets\ActiveForm */
-use backend\modules\category\models\Category;
+use backend\modules\references\models\Category;
 use yii\helpers\ArrayHelper;
-$this->registerJsFile( '/js/ckeditor_plugins/codesnippet/lib/highlight/highlight.pack.js');
+use dosamigos\tinymce\TinyMce;
+\backend\assets\TinyMceCodeAsset::register($this);
+
+/*$this->registerJsFile( '/js/ckeditor_plugins/codesnippet/lib/highlight/highlight.pack.js');
 
 $this->registerJs("CKEDITOR.plugins.addExternal('pbckcode', '/js/ckeditor_plugins/pbckcode/plugin.js', '');");
 $this->registerJs("CKEDITOR.plugins.addExternal('codesnippet', '/js/ckeditor_plugins/codesnippet/plugin.js', '');");
-$this->registerJs("hljs.initHighlightingOnLoad()");
+$this->registerJs("hljs.initHighlightingOnLoad()");*/
 ?>
 
 <div class="post-form">
@@ -50,10 +53,12 @@ $this->registerJs("hljs.initHighlightingOnLoad()");
                 Html::img($model->img, ['class' => 'post-image'])
             ],
         ],
-        'options' => ['accept' => 'image/*']
+        'options' => [
+            'accept' => 'image/*',
+        ]
     ]) ?>
 
-    <?= $form->field($model, 'text')->widget(\dosamigos\ckeditor\CKEditor::className(), [
+    <?/*= $form->field($model, 'text')->widget(\dosamigos\ckeditor\CKEditor::className(), [
         'options' => ['rows' => 8],
         'preset' => 'basic',
         'clientOptions' => [
@@ -78,7 +83,33 @@ $this->registerJs("hljs.initHighlightingOnLoad()");
                 ['name' => 'document', 'groups' => [ 'mode', 'document', 'doctools' ]],
                 ['name' => 'editing' , 'groups' => [ 'find', 'selection', 'spellchecker' ]],
         ]
-    ]]) ?>
+    ]]) */?>
+
+    <?= $form->field($model, 'text')->widget(TinyMce::className(), [
+        'options' => ['rows' => 6],
+        'language' => 'ru',
+        'clientOptions' => [
+            'plugins' => [
+                'advlist autolink lists link charmap  print hr preview pagebreak',
+                'searchreplace wordcount textcolor visualblocks visualchars code fullscreen nonbreaking',
+                'save insertdatetime media codesample table contextmenu template paste image'
+            ],
+            'toolbar' => 'undo redo | styleselect | codesample | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image',
+            'images_upload_url' => '/secure/files-upload/test-upload',
+            'codesample_languages' =>  [
+                ['text' =>  'HTML/XML', 'value' => 'markup'],
+                ['text' =>  'Css', 'value' => 'css'],
+                ['text' =>  'JavaScript', 'value' => 'javascript'],
+                ['text' =>  'PHP', 'value' => 'php'],
+                ['text' =>  'Ruby', 'value' => 'ruby'],
+                ['text' =>  'Python', 'value' => 'python'],
+                ['text' =>  'Java', 'value' => 'java'],
+                ['text' =>  'C', 'value' => 'c'],
+                ['text' =>  'C#', 'value' => 'csharp'],
+                ['text' =>  'C++', 'value' => 'cpp'],
+    ],
+        ]
+    ]);?>
 
     <?= $form->field($model, 'short_text')->textarea(['maxlength' => true]) ?>
 

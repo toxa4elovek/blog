@@ -10,14 +10,16 @@ namespace backend\modules\post\models;
 
 use common\behaviors\SlugBehavior;
 use common\behaviors\UploadBehavior;
-use common\models\Post as BasePost;
-use common\models\PostCategory;
+use common\models\db\Post as BasePost;
+use common\models\db\PostCategory;
+use common\models\db\PostOptions;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
 
 class Post extends BasePost
 {
     private $_categories = null;
+    private $_options;
     public $fileImg;
 
     public function behaviors()
@@ -48,6 +50,7 @@ class Post extends BasePost
 
         return array_merge([
             ['slug', 'unique'],
+            [['categories'], 'safe'],
             [['fileImg'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg']
         ], $rules);
     }

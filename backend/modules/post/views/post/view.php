@@ -10,6 +10,8 @@ use yii\widgets\DetailView;
 $this->registerJs("CKEDITOR.plugins.addExternal('pbckcode', '/js/ckeditor_plugins/pbckcode/plugin.js', '');");
 $this->registerJs("CKEDITOR.plugins.addExternal('codesnippet', '/js/ckeditor_plugins/codesnippet/plugin.js', '');");
 $this->registerJs("hljs.initHighlightingOnLoad()");*/
+
+\backend\assets\TinyMceCodeAsset::register($this);
 $this->title = $model->title;
 $this->params['breadcrumbs'][] = ['label' => 'Posts', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;

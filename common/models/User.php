@@ -1,21 +1,110 @@
 <?php
+
 namespace common\models;
 
+use Yii;
+
 /**
- * User model
+ * This is the model class for table "user".
  *
  * @property integer $id
  * @property string $username
- * @property string $password_hash
- * @property string $password_reset_token
  * @property string $email
+ * @property string $password_hash
  * @property string $auth_key
- * @property integer $status
+ * @property integer $confirmed_at
+ * @property string $unconfirmed_email
+ * @property integer $blocked_at
+ * @property string $registration_ip
  * @property integer $created_at
  * @property integer $updated_at
- * @property string $password write-only password
+ * @property integer $flags
+ * @property integer $last_login_at
+ *
+ * @property Post[] $posts
+ * @property PostComments[] $postComments
+ * @property PostFavourites[] $postFavourites
+ * @property PostLikes[] $postLikes
+ * @property Profile $profile
  */
 class User extends \dektrium\user\models\User
 {
+    /**
+     * @inheritdoc
+     */
+    public static function tableName()
+    {
+        return 'user';
+    }
 
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [['username', 'email', 'password_hash', 'auth_key', 'created_at', 'updated_at'], 'required'],
+            [['confirmed_at', 'blocked_at', 'created_at', 'updated_at', 'flags', 'last_login_at'], 'integer'],
+            [['username', 'email', 'unconfirmed_email'], 'string', 'max' => 255],
+            [['password_hash'], 'string', 'max' => 60],
+            [['auth_key'], 'string', 'max' => 32],
+            [['registration_ip'], 'string', 'max' => 45],
+            [['username'], 'unique'],
+            [['email'], 'unique'],
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => Yii::t('app', 'ID'),
+            'username' => Yii::t('app', 'Username'),
+            'email' => Yii::t('app', 'Email'),
+            'password_hash' => Yii::t('app', 'Password Hash'),
+            'auth_key' => Yii::t('app', 'Auth Key'),
+            'confirmed_at' => Yii::t('app', 'Confirmed At'),
+            'unconfirmed_email' => Yii::t('app', 'Unconfirmed Email'),
+            'blocked_at' => Yii::t('app', 'Blocked At'),
+            'registration_ip' => Yii::t('app', 'Registration Ip'),
+            'created_at' => Yii::t('app', 'Created At'),
+            'updated_at' => Yii::t('app', 'Updated At'),
+            'flags' => Yii::t('app', 'Flags'),
+            'last_login_at' => Yii::t('app', 'Last Login At'),
+        ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPosts()
+    {
+        return $this->hasMany(Post::className(), ['user_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPostComments()
+    {
+        return $this->hasMany(PostComments::className(), ['user_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPostFavourites()
+    {
+        return $this->hasMany(PostFavourites::className(), ['user_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPostLikes()
+    {
+        return $this->hasMany(PostLikes::className(), ['user_id' => 'id']);
+    }
 }

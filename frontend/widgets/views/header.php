@@ -6,25 +6,21 @@
  * Time: 20:28
  */
 ?>
-<header>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-2 center uppercase f32 top">
-                <div class="my-block left">
-                    <a href="<?php echo \yii\helpers\Url::to('/')?>" class="st-button">Лого</a>
-                </div>
-            </div>
-            <div class="col-xs-10 center uppercase f11 top">
-                <div class="my-block right">
-                    <a href="<?php echo \yii\helpers\Url::to('/signup')?>" class="st-button">Регистрация</a>
-                </div>
-                <div class="my-block right">
-                    <a href="<?php echo \yii\helpers\Url::to('/login')?>" class="st-button">Личный кабинет</a>
-                </div>
-                <div class="search">
-                    <input type="text" name="search">
-                </div>
-            </div>
+
+<div class="row row-wrapper-header">
+    <header class="header">
+        <div class="col-xs-8 header-main-left">
+            <a href="<?php echo \yii\helpers\Url::to('/')?>" class="logo st-button">Лого</a>
+            <form action="#" method="post" class="search-form" id="search-form">
+                <input type="text" name="search" id="search-form-input">
+            </form>
         </div>
-    </div>
-</header>
+        <div class="header-main-right">
+            <a href="<?php echo \yii\helpers\Url::to('/signup')?>" class="logo st-button">Регистрация</a>
+            <a href="<?php echo \yii\helpers\Url::to('/login')?>" class="logo st-button">Личный кабинет</a>
+            <?php if(!Yii::$app->user->isGuest) :?>
+                <a data-method="post" href="<?php echo \yii\helpers\Url::to('/user/security/logout')?>" class="logo st-button">Выйти</a>
+            <?php endif;?>
+        </div>
+    </header>
+</div>

@@ -50,7 +50,7 @@ return [
                 '/' => 'pages/pages',
                 '/login' => 'user/security/login',
                 '/signup' => 'user/registration/register',
-                '/<slug>' => ''
+                'post/<slug>' => 'post/view',
             ],
         ],
 

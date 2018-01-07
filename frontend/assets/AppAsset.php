@@ -15,10 +15,13 @@ class AppAsset extends AssetBundle
     public $css = [
         'css/site.css',
         'css/style.css',
+        'css/style-full-post.css',
     ];
     public $js = [
         'js/main.js',
         //'js/slick/slick.js'
+        'js/ajax.js',
+        'js/comment.js'
     ];
     public $depends = [
         'yii\web\YiiAsset',
