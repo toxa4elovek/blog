@@ -10,6 +10,7 @@
 > Перейти в директорию со скачанным репазиторием
 1. запустить команду ```$ composer update```
 2. запустить команду ```$ init```
+>Выбрать 1 - Production
 3. запустить команды
   ```
   $ php yii migrate/up --migrationPath=@vendor/dektrium/yii2-user/migrations
