@@ -8,8 +8,21 @@
 
 ### Установка:
 
-1. запустить команду composer update
-2. запустить команду init
-3. запустить команду
-  >$ php yii migrate/up --migrationPath=@vendor/dektrium/yii2-user/migrations
-
+1. запустить команду ```$ composer update```
+2. запустить команду ```$ init```
+3. запустить команды
+  ```
+  $ php yii migrate/up --migrationPath=@vendor/dektrium/yii2-user/migrations
+  $ php yii migrate/up --migrationPath=@yii/rbac/migrations
+  $ php yii migrate/up
+  ```
+4. Выполнить команду для заполнения регионов и стран
+  ```
+  $ php yii vk-location
+  ```
+5. Настроить пути на точки входа
+  ```
+  backend\web\index.php - админка
+  frontend\web\index.php - фронт сайт
+  ```
+  
