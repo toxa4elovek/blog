@@ -37,7 +37,16 @@
                         'url' => '#',
                         'items' => [
                             ['label' => 'Категории', 'icon' => 'dashboard', 'url' => ['/references/category'],],
-                            ['label' => 'Опции', 'icon' => 'fa fa-gears', 'url' => ['/references/options'],],
+                            [
+                                'label' => 'Локализация',
+                                'icon' => 'fa fa-map-marker',
+                                'url' => '#',
+                                'items' => [
+                                    ['label' => 'Страны', 'icon' => 'fa fa-globe', 'url' => ['/references/country'],],
+                                    ['label' => 'Регионы', 'icon' => 'fa fa-flag', 'url' => ['/references/region'],],
+                                    ['label' => 'Города', 'icon' => 'fa fa-building', 'url' => ['/references/city'],],
+                                ],
+                            ],
                         ],
                     ],
                     ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
