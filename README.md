@@ -4,6 +4,7 @@
   + extension Memcached
   + extension Intl
 - MySQL 5.6
+- Composer
 
 
 ### Установка:
