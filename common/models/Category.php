@@ -7,9 +7,9 @@ use Yii;
 /**
  * This is the model class for table "category".
  *
- * @property integer $id
+ * @property int $id
  * @property string $name
- * @property integer $parent_id
+ * @property int $parent_id
  * @property string $slug
  * @property string $status
  * @property string $type
@@ -44,12 +44,13 @@ class Category extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'name' => 'Name',
-            'parent_id' => 'Parent ID',
-            'slug' => 'Slug',
-            'status' => 'Status',
-            'type' => 'Type',
+            'id' => Yii::t('app', 'ID'),
+            'name' => Yii::t('app', 'Name'),
+            'parent_id' => Yii::t('app', 'Parent ID {nameAttribute}', [
+                'nameAttribute' => Yii::t('app', 'Category')]),
+            'slug' => Yii::t('app', 'Slug'),
+            'status' => Yii::t('app', 'Status'),
+            'type' => Yii::t('app', 'Type'),
         ];
     }
 

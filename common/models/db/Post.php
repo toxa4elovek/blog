@@ -5,6 +5,7 @@ namespace common\models\db;
 use frontend\helpers\RecursiveHelper;
 use Yii;
 use yii\db\ActiveQuery;
+use yii\db\Expression;
 
 
 /**
@@ -14,7 +15,6 @@ use yii\db\ActiveQuery;
  * @property PostViews $postView
  * @property PostFavourites $userFavourite
  * @property integer $countFavourites
- * @property integer $views
  * Class Post
  * @package common\models\db
  */
@@ -83,16 +83,27 @@ class Post extends \common\models\Post
     }
 
     /**
+     * Получение уникальных просмотров
      * @return ActiveQuery
      */
-    public function getPostView()
+    public function getViewsUnique()
     {
         return $this->hasOne(PostViews::className(), ['post_id' => 'id'])
-            ->where(['ip_address' => ip2long('123.12.12.12'/*\Yii::$app->request->userIP*/)]);
+            ->select('COUNT(*) as count');
     }
 
     /**
-     * Сохранение уникального просмотра
+     * Получение всех просмотров
+     * @return ActiveQuery
+     */
+    public function getViews()
+    {
+        return $this->hasOne(PostViews::className(), ['post_id' => 'id'])
+            ->select('SUM(`count`) as count');
+    }
+
+    /**
+     * Сохранение просмотра
      */
     public function setUserView()
     {

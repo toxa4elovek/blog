@@ -29,7 +29,7 @@ return [
             'class' => 'dektrium\user\Module',
             'enableUnconfirmedLogin' => true,
             'confirmWithin' => 21600,
-            'admins' => ['toxa4elovek', 'garry-krut']
+            'adminPermission' => 'admin'
         ],
     ],
 ];
