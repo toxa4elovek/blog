@@ -19,7 +19,7 @@ class VkEducationController extends VkLocationController
 {
     public function actionIndex()
     {
-        $cities = City::find()->asArray()->offset(88867)->all();
+        $cities = City::find()->asArray()->offset(192903)->all();
         $schoolsData = [];
 
         $timeScript = New TimeScript();

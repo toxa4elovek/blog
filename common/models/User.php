@@ -7,25 +7,34 @@ use Yii;
 /**
  * This is the model class for table "user".
  *
- * @property integer $id
+ * @property int $id
  * @property string $username
  * @property string $email
  * @property string $password_hash
  * @property string $auth_key
- * @property integer $confirmed_at
+ * @property int $confirmed_at
  * @property string $unconfirmed_email
- * @property integer $blocked_at
+ * @property int $blocked_at
  * @property string $registration_ip
- * @property integer $created_at
- * @property integer $updated_at
- * @property integer $flags
- * @property integer $last_login_at
+ * @property int $created_at
+ * @property int $updated_at
+ * @property int $flags
+ * @property int $last_login_at
  *
- * @property Post[] $posts
+ * @property CommentLikes[] $commentLikes
+ * @property PostComments[] $comments
+ * @property HigherEducation[] $higherEducations
+ * @property MiddleEducation[] $middleEducations
  * @property PostComments[] $postComments
  * @property PostFavourites[] $postFavourites
+ * @property Post[] $posts
  * @property PostLikes[] $postLikes
- * @property Profile $profile
+ * @property Post[] $posts0
+ * @property PostViews[] $postViews
+ * @property Profile $profile0
+ * @property Question[] $questions
+ * @property SocialAccount[] $socialAccounts
+ * @property Token[] $tokens
  */
 class User extends \dektrium\user\models\User
 {
@@ -79,9 +88,33 @@ class User extends \dektrium\user\models\User
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getPosts()
+    public function getCommentLikes()
     {
-        return $this->hasMany(Post::className(), ['user_id' => 'id']);
+        return $this->hasMany(CommentLikes::className(), ['user_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getComments()
+    {
+        return $this->hasMany(PostComments::className(), ['id' => 'comment_id'])->viaTable('comment_likes', ['user_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getHigherEducations()
+    {
+        return $this->hasMany(HigherEducation::className(), ['user_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getMiddleEducations()
+    {
+        return $this->hasMany(MiddleEducation::className(), ['user_id' => 'id']);
     }
 
     /**
@@ -103,8 +136,72 @@ class User extends \dektrium\user\models\User
     /**
      * @return \yii\db\ActiveQuery
      */
+    public function getPosts()
+    {
+        return $this->hasMany(Post::className(), ['id' => 'post_id'])->viaTable('post_favourites', ['user_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function getPostLikes()
     {
         return $this->hasMany(PostLikes::className(), ['user_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPosts0()
+    {
+        return $this->hasMany(Post::className(), ['id' => 'post_id'])->viaTable('post_likes', ['user_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPostViews()
+    {
+        return $this->hasMany(PostViews::className(), ['user_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getProfile0()
+    {
+        return $this->hasOne(Profile::className(), ['user_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getQuestions()
+    {
+        return $this->hasMany(Question::className(), ['user_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getSocialAccounts()
+    {
+        return $this->hasMany(SocialAccount::className(), ['user_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTokens()
+    {
+        return $this->hasMany(Token::className(), ['user_id' => 'id']);
+    }
+
+    /**
+     * @return int
+     */
+    public static function findGuestId()
+    {
+        return self::findOne(['username' => 'guest'])->id;
     }
 }

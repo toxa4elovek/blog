@@ -15,7 +15,7 @@ class PostViews extends \common\models\PostViews
     public function beforeValidate()
     {
         $this->ip_address = ip2long(\Yii::$app->request->userIP);
-        $this->user_id = \Yii::$app->user->id;
+        $this->user_id = (\Yii::$app->user->isGuest)? User::findGuestId() : \Yii::$app->user->id;
         return parent::beforeValidate();
     }
 
