@@ -30,6 +30,9 @@ return [
                 ],
             ],
         ],
+        'user' => [
+            'class' => 'common\models\db\User',
+        ],
     ],
     'params' => $params,
 ];

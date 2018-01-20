@@ -33,7 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => function($model){
                     return Category::getParentCategoryName($model->parent_id);
                 },
-                'filter' => [Category::ACTIVE_CATEGORY => 'Активна', Category::DISABLE_CATEGORY => 'Отключена'],
+                'filter' => ArrayHelper::map(Category::findAll(['parent_id' => 0]), 'id', 'name'),
             ],
             'slug',
             [

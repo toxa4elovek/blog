@@ -47,6 +47,15 @@
                                     ['label' => 'Города', 'icon' => 'fa fa-building', 'url' => ['/references/city'],],
                                 ],
                             ],
+                            [
+                                'label' => 'Образование',
+                                'icon' => 'fa fa-graduation-cap',
+                                'url' => '#',
+                                'items' => [
+                                    ['label' => 'Школы', 'icon' => 'fa fa-book', 'url' => ['/references/school'],],
+                                    ['label' => 'Университеты', 'icon' => 'fa fa-university', 'url' => ['/references/university'],],
+                                ]
+                            ],
                         ],
                     ],
                     ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],

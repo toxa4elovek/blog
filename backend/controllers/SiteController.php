@@ -61,7 +61,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        //Debug::prn(Yii::$app->urlManager);
+        Debug::prn(Yii::$app->user->can('admin'));
         return $this->render('index');
     }
 

@@ -13,7 +13,7 @@ class m171224_183443_modify_post_table extends Migration
     public function safeUp()
     {
         $this->createIndex('idx_post_slug', 'post', 'slug');
-        $this->addColumn('post', 'views', $this->integer(11)->unsigned()->defaultValue(0));
+        $this->alterColumn('post', 'status', 'tinyint(1)');
     }
 
     /**
@@ -21,8 +21,8 @@ class m171224_183443_modify_post_table extends Migration
      */
     public function safeDown()
     {
+        $this->alterColumn('post', 'status', $this->string(100));
         $this->dropIndex('idx_post_slug', 'post');
-        $this->dropColumn('post', 'views');
     }
 
     /*

@@ -6,9 +6,12 @@ return [
         '@img' => '@frontend/web/img/content',
         '@web_img' => '/img/content',
     ],
-    'language' => 'ru-Ru',
+    'language' => 'Ru',
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'components' => [
+        'user' => [
+            'identityClass' => 'common\models\db\User',
+        ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
@@ -27,9 +30,14 @@ return [
         'rbac' => 'dektrium\rbac\RbacWebModule',
         'user' => [
             'class' => 'dektrium\user\Module',
+            'controllerNamespace' => 'backend\modules\user\controllers',
+            'viewPath' => '@backend/modules/user/views',
             'enableUnconfirmedLogin' => true,
             'confirmWithin' => 21600,
-            'admins' => ['toxa4elovek', 'garry-krut']
+            'adminPermission' => 'admin',
+            'modelMap' => [
+                'User' => 'common\models\db\User'
+            ]
         ],
     ],
 ];

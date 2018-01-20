@@ -14,8 +14,6 @@ class PagesController extends FrontEndController
 {
     public function actionIndex()
     {
-        $model = new VkApi();
-        Debug::dd($model->getRegions(2));
         $posts = Post::find()->where(['status' => Post::STATUS_ACTIVE])->with(['categories', 'user', 'userLike'])->all();
 
         $sliderItems = [];

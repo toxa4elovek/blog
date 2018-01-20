@@ -16,6 +16,10 @@
             </form>
         </div>
         <div class="header-main-right">
+            <?php echo (Yii::$app->user->can('admin'))
+                ? \yii\helpers\Html::a('Админка', '/secure', ['class' => 'logo st-button'])
+                : ''
+            ?>
             <a href="<?php echo \yii\helpers\Url::to('/signup')?>" class="logo st-button">Регистрация</a>
             <a href="<?php echo \yii\helpers\Url::to('/login')?>" class="logo st-button">Личный кабинет</a>
             <?php if(!Yii::$app->user->isGuest) :?>

@@ -16,7 +16,7 @@
     </div>
     <div class="post_statistics">
         <a href="#" class="fa fa-eye"></a>
-        <span><?php echo $post->views ?></span>
+        <span><?php echo $post->views->count ?></span>
     </div>
     <div class="post_statistics">
         <a href="<?php echo \yii\helpers\Url::to(['/post-info/favourites', 'id' => $post->id])?>"

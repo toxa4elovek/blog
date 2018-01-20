@@ -19,19 +19,23 @@ class VkEducationController extends VkLocationController
 {
     public function actionIndex()
     {
-        $cities = City::find()->asArray()->all();
+        $cities = City::find()->asArray()->offset(192903)->all();
         $schoolsData = [];
 
         $timeScript = New TimeScript();
-
+        $countAll = count($cities);
+        $count = 0;
         $timeScript->begin();
         foreach ($cities as $city){
-            $schoolsData = array_merge($schoolsData, $this->_getSchools($city['id']));
-            $this->stdout('count record = '. count($schoolsData) . PHP_EOL);
+            $count++;
+            $result = $this->_getSchools($city['id']);
+            $this->_dataBaseExecute(['id', 'name', 'city_id'], $result, School::tableName());
+            $diff = $countAll - $count;
+            $this->stdout('count back = '. $diff . PHP_EOL);
         }
         $this->stdout('Time = '. $timeScript->end() . PHP_EOL);
 
-        $this->_dataBaseExecute(['id', 'name', 'city_id'], $schoolsData, School::tableName());
+
         $this->stdout('Save ' . count($schoolsData) . ' schools in ' .count($cities) . ' cities' . PHP_EOL, Console::FG_BLUE);
     }
 
