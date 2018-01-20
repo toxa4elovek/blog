@@ -14,6 +14,6 @@ class UserHelper
 {
     public static function getFullName($user)
     {
-        return $user->profile->name;
+        return '';//$user->profile->name;
     }
 }
