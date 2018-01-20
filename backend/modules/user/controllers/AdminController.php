@@ -517,7 +517,7 @@ class AdminController extends Controller
 
     public function actionPlaceList()
     {
-        $universities = University::findAll(['city_id' => Yii::$app->request->post('depdrop_parents')[0]]);
+        $universities = University::findAll(['city_id' => Yii::$app->request->post('depdrop_parents')[1]]);
 
         $result = [];
         foreach ($universities as $university) {

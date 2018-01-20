@@ -44,9 +44,25 @@ use \yii\web\JsExpression;
     ArrayHelper::map(Country::find()->all(), 'id', 'name'), ['id' => 'country_id', 'prompt' => 'Выберите страну...'])?>
 
 <?= $form->field($model, 'city_id')->widget(DepDrop::classname(), [
+//    'type' => DepDrop::TYPE_SELECT2,
     'options'=>['id'=>'city_id'],
     'pluginOptions'=>[
         'depends'=>['country_id'],
+        /*'select2Options'=>
+            [
+                'pluginOptions'=> [
+                    'allowClear'=>false,
+                    'minimumInputLength' => 3,
+                    'ajax' => [
+                        'url' => Url::to(['/user/admin/city-list']),
+                        'dataType' => 'json',
+                        'data' => new JsExpression('function(params) { return {q:params.term}; }')
+                    ],
+                    'escapeMarkup' => new JsExpression('function (markup) { return markup; }'),
+                    'templateResult' => new JsExpression('function(place_id) { return place_id.text; }'),
+                    'templateSelection' => new JsExpression('function (place_id) { return place_id.text; }'),
+                ],
+            ],*/
         'placeholder'=>'Выберите город...',
         'url'=>Url::to(['/user/admin/city-list'])
     ]
@@ -55,7 +71,7 @@ use \yii\web\JsExpression;
 <?= $form->field($model, 'place_id')->widget(DepDrop::classname(), [
     'type' => DepDrop::TYPE_SELECT2,
     'pluginOptions'=>[
-        'depends'=>['city_id'],
+        'depends'=>['country_id', 'city_id'],
         'select2Options'=>
             [
                 'pluginOptions'=> [
@@ -74,15 +90,26 @@ use \yii\web\JsExpression;
 
         'placeholder'=>'Выберите университет...',
         'url'=>Url::to(['/user/admin/place-list']),
-        'params'=>['input-type-1', 'input-type-2']
+//        'params'=>['input-type-1', 'input-type-2']
     ]
 ]);?>
 
 <?= $form->field($model, 'user_id')->textInput(['type' => 'hidden', 'value' => $user->id])->label(false)?>
 
-<?= $form->field($model, 'begin_at')->widget(DatePicker::className())?>
+<?= $form->field($model, 'begin_at')->widget(DatePicker::className(), [
+    'options' => ['placeholder' => 'Выберите дату начала ...'],
+    'dateFormat' => 'php:Y-m-d'
+])?>
 
-<?= $form->field($model, 'ending_at')->widget(DatePicker::className())?>
+<?= $form->field($model, 'ending_at')->widget(DatePicker::className(), [
+    'options' => ['placeholder' => 'Выберите дату завершения ...'],
+    'dateFormat' => 'php:Y-m-d'
+])?>
 
+<div class="form-group">
+    <div class="col-lg-offset-3 col-lg-9">
+        <?= \yii\helpers\Html::submitButton(Yii::t('user', 'Save'), ['class' => 'btn btn-block btn-success']) ?>
+    </div>
+</div>
 <?php $form::end()?>
 <?php $this->endContent()?>

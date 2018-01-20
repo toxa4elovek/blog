@@ -54,8 +54,8 @@ $this->params['breadcrumbs'][] = $this->title;
                             'url' => ['/user/admin/middle-education', 'id' => $user->id]
                         ],
                         [
-                            'label' => Yii::t('user', 'Higher Education'),
-                            'url' => ['/user/admin/higher-education', 'id' => $user->id]
+                            'label' => Yii::t('app', 'Higher Education'),
+                            'url' => ['/user/higher-education', 'user_id' => $user->id]
                         ],
                         '<hr>',
                         [

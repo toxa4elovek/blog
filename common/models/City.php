@@ -17,8 +17,10 @@ use Yii;
  *
  * @property Country $country
  * @property Region $region
+ * @property School[] $schools
+ * @property University[] $universities
  */
-class City extends \yii\db\ActiveRecord
+class City extends \dektrium\user\models\User
 {
     /**
      * @inheritdoc
@@ -72,5 +74,21 @@ class City extends \yii\db\ActiveRecord
     public function getRegion()
     {
         return $this->hasOne(Region::className(), ['id' => 'region_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getSchools()
+    {
+        return $this->hasMany(School::className(), ['city_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUniversities()
+    {
+        return $this->hasMany(University::className(), ['city_id' => 'id']);
     }
 }

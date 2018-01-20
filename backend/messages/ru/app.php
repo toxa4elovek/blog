@@ -39,4 +39,12 @@ return [
     'Update Region: {nameAttribute}' => 'Обновить Регион: {nameAttribute}',
     'Update University: {nameAttribute}' => 'Обновить Университет: {nameAttribute}',
     'Update Category: {nameAttribute}' => 'Обновить Категорию: {nameAttribute}',
+    'Place ID' => 'Место',
+    'Begin At' => 'Начало',
+    'Ending At' => 'Окончание',
+    'Higher Education' => 'Высшее образование',
+    'Create Higher Education' => 'Добавить высшее образование',
+    'Higher Educations' => 'Высшие образования',
+    'Update Higher Education: #{nameAttribute}' => 'Обновить высшее образование: #{nameAttribute}'
+
 ];
