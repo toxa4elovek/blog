@@ -4,25 +4,32 @@
  * @var $posts array
  */
 ?>
-<?php $this->params['items'] = $sliderItems ?>
 
-<?php echo \frontend\widgets\HeaderSlideWidget::widget(['items' => $this->params['items']])?>
+<?php $isEmptyPosts = empty($sliderItems) && empty($posts)?>
 
-<?php echo \frontend\widgets\LeftCategoryWidget::widget()?>
+<?php if (!$isEmptyPosts) :?>
 
-<div class="col-9">
-    <div class="body-header">
-        <h2 class="namе-group">Администрирование</h2>
+    <?php echo \frontend\widgets\HeaderSlideWidget::widget(['items' => $sliderItems])?>
+
+    <?php echo \frontend\widgets\LeftCategoryWidget::widget()?>
+
+    <div class="col-9">
+        <div class="body-header">
+            <h2 class="namе-group">Администрирование</h2>
+        </div>
+
+            <?php echo \frontend\widgets\PostsWidget::widget(['posts' => $posts]) ?>
+
+        <div class="body-header">
+            <h2 class="namе-group">Вопросы</h2>
+        </div>
+
+            <?php echo \frontend\widgets\QuestionsWidget::widget() ?>
     </div>
 
-        <?php echo \frontend\widgets\PostsWidget::widget(['posts' => $posts]) ?>
+    <?php echo \frontend\widgets\FooterSlideWidget::widget(['items' => $sliderItems])?>
 
-    <div class="body-header">
-        <h2 class="namе-group">Вопросы</h2>
-    </div>
-
-        <?php echo \frontend\widgets\QuestionsWidget::widget() ?>
-</div>
-
-<?php echo \frontend\widgets\FooterSlideWidget::widget(['items' => $this->params['items']])?>
+<?php else:?>
+    <h3>Постов пока нет</h3>
+<?php endif;?>
 
