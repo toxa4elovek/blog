@@ -11,7 +11,6 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
-    'language' => 'Ru-ru',
     'modules' => [
         'references' => [
             'class' => 'backend\modules\references\References',
