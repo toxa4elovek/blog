@@ -16,7 +16,7 @@ class m180106_122029_create_university_table extends Migration
             'id' => $this->primaryKey(),
             'name' => $this->string(200),
             'city_id' => $this->integer(11)
-        ]);
+        ], 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB');
 
         $this->createIndex('idx_university_name', 'university', 'name');
         $this->createIndex('idx_university_city_id', 'university', 'city_id');

@@ -15,7 +15,7 @@ class m171223_074314_create_post_favourites_table extends Migration
         $this->createTable('post_favourites', [
             'post_id' => $this->integer(11),
             'user_id' => $this->integer(11)
-        ]);
+        ], 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB');
 
         $this->addPrimaryKey('pk_post_favourites', 'post_favourites', ['post_id', 'user_id']);
         $this->addForeignKey(

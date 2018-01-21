@@ -20,7 +20,7 @@ class m171203_141144_create_junction_table_for_post_and_category_tables extends 
             'post_id' => $this->integer(),
             'category_id' => $this->integer(),
             'PRIMARY KEY(post_id, category_id)',
-        ]);
+        ], 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB');
 
         // creates index for column `post_id`
         $this->createIndex(

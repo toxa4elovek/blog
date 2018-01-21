@@ -17,7 +17,7 @@ class m171223_073149_create_post_views_table extends Migration
             'user_id' => $this->integer(11),
             'ip_address' => $this->integer(11)->unsigned(),
             'count' => $this->integer(11)->defaultValue(1)
-        ]);
+        ], 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB');
 
         $this->addPrimaryKey('pk_post_views', 'post_views', ['post_id', 'ip_address', 'user_id']);
 
