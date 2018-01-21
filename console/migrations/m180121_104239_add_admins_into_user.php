@@ -63,8 +63,7 @@ class m180121_104239_add_admins_into_user extends Migration
 
     public function down()
     {
-        //$this->delete('user', ['id' => [1, 2]]);
-        return false;
+        \common\models\db\User::deleteAll(['id' => [1,2]]);
     }
 
 }
