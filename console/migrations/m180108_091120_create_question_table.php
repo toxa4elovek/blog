@@ -22,7 +22,7 @@ class m180108_091120_create_question_table extends Migration
             'status' => 'tinyint(1)',
             'created_at' => $this->dateTime()->defaultValue(New Expression('NOW()')),
             'updated_at' => $this->dateTime()->defaultValue(New Expression('NOW()'))
-        ]);
+        ], 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB');
 
         $this->createIndex('idx_question_user_id', 'question', 'user_id');
 

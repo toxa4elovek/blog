@@ -20,7 +20,7 @@ class m180106_081322_create_city_table extends Migration
             'is_main' => 'tinyint(1)',
             'latitude' => $this->string(100)->defaultValue(null),
             'longitude' => $this->string(100)->defaultValue(null)
-        ]);
+        ], 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB');
 
         $this->createIndex('idx_city_region_id', 'city', 'region_id');
         $this->createIndex('idx_city_country_id', 'city', 'country_id');
