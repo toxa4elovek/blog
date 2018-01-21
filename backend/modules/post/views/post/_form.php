@@ -56,12 +56,12 @@ $this->registerJs("hljs.initHighlightingOnLoad()");*/
     ];
     ($model->isNewRecord) ? : $optionsFile['pluginOptions']['initialPreview'] = [
         Html::img($model->img, ['class' => 'post-image'])
-    ]
+    ];
     ?>
 
     <?= $form->field($model, 'fileImg')->widget(\kartik\file\FileInput::className(), $optionsFile) ?>
 
-    <?php/*= $form->field($model, 'text')->widget(\dosamigos\ckeditor\CKEditor::className(), [
+    <!--<?/*= $form->field($model, 'text')->widget(\dosamigos\ckeditor\CKEditor::className(), [
         'options' => ['rows' => 8],
         'preset' => 'basic',
         'clientOptions' => [
@@ -86,7 +86,7 @@ $this->registerJs("hljs.initHighlightingOnLoad()");*/
                 ['name' => 'document', 'groups' => [ 'mode', 'document', 'doctools' ]],
                 ['name' => 'editing' , 'groups' => [ 'find', 'selection', 'spellchecker' ]],
         ]
-    ]]) */?>
+    ]]) */?>-->
 
     <?= $form->field($model, 'text')->widget(TinyMce::className(), [
         'options' => ['rows' => 6],
