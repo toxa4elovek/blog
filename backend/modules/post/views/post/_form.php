@@ -39,7 +39,7 @@ $this->registerJs("hljs.initHighlightingOnLoad()");*/
             $model::STATUS_DELETED => 'Удалено'
         ]) ?>
 
-    <?= $form->field($model, 'fileImg')->widget(\kartik\file\FileInput::className(), [
+    <? $optionsFile = [
         'name' => 'attachment_53',
         'pluginOptions' => [
             'previewFileType' => 'image',
@@ -49,14 +49,17 @@ $this->registerJs("hljs.initHighlightingOnLoad()");*/
             'browseClass' => 'btn btn-primary btn-block',
             'browseIcon' => '<i class="glyphicon glyphicon-camera"></i> ',
             'browseLabel' =>  'Выберите фото',
-            'initialPreview'=>[
-                Html::img($model->img, ['class' => 'post-image'])
-            ],
         ],
         'options' => [
             'accept' => 'image/*',
         ]
-    ]) ?>
+    ];
+    ($model->isNewRecord) ? : $optionsFile['pluginOptions']['initialPreview'] = [
+        Html::img($model->img, ['class' => 'post-image'])
+    ]
+    ?>
+
+    <?= $form->field($model, 'fileImg')->widget(\kartik\file\FileInput::className(), $optionsFile) ?>
 
     <?/*= $form->field($model, 'text')->widget(\dosamigos\ckeditor\CKEditor::className(), [
         'options' => ['rows' => 8],
