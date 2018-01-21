@@ -39,7 +39,7 @@ $this->registerJs("hljs.initHighlightingOnLoad()");*/
             $model::STATUS_DELETED => 'Удалено'
         ]) ?>
 
-    <? $optionsFile = [
+    <?php $optionsFile = [
         'name' => 'attachment_53',
         'pluginOptions' => [
             'previewFileType' => 'image',
@@ -61,7 +61,7 @@ $this->registerJs("hljs.initHighlightingOnLoad()");*/
 
     <?= $form->field($model, 'fileImg')->widget(\kartik\file\FileInput::className(), $optionsFile) ?>
 
-    <?/*= $form->field($model, 'text')->widget(\dosamigos\ckeditor\CKEditor::className(), [
+    <?php/*= $form->field($model, 'text')->widget(\dosamigos\ckeditor\CKEditor::className(), [
         'options' => ['rows' => 8],
         'preset' => 'basic',
         'clientOptions' => [
