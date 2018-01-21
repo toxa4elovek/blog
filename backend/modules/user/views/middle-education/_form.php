@@ -16,13 +16,6 @@ use yii\web\JsExpression;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?/*= $form->field($model, 'place_id')->textInput() */?><!--
-
-    <?/*= $form->field($model, 'user_id')->textInput() */?>
-
-    <?/*= $form->field($model, 'begin_at')->textInput() */?>
-
-    --><?/*= $form->field($model, 'ending_at')->textInput() */?>
     <?= $form->field($model, 'country_id')->dropDownList(
         \yii\helpers\ArrayHelper::map(\common\models\Country::find()->all(), 'id', 'name'), ['id' => 'country_id', 'prompt' => 'Выберите страну...'])?>
 
@@ -95,24 +88,6 @@ use yii\web\JsExpression;
 
 
     <?= $form->field($model, 'place_id')->widget(DepDrop::classname(), $schoolsOptions);?>
-
-    <?/*= $form->field($model, 'place_id')->widget(\kartik\select2\Select2::className(), [
-        'language' => 'ru',
-        'options' => ['placeholder' => 'Выберите школу...', 'disable' => 'disable'],
-        'pluginOptions' => [
-            'allowClear' => false,
-            'minimumInputLength' => 2,
-            'ajax' => [
-                'url' => Url::to(['/user/middle-education/school-list']),
-                'dataType' => 'json',
-                'data' => new JsExpression('function(params) { return {q:params.term}; }')
-            ],
-            'escapeMarkup' => new JsExpression('function (markup) { return markup; }'),
-            'templateResult' => new JsExpression('function(city) { return city.text; }'),
-            'templateSelection' => new JsExpression('function (city) { return city.text; }'),
-
-        ],
-    ])*/?>
 
     <?= $form->field($model, 'user_id')->textInput(['type' => 'hidden', 'value' => $user->id])->label(false)?>
 

@@ -6,7 +6,7 @@ use kartik\depdrop\DepDrop;
 use yii\helpers\ArrayHelper;
 use common\models\db\Country;
 use yii\helpers\Url;
-use yii\jui\DatePicker;
+use kartik\date\DatePicker;
 
 /* @var $this yii\web\View */
 /* @var $model \backend\modules\user\models\HigherEducationForm */
@@ -17,13 +17,7 @@ use yii\jui\DatePicker;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?/*= $form->field($model, 'place_id')->textInput() */?><!--
-
     <?= $form->field($model, 'user_id')->textInput(['type' => 'hidden']) ?>
-
-    <?/*= $form->field($model, 'begin_at')->textInput() */?>
-
-    --><?/*= $form->field($model, 'ending_at')->textInput() */?>
 
     <?= $form->field($model, 'country_id')->dropDownList(
         ArrayHelper::map(Country::find()->all(), 'id', 'name'), ['id' => 'country_id', 'prompt' => 'Выберите страну...'])?>
@@ -79,7 +73,7 @@ use yii\jui\DatePicker;
                 ],
 
             'placeholder'=>'Выберите университет...',
-            'url'=>Url::to(['/user/higher-education/place-list']),
+            'url'=>Url::to(['/user/higher-education/university-list']),
 //        'params'=>['input-type-1', 'input-type-2']
         ]
     ];
@@ -93,12 +87,18 @@ use yii\jui\DatePicker;
 
     <?= $form->field($model, 'begin_at')->widget(DatePicker::className(), [
         'options' => ['placeholder' => 'Выберите дату начала ...'],
-        'dateFormat' => 'php:Y-m-d'
+        'language' => 'ru',
+        'pluginOptions' => [
+            'format' => 'yyyy-mm-dd'
+        ]
     ])?>
 
     <?= $form->field($model, 'ending_at')->widget(DatePicker::className(), [
         'options' => ['placeholder' => 'Выберите дату завершения ...'],
-        'dateFormat' => 'php:Y-m-d'
+        'language' => 'ru',
+        'pluginOptions' => [
+            'format' => 'yyyy-mm-dd'
+        ]
     ])?>
 
 
