@@ -6,7 +6,7 @@ return [
         '@img' => '@frontend/web/img/content',
         '@web_img' => '/img/content',
     ],
-    'language' => 'Ru',
+    'language' => 'ru',
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'components' => [
         'user' => [
