@@ -50,8 +50,8 @@ $this->params['breadcrumbs'][] = $this->title;
                             'visible' => isset(Yii::$app->extensions['dektrium/yii2-rbac']),
                         ],
                         [
-                            'label' => Yii::t('user', 'Middle Education'),
-                            'url' => ['/user/admin/middle-education', 'id' => $user->id]
+                            'label' => Yii::t('app', 'Middle Education'),
+                            'url' => ['/user/middle-education', 'user_id' => $user->id]
                         ],
                         [
                             'label' => Yii::t('app', 'Higher Education'),

@@ -11,12 +11,12 @@ use common\models\LoginForm;
 /**
  * Site controller
  */
-class SiteController extends Controller
+class SiteController extends BackendController
 {
     /**
      * @inheritdoc
      */
-    public function behaviors()
+    /*public function behaviors()
     {
         return [
             'access' => [
@@ -29,7 +29,7 @@ class SiteController extends Controller
                     [
                         'actions' => ['logout', 'index'],
                         'allow' => true,
-                        'roles' => ['@'],
+                        'roles' => ['admin'],
                     ],
                 ],
             ],
@@ -40,7 +40,7 @@ class SiteController extends Controller
                 ],
             ],
         ];
-    }
+    }*/
 
     /**
      * @inheritdoc
@@ -61,7 +61,6 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        Debug::prn(Yii::$app->user->can('admin'));
         return $this->render('index');
     }
 

@@ -45,6 +45,10 @@ return [
     'Higher Education' => 'Высшее образование',
     'Create Higher Education' => 'Добавить высшее образование',
     'Higher Educations' => 'Высшие образования',
-    'Update Higher Education: #{nameAttribute}' => 'Обновить высшее образование: #{nameAttribute}'
+    'Update Higher Education: #{nameAttribute}' => 'Обновить высшее образование: #{nameAttribute}',
+    'Middle Education' => 'Среднее образование',
+    'Create Middle Education' => 'Добавить среднее образование',
+    'Middle Educations' => 'Средние образования',
+    'Update Middle Education: #{nameAttribute}' => 'Обновить среднее образование: #{nameAttribute}'
 
 ];

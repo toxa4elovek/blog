@@ -11,6 +11,7 @@
 
 namespace backend\modules\user\controllers;
 
+use backend\controllers\BackendController;
 use backend\modules\user\models\EducationForm;
 use common\classes\Debug;
 use common\models\db\City;
@@ -44,7 +45,7 @@ use yii\widgets\ActiveForm;
  *
  * @author Dmitry Erofeev <dmeroff@gmail.com
  */
-class AdminController extends Controller
+class AdminController extends BackendController
 {
     use EventTrait;
 
@@ -483,23 +484,6 @@ class AdminController extends Controller
         return $this->redirect(Url::previous('actions-redirect'));
     }
 
-    public function actionHigherEducation($id)
-    {
-        $user = $this->findModel($id);
-        $higherEducations = $user->higherEducations;
-        $model = new EducationForm();
-
-        if(empty($user->higherEducations)) {
-            $higherEducations = [new HigherEducation()];
-        }
-
-        return $this->render('_higher_education_form', [
-            'higherEducations' => $higherEducations,
-            'user' => $user,
-            'model' => $model
-        ]);
-    }
-
     public function actionCityList()
     {
         $cities = City::findAll(['is_main' => 1, 'country_id' => Yii::$app->request->post('depdrop_parents')[0]]);
@@ -515,20 +499,6 @@ class AdminController extends Controller
         return json_encode(['output' => $result, 'selected' => '']);
     }
 
-    public function actionPlaceList()
-    {
-        $universities = University::findAll(['city_id' => Yii::$app->request->post('depdrop_parents')[1]]);
-
-        $result = [];
-        foreach ($universities as $university) {
-            $result[] = [
-                'id' => $university->id,
-                'name' => $university->name
-            ];
-        }
-
-        return json_encode(['output' => $result, 'selected' => '']);
-    }
 
     /**
      * Finds the User model based on its primary key value.

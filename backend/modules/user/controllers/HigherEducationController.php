@@ -2,8 +2,10 @@
 
 namespace backend\modules\user\controllers;
 
+use backend\controllers\BackendController;
 use backend\modules\user\models\HigherEducationForm;
 use common\models\db\User;
+use common\models\db\University;
 use Yii;
 use common\models\db\HigherEducation;
 use backend\modules\user\models\HigherEducationSearch;
@@ -14,7 +16,7 @@ use yii\filters\VerbFilter;
 /**
  * HigherEducationController implements the CRUD actions for HigherEducation model.
  */
-class HigherEducationController extends Controller
+class HigherEducationController extends BackendController
 {
     /**
      * @inheritdoc
@@ -116,6 +118,24 @@ class HigherEducationController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    /**
+     * @return string
+     */
+    public function actionUniversityList()
+    {
+        $universities = University::findAll(['city_id' => Yii::$app->request->post('depdrop_parents')[1]]);
+
+        $result = [];
+        foreach ($universities as $university) {
+            $result[] = [
+                'id' => $university->id,
+                'name' => $university->name
+            ];
+        }
+
+        return json_encode(['output' => $result, 'selected' => '']);
     }
 
     /**
