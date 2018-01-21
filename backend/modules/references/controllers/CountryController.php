@@ -2,6 +2,7 @@
 
 namespace backend\modules\references\controllers;
 
+use backend\controllers\BackendController;
 use Yii;
 use common\models\db\Country;
 use backend\modules\references\models\CountrySearch;
@@ -12,7 +13,7 @@ use yii\filters\VerbFilter;
 /**
  * CountryController implements the CRUD actions for Country model.
  */
-class CountryController extends Controller
+class CountryController extends BackendController
 {
     /**
      * @inheritdoc

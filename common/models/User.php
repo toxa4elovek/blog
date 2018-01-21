@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use common\models\db\Profile;
 
 /**
  * This is the model class for table "user".
@@ -31,7 +32,7 @@ use Yii;
  * @property PostLikes[] $postLikes
  * @property Post[] $posts0
  * @property PostViews[] $postViews
- * @property Profile $profile0
+ * @property Profile $profile
  * @property Question[] $questions
  * @property SocialAccount[] $socialAccounts
  * @property Token[] $tokens
@@ -168,7 +169,7 @@ class User extends \dektrium\user\models\User
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getProfile0()
+    public function getProfile()
     {
         return $this->hasOne(Profile::className(), ['user_id' => 'id']);
     }

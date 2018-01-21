@@ -20,4 +20,18 @@ class EducationForm extends Model
     public $begin_at;
     public $ending_at;
 
+
+    public function rules()
+    {
+        return [
+            [['country_id', 'city_id', 'user_id', 'place_id'], 'integer'],
+            [['begin_at', 'ending_at'], 'safe'],
+            [['country_id', 'city_id', 'user_id', 'place_id'], 'required']
+        ];
+    }
+
+    public function createModel($className)
+    {
+        return new $className($this->attributes);
+    }
 }

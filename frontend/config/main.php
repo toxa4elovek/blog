@@ -15,6 +15,9 @@ return [
         'pages' => [
             'class' => 'frontend\modules\pages\Pages',
         ],
+        'profile' => [
+            'class' => 'frontend\modules\profile\Profile',
+        ],
     ],
     'components' => [
         'request' => [

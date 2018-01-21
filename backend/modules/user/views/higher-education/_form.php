@@ -79,7 +79,7 @@ use yii\jui\DatePicker;
                 ],
 
             'placeholder'=>'Выберите университет...',
-            'url'=>Url::to(['/user/admin/place-list']),
+            'url'=>Url::to(['/user/higher-education/place-list']),
 //        'params'=>['input-type-1', 'input-type-2']
         ]
     ];
