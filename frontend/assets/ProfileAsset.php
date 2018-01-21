@@ -18,4 +18,8 @@ class ProfileAsset extends AppAsset
     public $js = [
         'js/myprofile.js'
     ];
+
+    public $depends = [
+        'frontend\assets\AppAsset'
+    ];
 }

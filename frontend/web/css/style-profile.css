@@ -144,7 +144,7 @@
 .form-group:first-child {margin-top: 0;}
 .form-group:last-child {margin-bottom: 0;}
 /* Стилизация инпутов */
-.form-group input,.form-group textarea {
+.form-group input,.form-group textarea, .form-group select {
     background: none;
     color: #fff;
     letter-spacing: 1px;
@@ -194,6 +194,9 @@
     -o-border-radius: 15px 15px 15px 15px!important;
     border-radius: 15px 15px 15px 15px!important;
 }
+.select2-container--default .select2-selection--single .select2-selection__placeholder {color: #fff!important;}
+.select2-container--default .select2-selection--single .select2-selection__arrow b {border-color: #fff transparent transparent transparent!important;}
+.select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {border-color: transparent transparent #fff transparent!important;}
 .select2-container--default .select2-selection--single .select2-selection__rendered {color: #fff!important;}
 .select2-container--open .select2-dropdown--below {
     letter-spacing: 1px!important;

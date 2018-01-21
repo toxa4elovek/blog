@@ -16,6 +16,8 @@ use Yii;
  * @property string $website
  * @property string $bio
  * @property string $timezone
+ * @property string $last_name
+ * @property string $gender
  *
  * @property User $user
  */

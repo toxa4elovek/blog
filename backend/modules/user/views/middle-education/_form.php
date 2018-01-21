@@ -51,10 +51,10 @@ use yii\web\JsExpression;
             'placeholder'=>'Выберите город...',
             'url'=>Url::to(['/user/admin/city-list'])
         ],
-        /*'pluginEvents' => [
-            "depdrop:init"=>"function() { console.log('s'); }",
+        'pluginEvents' => [
+            "depdrop:init"=>"function() { console.log(id); console.log(value); console.log(count); }",
             "depdrop:afterChange"=>"function(event, id, value) { console.log(value); }",
-        ]*/
+        ]
     ];
     ($model->isNewRecord) ? : $cityOptions['data'] = \common\models\db\City::getMainCityArrayByCountryId($model->country_id);
     ?>

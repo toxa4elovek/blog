@@ -2,6 +2,7 @@
 
 namespace frontend\modules\profile\controllers;
 
+use common\models\db\User;
 use yii\web\Controller;
 
 /**
@@ -15,6 +16,9 @@ class ProfileController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $user = User::find()/*->with('higherEducation', 'middleEducation', 'profile')*/
+            ->where(['id' => \Yii::$app->user->id])->one();
+
+        return $this->render('index', ['user' => $user]);
     }
 }
