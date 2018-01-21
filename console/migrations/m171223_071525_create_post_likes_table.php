@@ -16,7 +16,7 @@ class m171223_071525_create_post_likes_table extends Migration
             'post_id' => $this->integer(11)->notNull(),
             'user_id' => $this->integer(11)->notNull(),
             'like' => 'tinyint(1)'
-        ]);
+        ], 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB');
 
         $this->addPrimaryKey('pk_post_id_user_id', 'post_likes', ['post_id', 'user_id']);
 

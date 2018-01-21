@@ -18,7 +18,7 @@ class m180108_111604_create_middle_education_table extends Migration
             'user_id' => $this->integer(11),
             'begin_at' => $this->date(),
             'ending_at' => $this->date()
-        ]);
+        ], 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB');
 
         $this->createIndex('idx_middle_education_place_id', 'middle_education', 'place_id');
         $this->createIndex('idx_middle_education_user_id', 'middle_education', 'user_id');

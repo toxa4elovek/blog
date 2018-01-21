@@ -16,7 +16,7 @@ class m180106_080849_create_region_table extends Migration
             'id' => $this->primaryKey(),
             'name' => $this->string(200),
             'country_id' => $this->integer(11),
-        ]);
+        ], 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB');
 
         $this->createIndex('idx_region_country_id', 'region', 'country_id');
         $this->createIndex('idx_region_name', 'region', 'name');

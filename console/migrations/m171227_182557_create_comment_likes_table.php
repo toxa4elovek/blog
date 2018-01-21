@@ -16,7 +16,7 @@ class m171227_182557_create_comment_likes_table extends Migration
             'comment_id' => $this->integer(11)->notNull(),
             'user_id' => $this->integer(11)->notNull(),
             'like' => 'tinyint(1)'
-        ]);
+        ], 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB');
 
         $this->addPrimaryKey('pk_comment_id_user_id', 'comment_likes', ['comment_id', 'user_id']);
 

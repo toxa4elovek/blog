@@ -5,7 +5,7 @@ use yii\db\Migration;
 /**
  * Class m171111_150523_add_admins_into_user
  */
-class m171111_150523_add_admins_into_user extends Migration
+class m180121_104239_add_admins_into_user extends Migration
 {
 
 
@@ -57,6 +57,8 @@ class m171111_150523_add_admins_into_user extends Migration
                 'item_name' => 'admin',
                 'user_id' => 2,
             ]);
+
+        $this->batchInsert('profile', ['user_id', 'name', 'last_name'], [[1, 'Антон', 'Вальков'], [2, 'Игорь' , 'Слиж']]);
     }
 
     public function down()

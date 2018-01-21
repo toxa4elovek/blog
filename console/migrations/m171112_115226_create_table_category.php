@@ -19,7 +19,7 @@ class m171112_115226_create_table_category extends Migration
             'slug' => $this->string(100)->defaultValue(''),
             'status' => $this->string(100)->defaultValue(''),
             'type' => $this->string(100)->defaultValue('')
-        ]);
+        ], 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB');
     }
 
     public function down()

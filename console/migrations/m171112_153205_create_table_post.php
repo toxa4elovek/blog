@@ -21,7 +21,7 @@ class m171112_153205_create_table_post extends Migration
             'short_text' => $this->string(255)->defaultValue(''),
             'created_at' => $this->dateTime()->defaultValue(New Expression('NOW()')),
             'updated_at' => $this->dateTime()->defaultValue(New Expression('NOW()'))
-        ]);
+        ], 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB');
 
         $this->createIndex('idx-post-user_id', 'post', 'user_id');
 
