@@ -2,6 +2,7 @@
 
 namespace backend\modules\references\controllers;
 
+use backend\controllers\BackendController;
 use Yii;
 use common\models\db\School;
 use backend\modules\references\models\SchoolSearch;
@@ -12,7 +13,7 @@ use yii\filters\VerbFilter;
 /**
  * SchoolController implements the CRUD actions for School model.
  */
-class SchoolController extends Controller
+class SchoolController extends BackendController
 {
     /**
      * @inheritdoc

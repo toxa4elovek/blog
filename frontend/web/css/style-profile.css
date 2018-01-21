@@ -1,0 +1,356 @@
+* {outline: none;}
+.clearfix {clear: both;}
+.col-pad {margin-top: 20px;}
+/* ВКЛАДКИ*/
+.row-tabs {padding-right: 30px;}
+.col-tabs {
+    float: left;
+    width: 100%;
+    padding-left: 320px;
+}
+.tabs {
+    padding: 0 5px 0 5px;
+    background: rgb(70, 179, 148);
+    background: -webkit-linear-gradient(10deg, rgb(70, 179, 148) 0%, rgb(74, 107, 138) 93%);
+    background: -o-linear-gradient(10deg, rgb(70, 179, 148) 0%, rgb(74, 107, 138) 93%);
+    background: linear-gradient(100deg, rgb(70, 179, 148) 0%, rgb(74, 107, 138) 93%);
+    display: flex;
+    justify-content: space-between;
+}
+.tab-content-hidden {
+    display: none;
+    background: #fff;
+}
+.tab-content-active{
+    display: block;
+}
+.link-ava > input {
+    display: none;
+    position: absolute;
+}
+.link-ava > label {
+    font-size:14px;
+    letter-spacing: 1px;
+    font-weight: normal;
+    color: #fff;
+}
+/*.link-ava > label:before {
+    font-family: fontawesome;
+    font-weight: normal;
+    margin-right: 10px;
+}*/
+.link-ava > label:hover {color: #46b690;  cursor: pointer;}
+.link-ava > input:checked + label {
+}
+/* ЛЕВАЯ ЧАСТЬ СТРАНИЦЫ ПРОФИЛЯ */
+.lf-profile {
+    position: relative;
+    margin-bottom: 20px;
+    background: #4c6989;
+    -moz-border-radius-topright: 90px;
+    -webkit-border-top-right-radius: 90px;
+    border-top-right-radius: 90px;
+    -moz-border-radius-bottomleft: 90px;
+    -webkit-border-bottom-left-radius: 90px;
+    border-bottom-left-radius: 90px;
+}
+.lf-profile .center {text-align: center;}
+/* АВА В КРУГЕ*/
+.ava-block img {
+    padding:25px 25px 25px 25px;
+    margin-top:15px;
+}
+.ava-block .photo-user {
+    overflow: hidden;
+    width: 15em;
+    height: 15em;
+    -moz-border-radius:50%;
+    -webkit-border-radius:50%;
+    -o-border-radius:50%;
+    border-radius:50%;
+}
+.link-ava {margin-left: 35px; margin-right: 35px; padding: 25px 0 25px 0; border-top: 2px dashed #f0f0f0;}
+.link-ava:nth-child(2) {padding-top:0; border-top: none;}
+.link-ava a {color: #fff;font-size: 14px;letter-spacing: 1px;}
+.link-ava a:hover {color: #46b690;}
+/* ПРАВАЯ ЧАСТЬ СТРАНИЦЫ ПРОФИЛЯ 1 ВКЛАДКА */
+.profile-prompt {margin: 20px 0 0 0;}
+.profile-input{margin: 0 0 20px 0;}
+.rg-profile {
+    background: rgb(70, 179, 148);
+    background: -webkit-linear-gradient(10deg, rgb(70, 179, 148) 0%, rgb(74, 107, 138) 93%);
+    background: -o-linear-gradient(10deg, rgb(70, 179, 148) 0%, rgb(74, 107, 138) 93%);
+    background: linear-gradient(100deg, rgb(70, 179, 148) 0%, rgb(74, 107, 138) 93%);
+}
+.uppercase {text-transform: uppercase;}
+/* ПОДСКАЗКА */
+.prompt {height: 100px;}
+.menu-main {
+    list-style: none;
+    margin: 50px 0 50px 50px;
+    padding: 5px 0 5px;
+    border: 1px solid #fff;
+    -moz-border-radius: 15px 15px 15px 15px;
+    -webkit-border-radius: 15px 15px 15px 15px;
+    -o-border-radius: 15px 15px 15px 15px;
+    border-radius: 15px 15px 15px 15px;
+}
+/*.menu-main li:after, .menu-main li:before  {
+    content: "|";
+    color: #fff;
+    vertical-align:top;
+}
+.menu-main li:last-child:after {content: none;}*/
+.menu-main li {margin: 20px 0 20px 50px;}
+.menu-main a {
+    margin-bottom: 50px;
+    text-decoration: none;
+    letter-spacing: 1px;
+    position: relative;
+    font-size: 14px;
+    transition: color .2s;
+}
+.menu-main a, .menu-main a:visited {color: #fff;}
+.menu-main a.current, .menu-main a:hover {color: #4c6989;}
+.menu-main a:before,
+.menu-main a:after {
+    content: "";
+    position: absolute;
+    height: 4px;
+    top: auto;
+    right: 50%;
+    bottom: -5px;
+    left: 50%;
+    background: #4c6989;
+    transition: .8s;
+}
+.menu-main a:hover:before, .menu-main a.current:before {left: 0;}
+.menu-main a:hover:after, .menu-main a.current:after {right: 0;}
+@media (max-width: 550px) {
+    .menu-main {padding-top: 0;}
+    .menu-main li {display: block;}
+    .menu-main li:after {content: none;}
+    .menu-main a {
+        padding: 25px 0 20px;
+        margin: 0 30px;
+    }
+}
+/* ОПИСАНИЕ РАЗДЕЛА*/
+.category-profile form {
+    padding: 50px 0 30px 50px;
+    width: 80%;
+}
+.form-group {margin-top: 30px;}
+.form-group:first-child {margin-top: 0;}
+.form-group:last-child {margin-bottom: 0;}
+/* Стилизация инпутов */
+.form-group input,.form-group textarea {
+    background: none;
+    color: #fff;
+    letter-spacing: 1px;
+    border: 1px solid #fff;
+    padding: 7px 8px;
+    -moz-border-radius: 15px 15px 15px 15px;
+    -webkit-border-radius: 15px 15px 15px 15px;
+    -o-border-radius: 15px 15px 15px 15px;
+    border-radius: 15px 15px 15px 15px;
+    outline: none;
+}
+.skill .skill-input {margin-top: 30px}
+.skill .skill-input:first-child {margin-top: 0;}
+.form-group input::-webkit-input-placeholder {color:#fff;}
+.form-group input::-moz-placeholder          {color:#fff;}
+.form-group input:-ms-input-placeholder      {color:#fff;}
+.form-group input::-webkit-input-placeholder       {opacity: 1; transition: opacity 0.3s ease;}
+.form-group input::-moz-placeholder                {opacity: 1; transition: opacity 0.3s ease;}
+.form-group input:-moz-placeholder                 {opacity: 1; transition: opacity 0.3s ease;}
+.form-group input:-ms-input-placeholder            {opacity: 1; transition: opacity 0.3s ease;}
+.form-group input:focus::-webkit-input-placeholder {opacity: 0; transition: opacity 0.3s ease;}
+.form-group input:focus::-moz-placeholder          {opacity: 0; transition: opacity 0.3s ease;}
+.form-group input:focus:-moz-placeholder           {opacity: 0; transition: opacity 0.3s ease;}
+.form-group input:focus:-ms-input-placeholder      {opacity: 0; transition: opacity 0.3s ease;}
+.form-group textarea::-webkit-input-placeholder {color:#fff;}
+.form-group textarea::-moz-placeholder          {color:#fff;}
+.form-group textarea:-ms-input-placeholder      {color:#fff;}
+.form-group textarea::-webkit-input-placeholder       {opacity: 1; transition: opacity 0.3s ease;}
+.form-group textarea::-moz-placeholder                {opacity: 1; transition: opacity 0.3s ease;}
+.form-group textarea:-moz-placeholder                 {opacity: 1; transition: opacity 0.3s ease;}
+.form-group textarea:-ms-input-placeholder            {opacity: 1; transition: opacity 0.3s ease;}
+.form-group textarea:focus::-webkit-input-placeholder {opacity: 0; transition: opacity 0.3s ease;}
+.form-group textarea:focus::-moz-placeholder          {opacity: 0; transition: opacity 0.3s ease;}
+.form-group textarea:focus:-moz-placeholder           {opacity: 0; transition: opacity 0.3s ease;}
+.form-group textarea:focus:-ms-input-placeholder      {opacity: 0; transition: opacity 0.3s ease;}
+/* Стилизация радиобаттонов */
+.chek-button {margin: 30px 0 30px 0;}
+.radio-inline {color: #fff;}
+.radio-inline input[type=radio] {background: none;}
+/* Стилизация селекта */
+.select2 {width: 100%!important;}
+.select2-container--default .select2-selection--single {
+    background: none!important;
+    border: 1px solid #fff!important;
+    -moz-border-radius: 15px 15px 15px 15px!important;
+    -webkit-border-radius: 15px 15px 15px 15px!important;
+    -o-border-radius: 15px 15px 15px 15px!important;
+    border-radius: 15px 15px 15px 15px!important;
+}
+.select2-container--default .select2-selection--single .select2-selection__rendered {color: #fff!important;}
+.select2-container--open .select2-dropdown--below {
+    letter-spacing: 1px!important;
+    border: 1px solid #46b690!important;
+    -moz-border-radius: 15px 15px 15px 15px!important;
+    -webkit-border-radius: 15px 15px 15px 15px!important;
+    -o-border-radius: 15px 15px 15px 15px!important;
+    border-radius: 15px 15px 15px 15px!important;
+}
+.select2-container--default .select2-search--dropdown .select2-search__field {
+    padding-left: 10px;
+    border: 1px solid #46b690!important;
+    -moz-border-radius: 15px 15px 15px 15px!important;
+    -webkit-border-radius: 15px 15px 15px 15px!important;
+    -o-border-radius: 15px 15px 15px 15px!important;
+    border-radius: 15px 15px 15px 15px!important;
+}
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background: #46b690!important;
+    -moz-border-radius: 15px 15px 15px 15px!important;
+    -webkit-border-radius: 15px 15px 15px 15px!important;
+    -o-border-radius: 15px 15px 15px 15px!important;
+    border-radius: 15px 15px 15px 15px!important;
+}
+.select2-container--default .select2-results__option[aria-selected=true] {
+    background: #46b690!important;
+    -moz-border-radius: 15px 15px 15px 15px!important;
+    -webkit-border-radius: 15px 15px 15px 15px!important;
+    -o-border-radius: 15px 15px 15px 15px!important;
+    border-radius: 15px 15px 15px 15px!important;
+}
+.select2-results__option {
+    display: inline-block;
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+/* Стилизация кнопки */
+.category-profile .button {text-align: right;}
+.category-profile .btn {margin-top: 30px;}
+.minus {padding: 6px 14px;}
+.category-profile .btn-primary {
+    background: #4c6989!important;
+    border-color: #374c63!important;
+    outline: none!important;
+    -moz-border-radius: 15px 15px 15px 15px!important;
+    -webkit-border-radius: 15px 15px 15px 15px!important;
+    -o-border-radius: 15px 15px 15px 15px!important;
+    border-radius: 15px 15px 15px 15px!important;
+}
+.category-profile .btn-primary:hover {background: #5a7ca2!important;outline: none!important;}
+.category-profile .btn-primary:active {background: #537396!important;outline: none!important;}
+/* Стилизация модального окна изменить пароль */
+#modal_form {
+    text-align: center;
+    width: 40%;
+    -moz-border-radius: 15px 15px 15px 15px;
+    -webkit-border-radius: 15px 15px 15px 15px;
+    -o-border-radius: 15px 15px 15px 15px;
+    border-radius: 15px 15px 15px 15px;
+    background: rgb(70, 179, 148);
+    background: -webkit-linear-gradient(10deg, rgb(70, 179, 148) 0%, rgb(74, 107, 138) 93%);
+    background: -o-linear-gradient(10deg, rgb(70, 179, 148) 0%, rgb(74, 107, 138) 93%);
+    background: linear-gradient(100deg, rgb(70, 179, 148) 0%, rgb(74, 107, 138) 93%);
+    position: fixed; /* чтoбы oкнo былo в видимoй зoне в любoм месте */
+    top: 35%; /* oтступaем сверху 45%, oстaльные 5% пoдвинет скрипт */
+    left: 45%; /* пoлoвинa экрaнa слевa */
+    margin-top: -20%;
+    margin-left: -150px; /* тут вся мaгия центрoвки css, oтступaем влевo и вверх минус пoлoвину ширины и высoты сooтветственнo =) */
+    display: none; /* в oбычнoм сoстoянии oкнa не дoлжнo быть */
+    opacity: 0; /* пoлнoстью прoзрaчнo для aнимирoвaния */
+    z-index: 5; /* oкнo дoлжнo быть нaибoлее бoльшем слoе */
+    padding: 20px 10px;
+}
+#modal_form .confirm-password {
+    color: #fff;
+    font-size: 20px;
+    text-transform: none;
+}
+/* Кнoпкa зaкрыть) */
+#modal_form #modal_close {
+    width: 21px;
+    height: 21px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    display: block;
+    color: #fff;
+}
+/* Пoдлoжкa */
+#overlay {
+    z-index:3; /* пoдлoжкa дoлжнa быть выше слoев элементoв сaйтa, нo ниже слoя мoдaльнoгo oкнa */
+    position:fixed; /* всегдa перекрывaет весь сaйт */
+    background:#000; /* чернaя */
+    opacity:0.8; /* нo немнoгo прoзрaчнa */
+    -moz-opacity:0.8; /* фикс прозрачности для старых браузеров */
+    filter:alpha(opacity=80);
+    width:100%;
+    height:100%; /* рaзмерoм вo весь экрaн */
+    top:0; /* сверху и слевa 0, oбязaтельные свoйствa! */
+    left:0;
+    cursor:pointer;
+    display:none; /* в oбычнoм сoстoянии её нет) */
+}
+/* ПРАВАЯ ЧАСТЬ СТРАНИЦЫ ПРОФИЛЯ 2 ВКЛАДКА */
+.profile-records {margin: 20px 0 40px 0;}
+.body-list {margin: 0 50px 0 50px; padding: 50px 0 50px 0;}
+.block-list-item {
+    margin-top: 0;
+    padding-bottom: 10px;
+    transition: none;
+    box-shadow: none;
+    border: 1px solid #fff;
+    -moz-border-radius: 15px 15px 15px 15px;
+    -webkit-border-radius: 15px 15px 15px 15px;
+    -o-border-radius: 15px 15px 15px 15px;
+    border-radius: 15px 15px 15px 15px;
+}
+.block-list-item:hover {box-shadow: none;}
+.block-review-header {color: #fff;}
+.block-review-header:hover {color: #fff;}
+.block-review-header:visited {color: #fff;}
+.crumbs {
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -o-border-radius: 4px;
+    border-radius: 4px;
+}
+.breadcrumb-link {color: #000;}
+.body-post-text {color: #000;font-size: 14px;}
+.media-text {font-size: 14px;}
+.read_more a {color: #fff;font-size: 14px;}
+.statistics {
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -o-border-radius: 4px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+.statistics a {color: #000;font-size: 14px;}
+/* ПРАВАЯ ЧАСТЬ СТРАНИЦЫ ПРОФИЛЯ 4 ВКЛАДКА */
+.edit {text-align: right;}
+.edit .btn {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+/* ПРАВАЯ ЧАСТЬ СТРАНИЦЫ ПРОФИЛЯ 5 ВКЛАДКА */
+.comments {margin: 20px 0 20px 0;}
+.comments .img-thumbnail {
+    border: none;
+    margin: 0;
+    width: 50px;
+}
+.author {margin-left: 10px;margin-bottom: 5px;color: #fff;font-weight: normal;}
+.metadata {color: #000;}
+.post_statistics a {color: #000;}
+.post_statistics a:hover {color: #fff;}
+.media-text {color: #fff;}
+/* ПРАВАЯ ЧАСТЬ СТРАНИЦЫ ПРОФИЛЯ 6 ВКЛАДКА */
+.cat-sixth .read_more {border-bottom: none; text-transform: none; margin-bottom: 0;}

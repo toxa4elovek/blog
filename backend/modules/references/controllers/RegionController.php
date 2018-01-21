@@ -2,6 +2,7 @@
 
 namespace backend\modules\references\controllers;
 
+use backend\controllers\BackendController;
 use Yii;
 use common\models\db\Region;
 use backend\modules\references\models\RegionSearch;
@@ -12,7 +13,7 @@ use yii\filters\VerbFilter;
 /**
  * RegionController implements the CRUD actions for Region model.
  */
-class RegionController extends Controller
+class RegionController extends BackendController
 {
     /**
      * @inheritdoc

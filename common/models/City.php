@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "city".
@@ -20,7 +21,7 @@ use Yii;
  * @property School[] $schools
  * @property University[] $universities
  */
-class City extends \dektrium\user\models\User
+class City extends ActiveRecord
 {
     /**
      * @inheritdoc

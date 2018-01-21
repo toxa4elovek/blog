@@ -2,6 +2,7 @@
 
 namespace backend\modules\references\controllers;
 
+use backend\controllers\BackendController;
 use Yii;
 use common\models\db\City;
 use backend\modules\references\models\CitySearch;
@@ -12,7 +13,7 @@ use yii\filters\VerbFilter;
 /**
  * CityController implements the CRUD actions for City model.
  */
-class CityController extends Controller
+class CityController extends BackendController
 {
     /**
      * @inheritdoc
