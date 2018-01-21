@@ -17,7 +17,6 @@ use Yii;
  * @property string $short_text
  * @property string $created_at
  * @property string $updated_at
- * @property integer $views
  *
  * @property User $user
  * @property PostCategory[] $postCategories
@@ -43,7 +42,7 @@ class Post extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'views'], 'integer'],
+            [['user_id'], 'integer'],
             [['text'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
             [['title', 'slug', 'status', 'img'], 'string', 'max' => 100],

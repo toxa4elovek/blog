@@ -12,7 +12,6 @@ use common\behaviors\SlugBehavior;
 use common\behaviors\UploadBehavior;
 use common\models\db\Post as BasePost;
 use common\models\db\PostCategory;
-use common\models\db\PostOptions;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
 
