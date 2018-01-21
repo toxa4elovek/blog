@@ -39,6 +39,7 @@ class m171225_165407_create_post_comments_table extends Migration
         $this->dropForeignKey('fk_post_comments', 'post_comments');
         $this->dropForeignKey('fk_user_comments', 'post_comments');
 
+        $this->dropIndex('idx_parent_id_comment', 'post_comments');
         $this->dropIndex('idx_post_id_comment', 'post_comments');
         $this->dropIndex('idx_user_id_comment', 'post_comments');
 
