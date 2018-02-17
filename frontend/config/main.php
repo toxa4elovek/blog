@@ -54,6 +54,7 @@ return [
                 '/login' => 'user/security/login',
                 '/signup' => 'user/registration/register',
                 'post/<slug>' => 'post/view',
+                'profile/<action>' => 'profile/profile/<action>'
             ],
         ],
 

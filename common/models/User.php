@@ -24,6 +24,7 @@ use common\models\db\Profile;
  *
  * @property CommentLikes[] $commentLikes
  * @property PostComments[] $comments
+ * @property Education[] $educations
  * @property HigherEducation[] $higherEducations
  * @property MiddleEducation[] $middleEducations
  * @property PostComments[] $postComments
@@ -204,5 +205,13 @@ class User extends \dektrium\user\models\User
     public static function findGuestId()
     {
         return self::findOne(['username' => 'guest'])->id;
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getEducations()
+    {
+        return $this->hasMany(Education::className(), ['user_id' => 'id']);
     }
 }
