@@ -2,6 +2,7 @@
 /**
  * @var $this \yii\web\View
  * @var $user \common\models\db\User
+ * @var $educations array
  */
 
 ?>
@@ -46,7 +47,8 @@
                 </div>
             </div>
         </div>
-        <?= $this->render('elements/_profile', ['user' => $user])?>
+
+        <?= $this->render('elements/_profile', ['user' => $user, 'educations' => $educations])?>
         <?= $this->render('elements/_posts')?>
         <?= $this->render('elements/_favourites')?>
         <?= $this->render('elements/_questions')?>

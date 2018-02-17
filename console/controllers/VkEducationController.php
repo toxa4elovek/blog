@@ -11,6 +11,7 @@ namespace console\controllers;
 
 use common\classes\TimeScript;
 use common\models\db\City;
+use common\models\db\EducationPlace;
 use common\models\db\School;
 use common\models\db\University;
 use yii\helpers\Console;
@@ -19,7 +20,7 @@ class VkEducationController extends VkLocationController
 {
     public function actionIndex()
     {
-        $cities = City::find()->asArray()->offset(192903)->all();
+        $cities = City::find()->where(['is_main' => 1])->asArray()/*->offset(192903)*/->all();
         $schoolsData = [];
 
         $timeScript = New TimeScript();
@@ -29,7 +30,7 @@ class VkEducationController extends VkLocationController
         foreach ($cities as $city){
             $count++;
             $result = $this->_getSchools($city['id']);
-            $this->_dataBaseExecute(['id', 'name', 'city_id'], $result, School::tableName());
+            $this->_dataBaseExecute(['id', 'name', 'city_id', 'type'], $result, EducationPlace::tableName());
             $diff = $countAll - $count;
             $this->stdout('count back = '. $diff . PHP_EOL);
         }
@@ -50,7 +51,8 @@ class VkEducationController extends VkLocationController
                 $schoolsData[] = [
                     'id' => $school['id'],
                     'name' => $school['title'],
-                    'city_id' => $city_id
+                    'city_id' => $city_id,
+                    'type' => 1
                 ];
             }
         }
@@ -60,7 +62,7 @@ class VkEducationController extends VkLocationController
 
     public function actionGetUniversities()
     {
-        $cities = City::find()->asArray()->all();
+        $cities = City::find()->where(['is_main' => 1])->asArray()->all();
         $universitiesData = [];
 
         $timeScript = New TimeScript();
@@ -72,7 +74,7 @@ class VkEducationController extends VkLocationController
         }
         $this->stdout('Time = '. $timeScript->end() . PHP_EOL);
 
-        $this->_dataBaseExecute(['id', 'name', 'city_id'], $universitiesData, University::tableName());
+        $this->_dataBaseExecute(['id', 'name', 'city_id', 'type'], $universitiesData, EducationPlace::tableName());
         $this->stdout('Save ' . count($universitiesData) . ' universities in ' .count($cities) . ' cities' . PHP_EOL, Console::FG_BLUE);
     }
 
@@ -87,7 +89,8 @@ class VkEducationController extends VkLocationController
                 $universitiesData[] = [
                     'id' => $university['id'],
                     'name' => $university['title'],
-                    'city_id' => $city_id
+                    'city_id' => $city_id,
+                    'type' => 2
                 ];
             }
         }
