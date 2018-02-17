@@ -9,7 +9,7 @@
 
 <?php if (!$isEmptyPosts) :?>
 
-    <?php// echo \frontend\widgets\HeaderSlideWidget::widget(['items' => $sliderItems])?>
+    <?php echo \frontend\widgets\HeaderSlideWidget::widget(['items' => $sliderItems])?>
 
 
     <div class="column">
@@ -31,7 +31,7 @@
         </div>
     </div>
 
-    <?php //echo \frontend\widgets\FooterSlideWidget::widget(['items' => $sliderItems])?>
+    <?php echo \frontend\widgets\FooterSlideWidget::widget(['items' => $sliderItems])?>
 
 <?php else:?>
     <h3>Постов пока нет</h3>
