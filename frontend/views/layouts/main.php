@@ -18,7 +18,7 @@ AppAsset::register($this);
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
@@ -30,11 +30,11 @@ AppAsset::register($this);
         <?php echo \frontend\widgets\HeaderWidget::widget()?>
 
         <div class="row row-wrapper-body">
-            <div class="column">
+
 
                 <?= $content  ?>
 
-            </div>
+
         </div>
 
         <?php echo \frontend\widgets\FooterWidget::widget()?>

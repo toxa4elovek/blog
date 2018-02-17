@@ -83,7 +83,7 @@ use kartik\date\DatePicker;
 
     <?= $form->field($model, 'place_id')->widget(DepDrop::classname(), $universityOptions);?>
 
-    <?= $form->field($model, 'user_id')->textInput(['type' => 'hidden', 'value' => $user->id])->label(false)?>
+    <?/*= $form->field($model, 'user_id')->textInput(['type' => 'hidden', 'value' => $user->id])->label(false)*/?>
 
     <?= $form->field($model, 'begin_at')->widget(DatePicker::className(), [
         'options' => ['placeholder' => 'Выберите дату начала ...'],

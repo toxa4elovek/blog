@@ -211,4 +211,11 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+
+
+    public function actionTest()
+    {
+        $this->layout = false;
+        return $this->render('test');
+    }
 }
