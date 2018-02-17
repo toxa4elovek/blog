@@ -2,7 +2,12 @@
 .clearfix {clear: both;}
 .col-pad {margin-top: 20px;}
 /* ВКЛАДКИ*/
-.row-tabs {padding-right: 30px;}
+/*.row-tabs {
+    clear: left;
+    overflow: hidden;
+    margin: 0 auto;
+    max-width: 1100px;
+}*/
 .col-tabs {
     float: left;
     width: 100%;
@@ -109,6 +114,7 @@
     position: relative;
     font-size: 14px;
     transition: color .2s;
+    outline: none;
 }
 .menu-main a, .menu-main a:visited {color: #fff;}
 .menu-main a.current, .menu-main a:hover {color: #4c6989;}
@@ -137,14 +143,35 @@
 }
 /* ОПИСАНИЕ РАЗДЕЛА*/
 .category-profile form {
-    padding: 50px 0 30px 50px;
-    width: 80%;
+    padding: 50px 50px 30px 50px;
 }
 .form-group {margin-top: 30px;}
 .form-group:first-child {margin-top: 0;}
 .form-group:last-child {margin-bottom: 0;}
+/* flash-сообщения */
+.cat-first {position: relative;}
+.updated {
+    top: 7px;
+    left: 22px;
+    position: absolute;
+    background: #def0d8;
+    color: #48725c;
+    padding: 10px 0 10px 10px;
+    -moz-border-radius: 15px 15px 15px 15px;
+    -webkit-border-radius: 15px 15px 15px 15px;
+    -o-border-radius: 15px 15px 15px 15px;
+    border-radius: 15px 15px 15px 15px;
+}
+.updated p {margin: 0;display: inline-block;}
+.updated span {
+    padding: 10px 10px 10px 5px;
+    cursor: pointer;
+    opacity:0.5;
+    -moz-opacity:0.5;
+    filter:alpha(opacity=50);
+}
 /* Стилизация инпутов */
-.form-group input,.form-group textarea, .form-group select {
+.form-group input,.form-group textarea {
     background: none;
     color: #fff;
     letter-spacing: 1px;
@@ -194,9 +221,6 @@
     -o-border-radius: 15px 15px 15px 15px!important;
     border-radius: 15px 15px 15px 15px!important;
 }
-.select2-container--default .select2-selection--single .select2-selection__placeholder {color: #fff!important;}
-.select2-container--default .select2-selection--single .select2-selection__arrow b {border-color: #fff transparent transparent transparent!important;}
-.select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {border-color: transparent transparent #fff transparent!important;}
 .select2-container--default .select2-selection--single .select2-selection__rendered {color: #fff!important;}
 .select2-container--open .select2-dropdown--below {
     letter-spacing: 1px!important;
@@ -237,7 +261,7 @@
 .category-profile .button {text-align: right;}
 .category-profile .btn {margin-top: 30px;}
 .minus {padding: 6px 14px;}
-.category-profile .btn-primary {
+.category-profile .btn-primary, .modal-category .btn-primary {
     background: #4c6989!important;
     border-color: #374c63!important;
     outline: none!important;
@@ -248,59 +272,23 @@
 }
 .category-profile .btn-primary:hover {background: #5a7ca2!important;outline: none!important;}
 .category-profile .btn-primary:active {background: #537396!important;outline: none!important;}
+.modal-category .btn-primary:hover {background: #5a7ca2!important;outline: none!important;}
+.modal-category .btn-primary:active {background: #537396!important;outline: none!important;}
 /* Стилизация модального окна изменить пароль */
-#modal_form {
+.modal-category {
     text-align: center;
-    width: 40%;
-    -moz-border-radius: 15px 15px 15px 15px;
-    -webkit-border-radius: 15px 15px 15px 15px;
-    -o-border-radius: 15px 15px 15px 15px;
-    border-radius: 15px 15px 15px 15px;
     background: rgb(70, 179, 148);
     background: -webkit-linear-gradient(10deg, rgb(70, 179, 148) 0%, rgb(74, 107, 138) 93%);
     background: -o-linear-gradient(10deg, rgb(70, 179, 148) 0%, rgb(74, 107, 138) 93%);
     background: linear-gradient(100deg, rgb(70, 179, 148) 0%, rgb(74, 107, 138) 93%);
-    position: fixed; /* чтoбы oкнo былo в видимoй зoне в любoм месте */
-    top: 35%; /* oтступaем сверху 45%, oстaльные 5% пoдвинет скрипт */
-    left: 45%; /* пoлoвинa экрaнa слевa */
-    margin-top: -20%;
-    margin-left: -150px; /* тут вся мaгия центрoвки css, oтступaем влевo и вверх минус пoлoвину ширины и высoты сooтветственнo =) */
-    display: none; /* в oбычнoм сoстoянии oкнa не дoлжнo быть */
-    opacity: 0; /* пoлнoстью прoзрaчнo для aнимирoвaния */
-    z-index: 5; /* oкнo дoлжнo быть нaибoлее бoльшем слoе */
-    padding: 20px 10px;
+    border: none;
+    -moz-border-radius: 15px 15px 15px 15px;
+    -webkit-border-radius: 15px 15px 15px 15px;
+    -o-border-radius: 15px 15px 15px 15px;
+    border-radius: 15px 15px 15px 15px;
 }
-#modal_form .confirm-password {
-    color: #fff;
-    font-size: 20px;
-    text-transform: none;
-}
-/* Кнoпкa зaкрыть) */
-#modal_form #modal_close {
-    width: 21px;
-    height: 21px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    display: block;
-    color: #fff;
-}
-/* Пoдлoжкa */
-#overlay {
-    z-index:3; /* пoдлoжкa дoлжнa быть выше слoев элементoв сaйтa, нo ниже слoя мoдaльнoгo oкнa */
-    position:fixed; /* всегдa перекрывaет весь сaйт */
-    background:#000; /* чернaя */
-    opacity:0.8; /* нo немнoгo прoзрaчнa */
-    -moz-opacity:0.8; /* фикс прозрачности для старых браузеров */
-    filter:alpha(opacity=80);
-    width:100%;
-    height:100%; /* рaзмерoм вo весь экрaн */
-    top:0; /* сверху и слевa 0, oбязaтельные свoйствa! */
-    left:0;
-    cursor:pointer;
-    display:none; /* в oбычнoм сoстoянии её нет) */
-}
+.modal-header {color: #fff;}
+.modal-header h2 {margin: 0;}
 /* ПРАВАЯ ЧАСТЬ СТРАНИЦЫ ПРОФИЛЯ 2 ВКЛАДКА */
 .profile-records {margin: 20px 0 40px 0;}
 .body-list {margin: 0 50px 0 50px; padding: 50px 0 50px 0;}
