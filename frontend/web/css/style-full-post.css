@@ -1,4 +1,5 @@
 .fig {text-align: center;}
+.block-list-item {margin-bottom: 40px;}
 /* КОММЕНТАРИИ */
 .comments {margin: 20px 0 20px 0;}
 .comments h3 {
@@ -46,24 +47,22 @@
 .comments .post_statistics:first-child {margin-left: 0;}
 .comments .post_statistics a {color: #545454;}
 .comments .post_statistics a:hover {color:#46b690;}
-/* Кнопка ответить*/
-.comments .btn-default {
-    color: #545454;
-    background-color: #fff;
-}
-.comments .btn {
-    -moz-border-radius: 15px!important;
-    -webkit-border-radius: 15px!important;
-    -o-border-radius: 15px!important;
-    border-radius: 15px!important;
-    border: 2px solid #f5f5f5;
-}
-.comments .btn:hover{background: #f5f5f5; color:#46b690;}
-.comments .btn:active{border: none;}
-.btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {
+/* Ответить*/
+.comments .publish {
+    color: #fff;
     outline: none;
-    outline-offset: 0;
+    -moz-border-radius: 15px 15px 15px 15px;
+    -webkit-border-radius: 15px 15px 15px 15px;
+    -o-border-radius: 15px 15px 15px 15px;
+    border-radius: 15px 15px 15px 15px;
+    border:none;
+    background: #46b690;
+    font-weight: 600;
+    padding: 10px 15px
 }
+.comments .publish:hover {background: #53bd99;}
+.comments .reply {color: #545454;}
+.comments .reply:hover{color:#46b690;}
 /*Должны авторизоваться*/
 .not-authorized {
     color: #545454;

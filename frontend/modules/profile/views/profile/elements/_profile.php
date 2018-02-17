@@ -5,6 +5,8 @@
  * @var $educations array
  */
 
+use yii\bootstrap\Modal;
+
 ?>
 
 <div id="content-tab1" class="tab-content-active">
@@ -24,7 +26,9 @@
                         <li><a href="#skill" class="skill-link">Навыки</a></li>
                         <li><a href="#about" class="about-link">О себе</a></li>
                         <li><a href="#" class="profile-link">Статистика</a></li>
-                        <li><a href="#" id="change-password-link" class="change-password">Изменить пароль</a></li>
+                        <li><!--<a href="#" class="change-password">Изменить пароль</a>-->
+                            <?= $this->render('__modals')?>
+                        </li>
                         <li><a href="#" class="profile-link">Изменить фото</a></li>
                     </ul>
                 </div>
