@@ -15,6 +15,10 @@ $this->registerMetaTag([
 
 $this->title = $post->title;
 \frontend\assets\TinyMceCodeAsset::register($this);
-echo \frontend\widgets\LeftCategoryWidget::widget();
-echo \frontend\widgets\PostWidget::widget(['post' => $post]);
 ?>
+<div class="column">
+<?php
+    echo \frontend\widgets\LeftCategoryWidget::widget();
+    echo \frontend\widgets\PostWidget::widget(['post' => $post]);
+?>
+</div>
