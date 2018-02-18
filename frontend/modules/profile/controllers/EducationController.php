@@ -8,6 +8,9 @@ use common\models\db\EducationPlace;
 use Yii;
 use common\models\db\Education;
 use frontend\modules\profile\models\EducationSearch;
+use yii\base\Model;
+use yii\db\Exception;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -26,9 +29,9 @@ class EducationController extends Controller
         return [
             'verbs' => [
                 'class' => VerbFilter::className(),
-                'actions' => [
+                /*'actions' => [
                     'delete' => ['POST'],
-                ],
+                ],*/
             ],
         ];
     }
@@ -79,52 +82,65 @@ class EducationController extends Controller
         ]);
     }
 
-    public function actionAddForm($count)
+    public function actionAddForm()
     {
-        $user = User::find()->where(['id' => \Yii::$app->user->id])->one();
-        $educations = $user->currentEducations;
-        $i = 0;
+        $educations = Yii::$app->request->post('Education');
+        $user = Yii::$app->user->identity;
+        $updateModels = $this->saveEducations($educations);
 
-        while ($i < $count) {
-            $educations[] = new Education(['user_id' => $user->id]);
-            $i++;
-        }
+        $updateModels[] = new Education(['user_id' => $user->id]);
 
-        return $this->renderAjax('../profile/elements/__education', ['educations' => $educations, 'user' => $user]);
-    }
-
-    public function actionRemoveForm()
-    {
-        $modelId = Yii::$app->request->get('model_id');
-        $count = Yii::$app->request->get('count');
-
-        if($modelId) {
-            $this->findModel($modelId)->delete();
-        }else {
-            $count -= 1;
-        }
-
-        return $this->actionAddForm($count);
+        return $this->renderAjax('../profile/elements/__education', [
+            'educations' => $updateModels,
+            'user' => $user
+        ]);
     }
 
     /**
      * Updates an existing Education model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id)
+    public function actionUpdate()
     {
-        $model = $this->findModel($id);
+        $educations = Yii::$app->request->post('Education');
+        $updateModels = $this->saveEducations($educations);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        return $this->renderAjax('../profile/elements/__education', [
+            'educations' => $updateModels,
+            'user' => Yii::$app->user->identity
+        ]);
+    }
+
+    /**
+     * @param array $educations
+     * @return array
+     */
+    private function saveEducations(array $educations)
+    {
+        $transaction = Yii::$app->getDb()->beginTransaction();
+        $updateModels = [];
+
+        try {
+            foreach ($educations as $education) {
+                if (!empty($education['id'])) {
+                    $model = Education::findOne($education['id']);
+                    $model->setAttributes($education);
+                } else {
+                    $model = new Education($education);
+                }
+
+                if ($model->save()) {
+                    $updateModels[] = $model;
+                }
+            }
+            $transaction->commit();
+            Yii::$app->session->setFlash('success', 'Данные сохранены');
+        } catch (Exception $e) {
+            $transaction->rollBack();
+            Yii::$app->session->setFlash('error', $e->getMessage());
         }
 
-        return $this->render('update', [
-            'model' => $model,
-        ]);
+        return $updateModels;
     }
 
     /**
@@ -134,11 +150,29 @@ class EducationController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
+    public function actionDelete($id = null)
     {
-        $this->findModel($id)->delete();
+        $educations = $this->saveEducations(Yii::$app->request->post('Education'));
 
-        return $this->redirect(['index']);
+        /** @var $education Education*/
+
+        if ($id !== null) {
+            foreach ($educations as $key => $education) {
+                if ($education->id === (int)$id) {
+                    $education->delete();
+                    unset($educations[$key]);
+                }
+            }
+        }
+
+        if (count($educations) === 0) {
+            $educations[] = new Education(['user_id' => Yii::$app->user->id]);
+        }
+
+        return $this->renderAjax('../profile/elements/__education', [
+            'educations' => $educations,
+            'user' => Yii::$app->user->identity
+        ]);
     }
 
 

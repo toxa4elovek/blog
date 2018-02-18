@@ -29,4 +29,12 @@ class Education extends \common\models\Education
         ];
     }
 
+    public function afterFind()
+    {
+        parent::afterFind();
+
+        $this->city_id = $this->place->city_id;
+        $this->country_id = $this->place->city->country_id;
+    }
+
 }

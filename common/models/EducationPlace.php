@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use common\models\db\City;
 
 /**
  * This is the model class for table "education_place".

@@ -34,7 +34,7 @@ use yii\bootstrap\ActiveForm;
         ])->label(false)?>
 
     <?= \kartik\select2\Select2::widget([
-        'model' => new \common\models\db\City(),
+        'model' => ($user->profile->city_id > 0) ? $user->profile->city : new \common\models\db\City(),
         'attribute' => 'country_id',
         'data' => \common\models\db\Country::getCountryList(),
         'theme' => \kartik\select2\Select2::THEME_DEFAULT,
@@ -56,7 +56,7 @@ use yii\bootstrap\ActiveForm;
             'pluginOptions' => ['allowClear' => true]
         ]
     ];
-    ($user->isNewRecord) ? : $cityOptions['data'] = \common\models\db\City::getMainCityArrayByCountryId($user->profile->city->country_id);
+    ($user->isNewRecord && $user->profile->city_id > 0) ? : $cityOptions['data'] = \common\models\db\City::getMainCityArrayByCountryId($user->profile->city->country_id);
     ?>
 
     <?= $form->field($user->profile, 'city_id')->widget(DepDrop::classname(), $cityOptions)->label(false)?>

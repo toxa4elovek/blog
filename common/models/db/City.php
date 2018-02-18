@@ -40,6 +40,17 @@ class City extends \common\models\City
         return ArrayHelper::map($this->getUniversities()->all(), 'id', 'name');
     }
 
+    public function getEducationPlaceArray($type)
+    {
+        if ($type === EducationPlace::TYPE_SCHOOL) {
+            return $this->getSchoolsArray();
+        } else if ($type === EducationPlace::TYPE_UNIVERSITY) {
+            return $this->getUniversityArray();
+        }
+
+        return null;
+    }
+
     /**
      * @return array
      */

@@ -4,6 +4,7 @@ namespace common\models;
 
 use Yii;
 use common\models\db\Profile;
+use common\models\db\Education;
 
 /**
  * This is the model class for table "user".

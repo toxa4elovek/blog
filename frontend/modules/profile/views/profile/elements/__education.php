@@ -11,29 +11,44 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 ?>
 
-<?php Pjax::begin(['id' => 'education-form', 'enableReplaceState' => true])?>
+<?php /*Pjax::begin(['id' => 'education-form', 'enablePushState' => false, 'enableReplaceState' => false])*/?>
 
 <div class="category-profile cat-first" id="education">
 
     <?php echo $this->render('_message')?>
 
-    <?php $form = ActiveForm::begin(['action' => '/profile/education/update' . $user->id, 'options' => ['data-pjax' => true]])?>
+    <?php $form = ActiveForm::begin(['action' => '/profile/education/update', 'options' => [
+        'id' => 'edu-form',
+        'data-pjax' => true,
+        'onsubmit' => 'return false;'
+    ]])?>
 
     <?= Html::hiddenInput('education-count', count($educations) - count($user->educations), ['id' => 'count'])?>
 
-    <?php foreach ($educations as $iterator =>  $model) :?>
+    <?php foreach ($educations as $iterator => $model) :?>
 
 
         <?= $this->render('__education-form', ['form' => $form, 'model' => $model, 'user' => $user, 'iterator' => $iterator])?>
+
+
+        <?php
+            $urlParams = ['/profile/education/delete'];
+            if ($model->id) {
+                $urlParams['id'] = $model->id;
+            }
+
+        ?>
 
         <?= Html::button('-', [
             'class' => 'btn btn-primary',
             'id' => 'del-education' . $iterator,
             'data-id' => $model->id,
             'onclick' => '$.pjax.reload({
+                   id:3,
                    container: "#education", 
-                   url: "'.Url::to(['/profile/education/remove-form']).'", 
-                   data: {model_id: $(this).data("id")}, 
+                   url: "'.Url::to($urlParams).'", 
+                   data: $("#edu-form").serialize(), 
+                   method: "post",
                    timeout: 10000, 
                    replace: false,
              });'
@@ -46,18 +61,33 @@ use yii\helpers\Url;
             'class' => 'btn btn-primary',
             'id' => 'add-education',
             'onclick' => '$.pjax.reload({
+                   id:2,
                    container: "#education", 
-                   url: "'.Url::to(['/profile/education/add-form']).'", 
-                   data: {count: $("#count").val()}, 
+                   url: "' . Url::to(['/profile/education/add-form']) . '", 
+                   data: $("#edu-form").serialize(), 
+                   method: "post",
                    timeout: 10000, 
                    replace: false,                 
              });'
         ])?>
-        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-primary'])?>
+
+        <?= Html::button('Сохранить', [
+            'class' => 'btn btn-primary',
+            'id' => 'save-education',
+            'onclick' => '$.pjax.reload({
+                   id:1,
+                   container: "#education", 
+                   url: "' . Url::to(['/profile/education/update']) . '", 
+                   data: $("#edu-form").serialize(), 
+                   method: "post",
+                   timeout: 10000, 
+                   replace: false,                 
+             });'
+        ])?>
     </div>
 
     <?php ActiveForm::end() ?>
 
 </div>
 
-<?php Pjax::end() ?>
+<?php /*Pjax::end() */?>
