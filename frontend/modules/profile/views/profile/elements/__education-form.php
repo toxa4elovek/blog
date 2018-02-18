@@ -77,20 +77,4 @@ use yii\helpers\Url;
         'layout' => "{input1}{$separator}{input2}"
     ]); ?>
 
-    <?/*= $form->field($model, 'begin_at')->widget(DatePicker::className(), [
-        'options' => ['placeholder' => 'Выберите дату начала ...', 'id' => 'begin_at' . $iterator],
-        'language' => 'ru',
-        'pluginOptions' => [
-            'format' => 'yyyy-mm-dd'
-        ]
-    ]) */?><!--
-
-    --><?/*= $form->field($model, 'ending_at')->widget(DatePicker::className(), [
-        'options' => ['placeholder' => 'Выберите дату завершения ...', 'id' => 'end_at' . $iterator],
-        'language' => 'ru',
-        'pluginOptions' => [
-            'format' => 'yyyy-mm-dd'
-        ]
-    ]) */?>
-
 <hr style="margin-bottom: 20px">
