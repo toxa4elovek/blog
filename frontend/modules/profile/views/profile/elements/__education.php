@@ -11,8 +11,6 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 ?>
 
-<?php /*Pjax::begin(['id' => 'education-form', 'enablePushState' => false, 'enableReplaceState' => false])*/?>
-
 <div class="category-profile cat-first" id="education">
 
     <?php echo $this->render('_message')?>
@@ -89,5 +87,3 @@ use yii\helpers\Url;
     <?php ActiveForm::end() ?>
 
 </div>
-
-<?php /*Pjax::end() */?>
