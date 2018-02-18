@@ -261,7 +261,7 @@
 .category-profile .button {text-align: right;}
 .category-profile .btn {margin-top: 30px;}
 .minus {padding: 6px 14px;}
-.category-profile .btn-primary, .modal-category .btn-primary {
+.category-profile .btn-primary, .modal-content .btn-primary {
     background: #4c6989!important;
     border-color: #374c63!important;
     outline: none!important;
@@ -272,10 +272,10 @@
 }
 .category-profile .btn-primary:hover {background: #5a7ca2!important;outline: none!important;}
 .category-profile .btn-primary:active {background: #537396!important;outline: none!important;}
-.modal-category .btn-primary:hover {background: #5a7ca2!important;outline: none!important;}
-.modal-category .btn-primary:active {background: #537396!important;outline: none!important;}
+.modal-content .btn-primary:hover {background: #5a7ca2!important;outline: none!important;}
+.modal-content .btn-primary:active {background: #537396!important;outline: none!important;}
 /* Стилизация модального окна изменить пароль */
-.modal-category {
+.modal-content {
     text-align: center;
     background: rgb(70, 179, 148);
     background: -webkit-linear-gradient(10deg, rgb(70, 179, 148) 0%, rgb(74, 107, 138) 93%);
