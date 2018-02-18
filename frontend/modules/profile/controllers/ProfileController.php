@@ -20,7 +20,7 @@ class ProfileController extends Controller
     {
         $user = User::find()/*->with('higherEducation', 'middleEducation', 'profile')*/
             ->where(['id' => \Yii::$app->user->id])->one();
-
+		
         return $this->render('index', [
             'user' => $user,
             'educations' => $user->currentEducations
