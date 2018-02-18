@@ -11,6 +11,8 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 ?>
 
+<?php Pjax::begin(['id' => 'education-form', 'enablePushState' => false, 'enableReplaceState' => false])?>
+
 <div class="category-profile cat-first" id="education">
 
     <?php echo $this->render('_message')?>
@@ -18,7 +20,6 @@ use yii\helpers\Url;
     <?php $form = ActiveForm::begin(['action' => '/profile/education/update', 'options' => [
         'id' => 'edu-form',
         'data-pjax' => true,
-        'onsubmit' => 'return false;'
     ]])?>
 
     <?= Html::hiddenInput('education-count', count($educations) - count($user->educations), ['id' => 'count'])?>
@@ -69,9 +70,9 @@ use yii\helpers\Url;
              });'
         ])?>
 
-        <?= Html::button('Сохранить', [
+        <?= Html::submitButton('Сохранить', [
             'class' => 'btn btn-primary',
-            'id' => 'save-education',
+            /*'id' => 'save-education',
             'onclick' => '$.pjax.reload({
                    id:1,
                    container: "#education", 
@@ -80,10 +81,12 @@ use yii\helpers\Url;
                    method: "post",
                    timeout: 10000, 
                    replace: false,                 
-             });'
+             });'*/
         ])?>
     </div>
 
     <?php ActiveForm::end() ?>
 
 </div>
+
+<?php Pjax::end() ?>
