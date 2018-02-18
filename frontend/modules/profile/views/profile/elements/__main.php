@@ -33,12 +33,13 @@ use yii\bootstrap\ActiveForm;
             'class' => 'chek-button', 'labelClass' => 'radio-inline'
         ])->label(false)?>
 
-    <?= $form->field($user->profile->city, 'country_id')->widget(\kartik\select2\Select2::className(), [
+    <?= \kartik\select2\Select2::widget([
+        'model' => new \common\models\db\City(),
+        'attribute' => 'country_id',
         'data' => \common\models\db\Country::getCountryList(),
         'theme' => \kartik\select2\Select2::THEME_DEFAULT,
         'pluginOptions' => ['allowClear' => true]
-
-    ])->label(false)?>
+    ])?>
 
     <?php
     $cityOptions = [
