@@ -1403,7 +1403,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2017-09-06T06:18:08+00:00"
+            "time": "2017-09-06 06:18:08"
         },
         {
             "name": "kartik-v/yii2-widget-depdrop",
@@ -1452,7 +1452,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2016-01-10T17:30:48+00:00"
+            "time": "2016-01-10 17:30:48"
         },
         {
             "name": "kartik-v/yii2-widget-fileinput",
@@ -1507,7 +1507,7 @@
                 "widget",
                 "yii2"
             ],
-            "time": "2017-12-06T12:34:31+00:00"
+            "time": "2017-12-06 12:34:31"
         },
         {
             "name": "kartik-v/yii2-widget-select2",
