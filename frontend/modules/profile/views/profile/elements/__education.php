@@ -28,7 +28,7 @@ use yii\helpers\Url;
 
         <?= Html::button('-', [
             'class' => 'btn btn-primary',
-            'id' => 'del-education',
+            'id' => 'del-education' . $iterator,
             'data-id' => $model->id,
             'onclick' => '$.pjax.reload({
                    container: "#education", 
@@ -57,33 +57,7 @@ use yii\helpers\Url;
     </div>
 
     <?php ActiveForm::end() ?>
-    <!--<form action="#" id="education-form" method="post">
-        <div class="education">
-            <select id="select">
-                <option>Высшее</option>
-                <option>Неоконченное высшее</option>
-                <option>Среднее специальное</option>
-                <option>Среднее</option>
-            </select>
-            <div class="form-group">
-                <input type="text" class="form-control" name="institution"
-                       placeholder="Учебное заведение :">
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" name="faculty"
-                       placeholder="Факультет,специальность :">
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" name="education_city"
-                       placeholder="Город :">
-            </div>
-        </div>
-        <div class="button">
-            <input type="button" id="del-education" class="btn btn-primary  minus" value="-">
-            <input type="button" id="add-education" class="btn btn-primary" value="+">
-            <input type="button" class="btn btn-primary" value="Сохранить">
-        </div>
-    </form>-->
+
 </div>
 
 <?php Pjax::end() ?>

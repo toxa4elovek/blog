@@ -12,6 +12,7 @@ use yii\helpers\Url;
 
 
 ?>
+    <?= $form->field($model, 'id')->hiddenInput(['name' => 'Education['. ($model->id) ? $model->id : $iterator. '][id]'])->label(false) ?>
 
     <?= $form->field($model, 'type')->dropDownList($model::getTypes(), ['id' => 'type-' . $iterator]) ?>
 
