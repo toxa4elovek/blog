@@ -12,11 +12,11 @@ use yii\helpers\Url;
 
 
 ?>
-    <?= $form->field($model, '['. 1 .']id')->hiddenInput()->label(false) ?>
+    <?= $form->field($model, '['. $iterator .']id')->hiddenInput()->label(false) ?>
 
-    <?= $form->field($model, 'type')->dropDownList($model::getTypes(), ['id' => 'type-' . $iterator]) ?>
+    <?= $form->field($model, '['. $iterator .']type')->dropDownList($model::getTypes(), ['id' => 'type-' . $iterator]) ?>
 
-    <?= $form->field($model, 'country_id')->dropDownList(
+    <?= $form->field($model, '['. $iterator .']country_id')->dropDownList(
         ArrayHelper::map(Country::find()->all(), 'id', 'name'), ['id' => 'country-' . $iterator, 'prompt' => 'Выберите страну...']) ?>
 
     <?php
@@ -29,10 +29,10 @@ use yii\helpers\Url;
             'url' => Url::to(['/profile/education/city-list'])
         ]
     ];
-    ($model->isNewRecord) ?: $cityOptions['data'] = \common\models\db\City::getMainCityArrayByCountryId($model->country_id);
+    ($model->isNewRecord) ?: $cityOptions['data'] = \common\models\db\City::getMainCityArrayByCountryId($model->place->city->country_id);
     ?>
 
-    <?= $form->field($model, 'city_id')->widget(DepDrop::classname(), $cityOptions); ?>
+    <?= $form->field($model, '['. $iterator .']city_id')->widget(DepDrop::classname(), $cityOptions); ?>
 
 
     <?php $educationPlaceOptions = [
@@ -52,20 +52,20 @@ use yii\helpers\Url;
             'url' => Url::to(['/profile/education/university-list']),
         ]
     ];
-    /*($model->isNewRecord) ? : $universityOptions['data'] = $model->place->city->getUniversityArray();*/
+    ($model->isNewRecord) ? : $educationPlaceOptions['data'] = $model->place->city->getEducationPlaceArray((int)$model->type);
     ?>
 
 
-    <?= $form->field($model, 'place_id')->widget(DepDrop::classname(), $educationPlaceOptions); ?>
+    <?= $form->field($model, '['. $iterator .']place_id')->widget(DepDrop::classname(), $educationPlaceOptions); ?>
 
-    <?= $form->field($model, 'user_id')->textInput(['type' => 'hidden', 'value' => $user->id])->label(false) ?>
+    <?= $form->field($model, '['. $iterator .']user_id')->textInput(['type' => 'hidden', 'value' => $user->id])->label(false) ?>
 
     <?php $separator = '<span class="input-group-addon kv-field-separator">-</span>' ?>
 
     <?= DatePicker::widget([
         'model' => $model,
-        'attribute' => 'begin_at',
-        'attribute2' => 'ending_at',
+        'attribute' => '['. $iterator .']begin_at',
+        'attribute2' => '['. $iterator .']ending_at',
         'options' => ['placeholder' => 'Дата начала'],
         'options2' => ['placeholder' => 'Дата окончания'],
         'type' => DatePicker::TYPE_RANGE,

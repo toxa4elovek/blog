@@ -4,6 +4,7 @@ namespace common\models;
 
 use Yii;
 use yii\db\ActiveRecord;
+use common\models\db\EducationPlace;
 
 /**
  * This is the model class for table "city".
@@ -82,7 +83,7 @@ class City extends ActiveRecord
      */
     public function getSchools()
     {
-        return $this->hasMany(School::className(), ['city_id' => 'id']);
+        return $this->hasMany(EducationPlace::className(), ['city_id' => 'id'])->where(['type' => EducationPlace::TYPE_SCHOOL]);
     }
 
     /**
@@ -90,6 +91,6 @@ class City extends ActiveRecord
      */
     public function getUniversities()
     {
-        return $this->hasMany(University::className(), ['city_id' => 'id']);
+        return $this->hasMany(EducationPlace::className(), ['city_id' => 'id'])->where(['type' => EducationPlace::TYPE_UNIVERSITY]);
     }
 }
