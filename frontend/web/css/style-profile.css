@@ -79,7 +79,7 @@
 .link-ava a {color: #fff;font-size: 14px;letter-spacing: 1px;}
 .link-ava a:hover {color: #46b690;}
 /* ПРАВАЯ ЧАСТЬ СТРАНИЦЫ ПРОФИЛЯ 1 ВКЛАДКА */
-.profile-prompt {margin: 20px 0 0 0;}
+.profile-prompt {margin: 0;}
 .profile-input{margin: 0 0 20px 0;}
 .rg-profile {
     background: rgb(70, 179, 148);
@@ -171,7 +171,7 @@
     filter:alpha(opacity=50);
 }
 /* Стилизация инпутов */
-.form-group input,.form-group textarea {
+.form-group input,.form-group textarea,.form-group select {
     background: none;
     color: #fff;
     letter-spacing: 1px;
@@ -345,3 +345,18 @@
 .media-text {color: #fff;}
 /* ПРАВАЯ ЧАСТЬ СТРАНИЦЫ ПРОФИЛЯ 6 ВКЛАДКА */
 .cat-sixth .read_more {border-bottom: none; text-transform: none; margin-bottom: 0;}
+
+/* СТИЛИЗАЦИЯ СЕРВЕРА ВРУЧНУЮ */
+
+/* покрасил в белый цвет стрелочки селекта2 */
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+    border-color: #fff transparent transparent transparent;
+}
+.select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {
+    border-color: transparent transparent #fff transparent;
+}
+/* стилизировал селект */
+.form-group select > option {
+	color: #333;
+	display: inline-block;
+}
