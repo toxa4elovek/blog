@@ -13,6 +13,8 @@ namespace common\models\db;
  * @package common\models\db
  *
  * @property Education[] $currentEducations
+ * @property UserSkill[] $userSkills
+ * @property Skill[] $skills
  */
 class User extends \common\models\User
 {
@@ -35,6 +37,22 @@ class User extends \common\models\User
         }
 
         return $educations;
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUserSkills()
+    {
+        return $this->hasMany(UserSkill::className(), ['user_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getSkills()
+    {
+        return $this->hasMany(Skill::className(), ['id' => 'skill_id'])->viaTable('user_skill', ['user_id' => 'id']);
     }
 
 }
