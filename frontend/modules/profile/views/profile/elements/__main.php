@@ -17,7 +17,7 @@ use yii\bootstrap\ActiveForm;
 
     <?php echo $this->render('_message')?>
 
-    <?php $form = ActiveForm::begin(['action' => '/profile/update?id=' . $user->id, 'options' => ['data-pjax' => true]])?>
+    <?php $form = ActiveForm::begin(['action' => '/profile/update?id=' . $user->id, 'options' => ['data-pjax' => true, 'class' => 'main-form']])?>
 
     <?= $form->field($user, 'username')->textInput(['placeholder' => 'Логин:'])->label(false)?>
 
@@ -33,6 +33,8 @@ use yii\bootstrap\ActiveForm;
             'class' => 'chek-button', 'labelClass' => 'radio-inline'
         ])->label(false)?>
 
+    <div class="form-group">
+
     <?= \kartik\select2\Select2::widget([
         'model' => ($user->profile->city_id > 0) ? $user->profile->city : new \common\models\db\City(),
         'attribute' => 'country_id',
@@ -40,6 +42,7 @@ use yii\bootstrap\ActiveForm;
         'theme' => \kartik\select2\Select2::THEME_DEFAULT,
         'pluginOptions' => ['allowClear' => true]
     ])?>
+    </div>
 
     <?php
     $cityOptions = [

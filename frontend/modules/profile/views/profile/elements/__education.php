@@ -20,6 +20,7 @@ use yii\helpers\Url;
     <?php $form = ActiveForm::begin(['action' => '/profile/education/update', 'options' => [
         'id' => 'edu-form',
         'data-pjax' => true,
+        'class' => 'form-education'
     ]])?>
 
     <?= Html::hiddenInput('education-count', count($educations) - count($user->educations), ['id' => 'count'])?>

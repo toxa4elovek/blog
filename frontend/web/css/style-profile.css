@@ -216,12 +216,16 @@
 .select2-container--default .select2-selection--single {
     background: none!important;
     border: 1px solid #fff!important;
+    height: 34px;
     -moz-border-radius: 15px 15px 15px 15px!important;
     -webkit-border-radius: 15px 15px 15px 15px!important;
     -o-border-radius: 15px 15px 15px 15px!important;
     border-radius: 15px 15px 15px 15px!important;
 }
-.select2-container--default .select2-selection--single .select2-selection__rendered {color: #fff!important;}
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    color: #fff!important;
+    line-height: 31px;
+}
 .select2-container--open .select2-dropdown--below {
     letter-spacing: 1px!important;
     border: 1px solid #46b690!important;
@@ -352,6 +356,9 @@
 .select2-container--default .select2-selection--single .select2-selection__arrow b {
     border-color: #fff transparent transparent transparent;
 }
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 30px;
+}
 .select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {
     border-color: transparent transparent #fff transparent;
 }
@@ -359,4 +366,32 @@
 .form-group select > option {
 	color: #333;
 	display: inline-block;
+}
+
+/*Форма основных данных о пользователе*/
+.main-form div:first-of-type, .form-education div:first-of-type {
+    margin-top: 0;
+}
+
+/*Date interval скругление*/
+.form-control {
+    background: none;
+    color: #fff;
+}
+.form-control .input-radius-left {
+    border-top-left-radius: 15px!important;
+    -moz-border-radius-topleft: 15px!important;
+    -webkit-border-top-left-radius: 15px!important;
+    border-bottom-left-radius: 15px!important;
+    -moz-border-radius-bottomleft: 15px!important;
+    -webkit-border-bottom-left-radius: 15px!important;
+
+}
+.form-control .input-radius-right {
+    border-top-right-radius: 15px!important;
+    -moz-border-radius-topright: 15px!important;
+    -webkit-border-top-right-radius: 15px!important;
+    border-bottom-right-radius: 15px!important;
+    -moz-border-radius-bottomright: 15px!important;
+    -webkit-border-bottom-right-radius: 15px!important;
 }

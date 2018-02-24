@@ -1,5 +1,8 @@
 article, aside, footer, header, nav, section {display: block;}
-html{display: block;}
+html{
+	display: block;
+	/*min-width: 1200px;*/
+}
 html, body {height: 100%;}
 *, :before, :after {box-sizing: inherit;}
 body{
