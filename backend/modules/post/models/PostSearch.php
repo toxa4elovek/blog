@@ -67,7 +67,7 @@ class PostSearch extends Post
             'user_id' => $this->user_id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
-            'type' => $this->type,
+            'post.type' => $this->type,
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])

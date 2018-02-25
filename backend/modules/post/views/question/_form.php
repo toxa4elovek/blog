@@ -24,71 +24,23 @@ $this->registerJs("hljs.initHighlightingOnLoad()");*/
 
     <?= $form->field($model, 'user_id')->textInput() ?>
 
+    <?= $form->field($model, 'type')->hiddenInput()?>
+
     <?= $form->field($model, 'categories')->widget(\kartik\select2\Select2::className(), [
-            'data' => ArrayHelper::map(Category::findAll(['status' => Category::ACTIVE_CATEGORY]), 'id', 'name'),
-            'options' => ['multiple' => true, 'placeholder' => 'Выберите категории ...']
+        'data' => ArrayHelper::map(Category::findAll(['status' => Category::ACTIVE_CATEGORY]), 'id', 'name'),
+        'options' => ['multiple' => true, 'placeholder' => 'Выберите категории ...']
     ])?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'type')->hiddenInput()?>
-
     <?= $form->field($model, 'slug')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'status')->dropDownList([
-            $model::STATUS_MODERATION => 'На модерации',
-            $model::STATUS_ACTIVE => 'Активно',
-            $model::STATUS_DELETED => 'Удалено'
-        ]) ?>
+        $model::STATUS_MODERATION => 'На модерации',
+        $model::STATUS_ACTIVE => 'Активно',
+        $model::STATUS_DELETED => 'Удалено'
+    ]) ?>
 
-    <?php $optionsFile = [
-        'name' => 'attachment_53',
-        'pluginOptions' => [
-            'previewFileType' => 'image',
-            'showCaption' => false,
-            'showRemove' => false,
-            'showUpload' => false,
-            'browseClass' => 'btn btn-primary btn-block',
-            'browseIcon' => '<i class="glyphicon glyphicon-camera"></i> ',
-            'browseLabel' =>  'Выберите фото',
-        ],
-        'options' => [
-            'accept' => 'image/*',
-        ]
-    ];
-    ($model->isNewRecord) ? : $optionsFile['pluginOptions']['initialPreview'] = [
-        Html::img($model->img, ['class' => 'post-image'])
-    ];
-    ?>
-
-    <?= $form->field($model, 'fileImg')->widget(\kartik\file\FileInput::className(), $optionsFile) ?>
-
-    <!--<?/*= $form->field($model, 'text')->widget(\dosamigos\ckeditor\CKEditor::className(), [
-        'options' => ['rows' => 8],
-        'preset' => 'basic',
-        'clientOptions' => [
-            'filebrowserImageUploadUrl' => '/secure/files-upload/upload',
-            'extraPlugins' => 'pbckcode',
-            'pbckcode' => [
-                    'highlighter' => 'PRETTIFY',
-                    'modes' => [['HTML', 'html'], ['CSS', 'css'], ['PHP', 'php'], ['JS', 'javascript'], ['C/C++', 'c_cpp']],
-                    'theme' => 'ambiance',
-
-            ],
-            'toolbarGroups' => [
-                ['name' => 'undo'],
-                ['name' => 'basicstyles', 'groups' => ['basicstyles', 'cleanup']],
-                ['name' => 'colors'],
-                ['name' => 'links', 'groups' => ['links', 'insert']],
-                ['name' => 'others', 'groups' => ['others', 'about']],
-                ['name' => 'pbckcode'],
-                ['name' => 'styles'],
-                ['name' => 'paragraph','groups' => ['list', 'indent', 'blocks']],
-                ['name' => 'align'],
-                ['name' => 'document', 'groups' => [ 'mode', 'document', 'doctools' ]],
-                ['name' => 'editing' , 'groups' => [ 'find', 'selection', 'spellchecker' ]],
-        ]
-    ]]) */?>-->
 
     <?= $form->field($model, 'text')->widget(TinyMce::className(), [
         'options' => ['rows' => 6],
@@ -112,7 +64,7 @@ $this->registerJs("hljs.initHighlightingOnLoad()");*/
                 ['text' =>  'C', 'value' => 'c'],
                 ['text' =>  'C#', 'value' => 'csharp'],
                 ['text' =>  'C++', 'value' => 'cpp'],
-    ],
+            ],
         ]
     ]);?>
 

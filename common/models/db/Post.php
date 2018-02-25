@@ -36,6 +36,16 @@ class Post extends \common\models\Post
     }
 
     /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return array_merge(parent::rules(), [
+            [['user_id', 'status', 'type', 'text', 'title'], 'required'],
+        ]);
+    }
+
+    /**
      * @param $value
      */
     public function setUserLikeValue($value)
@@ -169,6 +179,17 @@ class Post extends \common\models\Post
             self::TYPE_POST => Yii::t('app', 'Post'),
             self::TYPE_QUESTION => Yii::t('app', 'Question')
         ];
+    }
+
+    /**
+     * @param $type_id
+     * @return mixed|null
+     */
+    public static function getTypeById($type_id)
+    {
+        $types = self::getTypes();
+
+        return (isset($types[$type_id])) ? $types[$type_id] : null;
     }
 
 }

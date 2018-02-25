@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use common\models\db\Post;
 
 /* @var $this yii\web\View */
 /* @var $searchModel backend\modules\post\models\PostSearch */
@@ -21,6 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <p>
         <?= Html::a('Создать пост', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Задать вопрос', ['/post/question/create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -29,9 +31,18 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'user_id',
+            [
+                'attribute' => 'user_id',
+                'value' => function ($model) {
+                    return Html::a($model->user->username, ['/user/admin/update', 'id' => $model->user_id]);
+                },
+                'format' => 'html'
+            ],
             [
                 'attribute' => 'type',
+                'value' => function ($model) {
+                    return Post::getTypeById($model->type);
+                },
                 'filter' => \common\models\db\Post::getTypes()
             ],
             [
@@ -75,7 +86,18 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             ],
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn',
+                'buttons' => [
+                    'edit' => function ($url, $model) {
+                        if ($model->type === Post::TYPE_QUESTION) {
+                            return Html::a('<span class="glyphicon glyphicon-pencil"></span>', ['/post/question/update', 'id' => $model->id]);
+                        }
+
+                        return $url;
+                    }
+                ]
+            ],
         ],
     ]); ?>
 </div>
