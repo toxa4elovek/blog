@@ -12,14 +12,16 @@ use yii\data\ActiveDataProvider;
  */
 class PostSearch extends Post
 {
+    public $categoryIds;
+
     /**
      * @inheritdoc
      */
     public function rules()
     {
         return [
-            [['id', 'user_id'], 'integer'],
-            [['title', 'slug', 'status', 'img', 'text', 'short_text', 'created_at', 'updated_at'], 'safe'],
+            [['id', 'user_id', 'type'], 'integer'],
+            [['title', 'categoryIds', 'slug', 'status', 'img', 'text', 'short_text', 'created_at', 'updated_at'], 'safe'],
         ];
     }
 
@@ -42,7 +44,7 @@ class PostSearch extends Post
     public function search($params)
     {
         $query = Post::find();
-        $query->with('categories');
+        $query->joinWith('categories');
 
         // add conditions that should always apply here
 
@@ -55,6 +57,7 @@ class PostSearch extends Post
         if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
             // $query->where('0=1');
+            //$query->joinWith('categories');
             return $dataProvider;
         }
 
@@ -64,14 +67,22 @@ class PostSearch extends Post
             'user_id' => $this->user_id,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
+            'type' => $this->type,
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])
-//            ->andFilterWhere(['like', 'slug', $this->slug])
             ->andFilterWhere(['like', 'status', $this->status])
             ->andFilterWhere(['like', 'img', $this->img])
             ->andFilterWhere(['like', 'text', $this->text])
             ->andFilterWhere(['like', 'short_text', $this->short_text]);
+
+        if (!empty($this->categoryIds)) {
+            /*$query->joinWith(['categories' => function ($q) {
+                $q->where(['category.id' => $this->categoryIds]);
+            }]);*/
+            $query->where(['category.id' => $this->categoryIds]);
+        }
+
 
         return $dataProvider;
     }

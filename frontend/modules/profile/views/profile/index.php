@@ -9,7 +9,7 @@
 
 <div class="row row-wrapper-body row-tabs">
     <div class="column">
-        <div class="col-3">
+        <div class="col-sm-4">
             <div class="lf-profile">
                 <div class="ava-block center">
                     <div class="photo-ava">

@@ -24,6 +24,9 @@ class Post extends \common\models\Post
     const STATUS_MODERATION = 0;
     const STATUS_DELETED = 2;
 
+    const TYPE_POST = 1;
+    const TYPE_QUESTION = 2;
+
     /**
      * @param $value
      */
@@ -152,9 +155,20 @@ class Post extends \common\models\Post
         return $this->hasMany(PostComments::className(), ['post_id' => 'id'])->orderBy('created_at DESC');
     }
 
+    /**
+     * @return array
+     */
     public function getCommentsTree()
     {
         return RecursiveHelper::recursiveComments($this->comments);
+    }
+
+    public static function getTypes()
+    {
+        return [
+            self::TYPE_POST => Yii::t('app', 'Post'),
+            self::TYPE_QUESTION => Yii::t('app', 'Question')
+        ];
     }
 
 }

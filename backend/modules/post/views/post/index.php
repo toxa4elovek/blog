@@ -16,7 +16,6 @@ $this->title = 'Посты';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="post-index">
-
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
@@ -32,12 +31,23 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'user_id',
             [
+                'attribute' => 'type',
+                'filter' => \common\models\db\Post::getTypes()
+            ],
+            [
                 'attribute' => 'categories',
                 'value' => function ($model) {
                     $categories = \yii\helpers\ArrayHelper::getColumn($model->categories, 'name');
                     return (count($categories) > 1) ? implode(', ', $categories): $categories[0];
                 },
-//                'filter' => \common\models\Category::findAll(['status' => \common\models\Category::ACTIVE_CATEGORY])
+                'filter' => \kartik\select2\Select2::widget([
+                    'model' => $searchModel,
+                    'attribute' => 'categoryIds',
+                    'data' => \common\models\db\Category::getCategoryList(),
+                    'options' => ['multiple' => true, 'prompt' => 'Выберите категорию'],
+                    'value' => $searchModel->categoryIds,
+                    'hideSearch' => true
+                ])
             ],
             [
                 'format' => 'raw',

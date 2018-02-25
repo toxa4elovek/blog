@@ -17,6 +17,7 @@ use Yii;
  * @property string $short_text
  * @property string $created_at
  * @property string $updated_at
+ * @property int $type
  *
  * @property User $user
  * @property PostCategory[] $postCategories
@@ -42,10 +43,10 @@ class Post extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id'], 'integer'],
+            [['user_id', 'status', 'type'], 'integer'],
             [['text'], 'string'],
             [['created_at', 'updated_at'], 'safe'],
-            [['title', 'slug', 'status', 'img'], 'string', 'max' => 100],
+            [['title', 'slug', 'img'], 'string', 'max' => 100],
             [['short_text'], 'string', 'max' => 255],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
@@ -68,6 +69,7 @@ class Post extends \yii\db\ActiveRecord
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
             'views' => Yii::t('app', 'Views'),
+            'type' => Yii::t('app', 'Type'),
         ];
     }
 

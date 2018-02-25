@@ -2,6 +2,7 @@
 /* @var $this yii\web\View
  * @var $sliderItems array
  * @var $posts array
+ * @var $postDataProvider \yii\data\ActiveDataProvider
  */
 ?>
 
@@ -16,12 +17,12 @@
 
         <?php echo \frontend\widgets\LeftCategoryWidget::widget()?>
 
-        <div class="col-9">
+        <div class="col-sm-8">
             <div class="body-header">
                 <h2 class="namе-group">Администрирование</h2>
             </div>
 
-                <?php echo \frontend\widgets\PostsWidget::widget(['posts' => $posts]) ?>
+                <?php echo \frontend\widgets\PostsWidget::widget(['posts' => $posts, 'postDataProvider' => $postDataProvider]) ?>
 
             <div class="body-header">
                 <h2 class="namе-group">Вопросы</h2>

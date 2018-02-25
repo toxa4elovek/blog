@@ -49,6 +49,8 @@ return [
     'Middle Education' => 'Среднее образование',
     'Create Middle Education' => 'Добавить среднее образование',
     'Middle Educations' => 'Средние образования',
-    'Update Middle Education: #{nameAttribute}' => 'Обновить среднее образование: #{nameAttribute}'
+    'Update Middle Education: #{nameAttribute}' => 'Обновить среднее образование: #{nameAttribute}',
+    'Post' => 'Пост',
+    'Question' => 'Вопрос'
 
 ];

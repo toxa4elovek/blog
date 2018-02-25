@@ -5,7 +5,7 @@
  */
 ?>
 
-<div class="col-3">
+<div class="col-sm-4">
     <div class="category-block">
         <div class="category-block-header">
             <span class="category-block-header-title">Каталог тем</span>

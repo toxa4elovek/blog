@@ -9,6 +9,9 @@
 namespace common\models\db;
 
 
+use yii\db\Query;
+use yii\helpers\ArrayHelper;
+
 class Category extends \common\models\Category
 {
     /**
@@ -20,4 +23,11 @@ class Category extends \common\models\Category
     const PARENT_CATEGORY = 0;
     const NEWS_CATEGORY = 1;
     const POSTS_CATEGORY = 2;
+
+
+    public static function getCategoryList()
+    {
+        $query = new Query();
+        return $query->select(['name'])->indexBy('id')->from('category')->where(['status' => self::ACTIVE_CATEGORY])->column();
+    }
 }
