@@ -9,14 +9,12 @@
 
 <div class="row row-wrapper-footer">
     <div class="footer-block">
-        <ul class="footer-block-ul">
-            <li class ="footer-block-list"><a href="#">Обратная связь</a></li>
-            <li class ="footer-block-list"><a href="#">О нас</a></li>
-            <li class ="footer-block-list"><a href="#">Карта сайта</a></li>
-            <li class ="footer-block-list"><a href="#">Помощь</a></li>
-            <li class ="footer-block-list"><a href="#">Правила</a></li>
-            <li class ="footer-block-list"><a href="#">Регистрация</a></li>
-            <li class ="footer-block-list"><a href="#">Условия использования</a></li>
-        </ul>
+        <a href="#">Обратная связь</a>
+        <a href="#">О нас</a>
+        <a href="#">Карта сайта</a>
+        <a href="#">Помощь</a>
+        <a href="#">Правила</a>
+        <a href="#">Регистрация</a>
+        <a href="#">Условия использования</a>
     </div>
 </div>

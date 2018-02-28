@@ -19,10 +19,14 @@ use common\classes\Debug;
 <?php if ($postDataProvider->totalCount > $postDataProvider->pagination->pageSize): ?>
 
     <div class="more-post">
-        <a class="more-post-button st-button" id="show-more-post">
-            Мне нужно больше постов
+        <a class="more-post-button" id="show-more-post">
+            <svg>
+                <line x1="0" y1="0" x2="100" y2="40" stroke="black" stroke-width="3"/>
+                <line x1="200" y1="0" x2="100" y2="40" stroke="black" stroke-width="3"/>
+            </svg>
         </a>
     </div>
+
 
     <?php $this->registerJs("
     jQuery(function($)

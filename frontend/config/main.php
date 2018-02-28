@@ -18,6 +18,14 @@ return [
         'profile' => [
             'class' => 'frontend\modules\profile\Profile',
         ],
+        'user' => [
+            'class' => 'dektrium\user\Module',
+            'controllerNamespace' => 'backend\modules\user\controllers',
+            'viewPath' => '@frontend/modules/user/views',
+            'modelMap' => [
+                'RegistrationForm' => 'frontend\modules\user\models\RegistrationForm'
+            ],
+        ],
     ],
     'components' => [
         'request' => [
@@ -46,6 +54,34 @@ return [
             'errorAction' => 'site/error',
         ],
 
+        'authClientCollection' => [
+            'class'   => \yii\authclient\Collection::className(),
+            'clients' => [
+                'facebook' => [
+                    'class'        => 'dektrium\user\clients\Facebook',
+                    'clientId'     => 'APP_ID',
+                    'clientSecret' => 'APP_SECRET',
+                ],
+                'google' => [
+                    'class'        => 'dektrium\user\clients\Google',
+                    'clientId'     => 'CLIENT_ID',
+                    'clientSecret' => 'CLIENT_SECRET',
+                ],
+                'vkontakte' => [
+                    'class'        => 'dektrium\user\clients\VKontakte',
+                    'clientId'     => 'CLIENT_ID',
+                    'clientSecret' => 'CLIENT_SECRET',
+                ],
+                'twitter' => [
+                    'class'          => 'dektrium\user\clients\Twitter',
+                    'consumerKey'    => 'CONSUMER_KEY',
+                    'consumerSecret' => 'CONSUMER_SECRET',
+                    'attributeParams' => [
+                        'include_email' => 'true'
+                    ],
+                ],
+            ],
+        ],
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,

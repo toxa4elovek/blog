@@ -1,0 +1,135 @@
+.autorization {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 450px;
+    height: 40%;
+    padding: 40px 50px;
+}
+.registr {
+    width: 100%;
+    background: rgb(70, 179, 148);
+    background: -webkit-linear-gradient(10deg, rgb(70, 179, 148) 0%, rgb(74, 107, 138) 93%);
+    background: -o-linear-gradient(10deg, rgb(70, 179, 148) 0%, rgb(74, 107, 138) 93%);
+    background: linear-gradient(100deg, rgb(70, 179, 148) 0%, rgb(74, 107, 138) 93%);
+}
+.autorization h2 {
+    text-transform: uppercase;
+    display: block;
+    margin: 0 0 30px 0;
+    color: #fff;
+    text-align: center;
+}
+
+.autorization input[type="text"], .autorization input[type="password"] {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.form-group input {
+    background: #fff;
+    color: #000;
+    letter-spacing: 1px;
+    border: 1px solid #fff;
+    padding: 7px 8px;
+    -moz-border-radius: 15px 15px 15px 15px;
+    -webkit-border-radius: 15px 15px 15px 15px;
+    -o-border-radius: 15px 15px 15px 15px;
+    border-radius: 15px 15px 15px 15px;
+    outline: none;
+    margin-bottom: 40px;
+}
+.form-group input::-webkit-input-placeholder {color:#858585;}
+.form-group input::-moz-placeholder          {color:#858585;}
+.form-group input:-ms-input-placeholder      {color:#858585;}
+.form-group input::-webkit-input-placeholder       {opacity: 1; transition: opacity 0.3s ease;}
+.form-group input::-moz-placeholder                {opacity: 1; transition: opacity 0.3s ease;}
+.form-group input:-moz-placeholder                 {opacity: 1; transition: opacity 0.3s ease;}
+.form-group input:-ms-input-placeholder            {opacity: 1; transition: opacity 0.3s ease;}
+.form-group input:focus::-webkit-input-placeholder {opacity: 0; transition: opacity 0.3s ease;}
+.form-group input:focus::-moz-placeholder          {opacity: 0; transition: opacity 0.3s ease;}
+.form-group input:focus:-moz-placeholder           {opacity: 0; transition: opacity 0.3s ease;}
+.form-group input:focus:-ms-input-placeholder      {opacity: 0; transition: opacity 0.3s ease;}
+.checkbox {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    color: #fff;
+}
+/* Стилизация кнопки */
+.button-ready {
+    text-align: center;
+    margin-top: 30px;
+}
+.ready {
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: bold;
+    background: #4c6989;
+    border: none;
+    color: #fff;
+    padding: 10px 50px;
+    outline: none;
+    -moz-border-radius: 15px 15px 15px 15px;
+    -webkit-border-radius: 15px 15px 15px 15px;
+    -o-border-radius: 15px 15px 15px 15px;
+    border-radius: 15px 15px 15px 15px;
+}
+.ready:hover {background: #5a7ca2!important;outline: none;}
+.ready:active {background: #537396!important;outline: none;}
+/* Ссылка на авторизацию */
+.registration-footer {
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 30px;
+}
+.registration-footer-link {
+    -moz-border-radius: 15px 15px 15px 15px;
+    -webkit-border-radius: 15px 15px 15px 15px;
+    -o-border-radius: 15px 15px 15px 15px;
+    border-radius: 15px 15px 15px 15px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    padding: 12px;
+}
+.registration-footer-link a {
+    color: #fff;
+    font-weight: bold;
+}
+.registration-footer-link a:hover {color: #000;}
+.alternative {
+    color: #fff;
+    margin-top: 15px;
+}
+/* Ссылка на соц.сети*/
+.social {
+    -moz-border-radius: 15px 15px 15px 15px;
+    -webkit-border-radius: 15px 15px 15px 15px;
+    -o-border-radius: 15px 15px 15px 15px;
+    border-radius: 15px 15px 15px 15px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    padding: 5px;
+}
+.social a {margin-left: 15px;}
+.social img {
+    -moz-transition: all 1ms ease-out;
+    -o-transition: all 1ms ease-out;
+    -webkit-transition: all 1ms ease-out;
+}
+.social img:hover {
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -o-transform: scale(1.1);
+}
+
+.help-block {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.label-checkbox {
+    color: #fff;
+}

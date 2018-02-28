@@ -1,8 +1,5 @@
 article, aside, footer, header, nav, section {display: block;}
-html{
-	display: block;
-	/*min-width: 1200px;*/
-}
+html{display: block;}
 html, body {height: 100%;}
 *, :before, :after {box-sizing: inherit;}
 body{
@@ -75,8 +72,18 @@ textarea {resize: none;}
 	font-weight: 600;
 	padding: 10px 15px;
 }
-.header .logo:hover{background:#53bd99;}
-.header a {color: #fff;}
+/*ПЕРЕСТИЛИЗАЦИЯ КНОПОК В HEADER*/
+.button-header {
+	border: none;
+	font-weight: 600;
+	padding: 21px 15px;
+	display: inline-block;
+}
+.header .logo:hover{background:#415A76;}
+.header a {
+	color: #fff;
+	height: 100%;
+}
 .search-form {
 	position: relative;
 	display: -webkit-box;
@@ -96,7 +103,7 @@ textarea {resize: none;}
 	border: none;
 	outline: none;
 	font-size: 16px;
-	background: #46b690 url(../img/source/searchicon.png) 10px 7px no-repeat;
+	background: #415A76 url(../img/source/searchicon.png) 10px 7px no-repeat;
 	padding: 7px 20px 7px 40px;
 	-webkit-transition: width 0.4s ease-in-out;
 	transition: width 0.4s ease-in-out;
@@ -122,7 +129,6 @@ textarea {resize: none;}
 	align-items: center;
 	position: relative;
 }
-.header-main-right .logo:nth-child(2) {margin-left: 15px;}
 /*ТЕЛО СТРАНИЦЫ*/
 .row-wrapper-body {
 	margin: 0 auto;
@@ -172,26 +178,6 @@ textarea {resize: none;}
 	padding-left: 320px;
 	width: 100%;
 }
-/*@media (min-width: 1450px) {
-	.col-3 {
-		margin-right: -400px;
-		width: 400px;
-	}
-	.col-9 {
-		padding-left: 420px;
-		width: 100%;
-	}
-}
-@media (min-width: 2000px) {
-	.col-3 {
-		margin-right: -500px;
-		width: 500px;
-	}
-	.col-9 {
-		padding-left: 520px;
-		width: 100%;
-	}
-}
 /* ЛЕВАЯ ЧАСТЬ ОСНОВНОГО БЛОКА */
 .category-block {
 	position: relative;
@@ -200,12 +186,10 @@ textarea {resize: none;}
 	margin-bottom: 20px;
 
 }
-.fixed-category-block {
+/*.fixed-category-block {
 	top: 20px;
 	position: fixed;
-	width: 300px;
-}
-
+}*/
 .category-block-header {
 	margin: 0 20px;
 	border-bottom: 1px solid #46b690;
@@ -254,60 +238,6 @@ textarea {resize: none;}
 	font-weight: normal;
 	color: #46b690;
 }
-/*@media (min-width: 1450px) {
-	.fixed-category-block {
-		width: 400px;
-	}
-}
-@media (min-width: 2000px) {
-	.fixed-category-block {
-		width: 500px;
-	}
-}
-.category-block-header {
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-align: center;
-	-ms-flex-align: center;
-	align-items: center;
-	margin: 0 20px;
-	height: 50px;
-	border-bottom: 1px solid #46b690;
-}
-.category-block-header-title {text-transform: uppercase;}
-.category-block-content {
-	padding: 0 20px;
-}
-.tab {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0 0 5px 0;
-	list-style: none;
-}
-.tab-menu {
-	position: relative;
-	border-bottom: 1px solid #46b690;
-}
-.tab-menu:last-child {border-bottom: none;}
-.tab-menu-link {
-	color: #333;
-	padding: 15px 0;
-	font-size: 13px;
-	display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	width: 100%;
-}
-.tab-menu-link:hover {color: #46b690;}
-.tab-menu-count {
-	-ms-flex: auto;
-	flex: auto;
-	padding-left: 20px;
-	text-align: right;
-	font-size: 13px;
-	color: #46b690;
-}*/
 /* ПРАВАЯ ЧАСТЬ ОСНОВНОГО БЛОКА */
 .body-header {
 	display: -webkit-box;
@@ -449,15 +379,20 @@ h2.namе-group{
 	justify-content: center
 }
 .more-post-button {
-	color: #fff;
-	text-transform: uppercase;
 	margin-top: 15px;
+	width: 100%;
+	text-align: center;
+	padding-top: 15px;
 	cursor: pointer;
-	outline: none;
 }
-.more-post-button:hover { background: #53bd99;color: #fff;}
-.more-post-button:active { background: #9ad8c3;color: #fff;}
-/*БЛОК ВОПРОСОВ*/
+.more-post-button svg {
+	width: 200px;
+	height: 50px;
+	opacity: 0.2;
+}
+.more-post-button:hover { background: #F4F4F4;}
+.more-post-button:active { background: #F4F4F4;}
+    /*БЛОК ВОПРОСОВ*/
 .inline-block-questions {
 	color: #545454;
 	font-size: 16px;
@@ -490,21 +425,20 @@ h2.namе-group{
 	left: 0;
 	bottom: 0;
 }
-.footer-block-ul {
+.footer-block {
+	height: 100%;
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
-	-webkit-box-align: center;
-	-ms-flex-align: center;
-	align-items: center;
 	-webkit-justify-content: center;
-	justify-content: center;
-	list-style: none;
-	margin: 11px auto;
+	justify-content: center
 }
-.footer-block-list {margin: 0 5px 0 0;}
-.footer-block-list a {color:#fff;}
-.footer-block-list a:hover {color:#46b690;}
+.footer-block a {
+	color:#fff;
+	font-weight: 600;
+	padding: 13px 5px;
+}
+.footer-block a:hover {background:#415A76;}
 /*КНОПКА НАВЕРХ*/
 .scrollup{
 	width:40px;
@@ -515,7 +449,14 @@ h2.namе-group{
 	left:35px;
 	display:none;
 	text-indent:-9999px;
-	background: url(../img/source/icon_top.png) no-repeat;
+	background: url(../img/icon_top.png) no-repeat;
 }
 .like-active{color: #46b690!important;}
 .info-active{color: #46b690!important;}
+/*ПЕРЕСТИЛИЗАЦИЯ КНОПОК В HEADER*/
+.button-header {
+	border: none;
+	font-weight: 600;
+	padding: 21px 15px;
+	display: inline-block;
+}
