@@ -50,7 +50,8 @@
 /* ЛЕВАЯ ЧАСТЬ СТРАНИЦЫ ПРОФИЛЯ */
 .lf-profile {
     position: relative;
-    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-bottom: 40px;
     background: #4c6989;
     -moz-border-radius-topright: 90px;
     -webkit-border-top-right-radius: 90px;
@@ -61,26 +62,32 @@
 }
 .lf-profile .center {text-align: center;}
 /* АВА В КРУГЕ*/
-.ava-block img {
-    padding:25px 25px 25px 25px;
-    margin-top:15px;
+.photo-ava a {position: relative;}
+.photo-ava .fa {
+    position: absolute;
+    bottom: 0;
+    color: #fff;
 }
 .ava-block .photo-user {
+    margin-top: 40px;
     overflow: hidden;
-    width: 15em;
-    height: 15em;
+    width: 160px;
+    height: 160px;
     -moz-border-radius:50%;
     -webkit-border-radius:50%;
     -o-border-radius:50%;
     border-radius:50%;
 }
+.ava-block .photo-user:hover {
+    opacity: 0.3;
+}
 .link-ava {margin-left: 35px; margin-right: 35px; padding: 25px 0 25px 0; border-top: 2px dashed #f0f0f0;}
-.link-ava:nth-child(2) {padding-top:0; border-top: none;}
+.link-ava:nth-child(2) {border-top: none;}
 .link-ava a {color: #fff;font-size: 14px;letter-spacing: 1px;}
 .link-ava a:hover {color: #46b690;}
 /* ПРАВАЯ ЧАСТЬ СТРАНИЦЫ ПРОФИЛЯ 1 ВКЛАДКА */
-.profile-prompt {margin: 0;}
-.profile-input{margin: 0 0 20px 0;}
+.profile-prompt {margin: 20px 0 0 0;}
+.profile-input{margin: 0 0 40px 0;}
 .rg-profile {
     background: rgb(70, 179, 148);
     background: -webkit-linear-gradient(10deg, rgb(70, 179, 148) 0%, rgb(74, 107, 138) 93%);
@@ -92,7 +99,7 @@
 .prompt {height: 100px;}
 .menu-main {
     list-style: none;
-    margin: 50px 0 50px 50px;
+    margin: 50px 0 50px 5px;
     padding: 5px 0 5px;
     border: 1px solid #fff;
     -moz-border-radius: 15px 15px 15px 15px;
@@ -143,7 +150,7 @@
 }
 /* ОПИСАНИЕ РАЗДЕЛА*/
 .category-profile form {
-    padding: 50px 50px 30px 50px;
+    padding: 20px 5px 30px 0;
 }
 .form-group {margin-top: 30px;}
 .form-group:first-child {margin-top: 0;}
@@ -151,6 +158,7 @@
 /* flash-сообщения */
 .cat-first {position: relative;}
 .updated {
+    display: none;
     top: 7px;
     left: 22px;
     position: absolute;
@@ -171,7 +179,7 @@
     filter:alpha(opacity=50);
 }
 /* Стилизация инпутов */
-.form-group input,.form-group textarea,.form-group select {
+.form-group input,.form-group textarea {
     background: none;
     color: #fff;
     letter-spacing: 1px;
@@ -216,16 +224,12 @@
 .select2-container--default .select2-selection--single {
     background: none!important;
     border: 1px solid #fff!important;
-    height: 34px;
     -moz-border-radius: 15px 15px 15px 15px!important;
     -webkit-border-radius: 15px 15px 15px 15px!important;
     -o-border-radius: 15px 15px 15px 15px!important;
     border-radius: 15px 15px 15px 15px!important;
 }
-.select2-container--default .select2-selection--single .select2-selection__rendered {
-    color: #fff!important;
-    line-height: 31px;
-}
+.select2-container--default .select2-selection--single .select2-selection__rendered {color: #fff!important;}
 .select2-container--open .select2-dropdown--below {
     letter-spacing: 1px!important;
     border: 1px solid #46b690!important;
@@ -265,7 +269,7 @@
 .category-profile .button {text-align: right;}
 .category-profile .btn {margin-top: 30px;}
 .minus {padding: 6px 14px;}
-.category-profile .btn-primary, .modal-content .btn-primary {
+.category-profile .btn-primary, .modal-category .btn-primary {
     background: #4c6989!important;
     border-color: #374c63!important;
     outline: none!important;
@@ -276,10 +280,10 @@
 }
 .category-profile .btn-primary:hover {background: #5a7ca2!important;outline: none!important;}
 .category-profile .btn-primary:active {background: #537396!important;outline: none!important;}
-.modal-content .btn-primary:hover {background: #5a7ca2!important;outline: none!important;}
-.modal-content .btn-primary:active {background: #537396!important;outline: none!important;}
+.modal-category .btn-primary:hover {background: #5a7ca2!important;outline: none!important;}
+.modal-category .btn-primary:active {background: #537396!important;outline: none!important;}
 /* Стилизация модального окна изменить пароль */
-.modal-content {
+.modal-category {
     text-align: center;
     background: rgb(70, 179, 148);
     background: -webkit-linear-gradient(10deg, rgb(70, 179, 148) 0%, rgb(74, 107, 138) 93%);
@@ -295,7 +299,7 @@
 .modal-header h2 {margin: 0;}
 /* ПРАВАЯ ЧАСТЬ СТРАНИЦЫ ПРОФИЛЯ 2 ВКЛАДКА */
 .profile-records {margin: 20px 0 40px 0;}
-.body-list {margin: 0 50px 0 50px; padding: 50px 0 50px 0;}
+.body-list {margin: 0 5px 0 0; padding: 50px 0 50px 0;}
 .block-list-item {
     margin-top: 0;
     padding-bottom: 10px;
@@ -349,49 +353,3 @@
 .media-text {color: #fff;}
 /* ПРАВАЯ ЧАСТЬ СТРАНИЦЫ ПРОФИЛЯ 6 ВКЛАДКА */
 .cat-sixth .read_more {border-bottom: none; text-transform: none; margin-bottom: 0;}
-
-/* СТИЛИЗАЦИЯ СЕРВЕРА ВРУЧНУЮ */
-
-/* покрасил в белый цвет стрелочки селекта2 */
-.select2-container--default .select2-selection--single .select2-selection__arrow b {
-    border-color: #fff transparent transparent transparent;
-}
-.select2-container--default .select2-selection--single .select2-selection__arrow {
-    height: 30px;
-}
-.select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {
-    border-color: transparent transparent #fff transparent;
-}
-/* стилизировал селект */
-.form-group select > option {
-	color: #333;
-	display: inline-block;
-}
-
-/*Форма основных данных о пользователе*/
-.main-form div:first-of-type, .form-education div:first-of-type {
-    margin-top: 0;
-}
-
-/*Date interval скругление*/
-.form-control {
-    background: none;
-    color: #fff;
-}
-.form-control .input-radius-left {
-    border-top-left-radius: 15px!important;
-    -moz-border-radius-topleft: 15px!important;
-    -webkit-border-top-left-radius: 15px!important;
-    border-bottom-left-radius: 15px!important;
-    -moz-border-radius-bottomleft: 15px!important;
-    -webkit-border-bottom-left-radius: 15px!important;
-
-}
-.form-control .input-radius-right {
-    border-top-right-radius: 15px!important;
-    -moz-border-radius-topright: 15px!important;
-    -webkit-border-top-right-radius: 15px!important;
-    border-bottom-right-radius: 15px!important;
-    -moz-border-radius-bottomright: 15px!important;
-    -webkit-border-bottom-right-radius: 15px!important;
-}

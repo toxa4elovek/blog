@@ -4,6 +4,8 @@
  * @var $posts array
  * @var $postDataProvider \yii\data\ActiveDataProvider
  */
+
+use common\models\db\Category;
 ?>
 
 <?php $isEmptyPosts = empty($sliderItems) && empty($posts)?>
@@ -15,14 +17,14 @@
 
     <div class="column">
 
-        <?php echo \frontend\widgets\LeftCategoryWidget::widget()?>
+        <?php echo \frontend\widgets\LeftCategoryWidget::widget(['category' => Category::findAll(['parent_id' => 0])])?>
 
         <div class="col-sm-8">
             <div class="body-header">
                 <h2 class="namе-group">Администрирование</h2>
             </div>
 
-                <?php echo \frontend\widgets\PostsWidget::widget(['posts' => $posts, 'postDataProvider' => $postDataProvider]) ?>
+                <?php echo \frontend\widgets\PostsWidget::widget(['postDataProvider' => $postDataProvider]) ?>
 
             <div class="body-header">
                 <h2 class="namе-group">Вопросы</h2>

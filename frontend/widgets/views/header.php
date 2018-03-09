@@ -23,8 +23,9 @@
 
             <?php if (Yii::$app->user->isGuest):?>
                 <a href="<?php echo \yii\helpers\Url::to('/signup')?>" class="logo button-header">Регистрация</a>
-                <a href="<?php echo \yii\helpers\Url::to('/profile')?>" class="logo button-header">Вход</a>
+                <a href="<?php echo \yii\helpers\Url::to('/login')?>" class="logo button-header">Вход</a>
             <?php else:?>
+                <a href="<?php echo \yii\helpers\Url::to('/profile')?>" class="logo button-header">Личный кабинет</a>
                 <a data-method="post" href="<?php echo \yii\helpers\Url::to('/user/security/logout')?>" class="logo button-header">Выйти</a>
             <?php endif;?>
         </div>

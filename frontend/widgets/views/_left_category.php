@@ -14,7 +14,7 @@
             <ul class="tab">
             <?php foreach ($categories as $category) :?>
             <li class="tab-menu">
-                <a class="tab-link" href="<?php echo \yii\helpers\Url::to('/category/'.$category->slug)?>">
+                <a class="tab-link" href="<?php echo \yii\helpers\Url::to('/'.$category->slug)?>">
                     <span class="tab-logo"><?php echo $category->name?></span>
                     <span class="tab-count">508</span>
                 </a>

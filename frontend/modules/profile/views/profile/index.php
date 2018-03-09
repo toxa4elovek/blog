@@ -3,6 +3,7 @@
  * @var $this \yii\web\View
  * @var $user \common\models\db\User
  * @var $educations array
+ * @var $postDataProvider \yii\data\ActiveDataProvider
  */
 
 ?>
@@ -13,7 +14,10 @@
             <div class="lf-profile">
                 <div class="ava-block center">
                     <div class="photo-ava">
-                        <img class="photo-user" src="img/avatar3.jpg">
+                        <i class="fa fa-refresh" aria-hidden="true"> Сменить аватар</i>
+                        <a href="#">
+                            <img class="photo-user" src="img/avatar3.jpg">
+                        </a>
                     </div>
                     <div class="link-ava">
                         <input id="tab1" type="radio" class="tab-checked" name="tabs" value="content-tab1" checked>
@@ -49,7 +53,7 @@
         </div>
 
         <?= $this->render('elements/_profile', ['user' => $user, 'educations' => $educations])?>
-        <?= $this->render('elements/_posts')?>
+        <?= $this->render('elements/_posts', ['postDataProvider' => $postDataProvider])?>
         <?= $this->render('elements/_favourites')?>
         <?= $this->render('elements/_questions')?>
         <?= $this->render('elements/_answers')?>

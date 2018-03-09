@@ -17,9 +17,14 @@ use yii\bootstrap\ActiveForm;
 
     <?php echo $this->render('_message')?>
 
-    <?php $form = ActiveForm::begin(['action' => '/profile/update?id=' . $user->id, 'options' => ['data-pjax' => true, 'class' => 'main-form']])?>
+    <?php $form = ActiveForm::begin([
+        'action' => '/profile/update?id=' . $user->id,
+        'options' => ['data-pjax' => true, 'class' => 'form-active'],
+        ])?>
 
     <?= $form->field($user, 'username')->textInput(['placeholder' => 'Логин:'])->label(false)?>
+
+    <?= Html::hiddenInput(Yii::$app->request->csrfParam, Yii::$app->request->csrfToken)?>
 
     <?= $form->field($user, 'email')->textInput(['placeholder' => 'Email:'])->label(false)?>
 
@@ -52,7 +57,7 @@ use yii\bootstrap\ActiveForm;
         'pluginOptions'=>[
             'depends'=>['city-country_id'],
             'placeholder'=>'Выберите город...',
-            'url'=>Url::to(['/user/admin/city-list']),
+            'url'=>Url::to(['/profile/education/city-list']),
         ],
         'select2Options' => [
             'theme' => \kartik\select2\Select2::THEME_DEFAULT,

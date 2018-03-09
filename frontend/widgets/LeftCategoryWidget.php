@@ -18,7 +18,7 @@ class LeftCategoryWidget extends Widget
 
     public function run()
     {
-        return $this->render('_left_category', ['categories' => Category::findAll(['parent_id' => 0])]);
+        return $this->render('_left_category', ['categories' => $this->category]);
     }
 
 }

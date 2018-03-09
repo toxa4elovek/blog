@@ -90,7 +90,9 @@ return [
                 '/login' => 'user/security/login',
                 '/signup' => 'user/registration/register',
                 'post/<slug>' => 'post/view',
-                'profile/<action>' => 'profile/profile/<action>'
+                'profile/<action>' => 'profile/profile/<action>',
+                'profile' => 'profile/profile/index',
+                '<slug>' => 'post/search'
             ],
         ],
 

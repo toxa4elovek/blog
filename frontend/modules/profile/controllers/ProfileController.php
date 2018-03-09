@@ -3,7 +3,9 @@
 namespace frontend\modules\profile\controllers;
 
 use common\classes\Debug;
+use common\models\db\Post;
 use common\models\db\User;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
@@ -20,10 +22,18 @@ class ProfileController extends Controller
     {
         $user = User::find()/*->with('higherEducation', 'middleEducation', 'profile')*/
             ->where(['id' => \Yii::$app->user->id])->one();
+
+        $postDataProvider = new ActiveDataProvider([
+            'query' => Post::find()->where([
+                'user_id' => $user->id,
+                'type' => Post::TYPE_POST
+            ])
+        ]);
 		
         return $this->render('index', [
             'user' => $user,
-            'educations' => $user->currentEducations
+            'educations' => $user->currentEducations,
+            'postDataProvider' => $postDataProvider
         ]);
     }
 

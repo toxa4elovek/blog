@@ -5,14 +5,14 @@
 ?>
 
 <div id="content-tab6" class="tab-content-hidden">
-    <div class="col-9">
+    <div class="col-sm-8">
         <div class="rg-profile profile-prompt">
             <div class="prompt"></div>
         </div>
     </div>
-    <div class="col-9 col-pad">
+    <div class="col-sm-8 col-pad">
         <div class="rg-profile profile-input clearfix">
-            <div class="col-3">
+            <div class="col-sm-5">
                 <div class="main-block-menu">
                     <ul class="menu-main">
                         <li><a href="#category_1_1_1_1_1" class="category_1_1_1_1_1">Категория 1</a></li>
@@ -20,7 +20,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-9">
+            <div class="col-sm-7">
                 <div class="category-profile cat-sixth" id="category_1_1_1_1_1">
                     <div class="body-list">
                         <article class="block-list-article block-list-item block block-review">

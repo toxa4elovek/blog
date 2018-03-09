@@ -51,6 +51,8 @@ return [
     'Middle Educations' => 'Средние образования',
     'Update Middle Education: #{nameAttribute}' => 'Обновить среднее образование: #{nameAttribute}',
     'Post' => 'Пост',
-    'Question' => 'Вопрос'
+    'Question' => 'Вопрос',
+    'Confirm Password' => 'Подтверждение пароля',
+    'Login' => 'Вход'
 
 ];

@@ -17,7 +17,7 @@ $this->registerCssFile('/css/style-registration.css');
 <div class="column">
     <div class="col-xs-offset-2 col-xs-8">
         <div class="autorization registr">
-            <h2 class="center uppercase">Авторизация</h2>
+            <h2 class="center uppercase"><?= Yii::t('app', 'Login')?></h2>
 
 
 
@@ -65,7 +65,9 @@ $this->registerCssFile('/css/style-registration.css');
                     ->label(false) ?>
             <?php endif ?>
 
-            <?= $form->field($model, 'rememberMe')->checkbox(['tabindex' => '3']) ?>
+            <?= $form->field($model, 'rememberMe', ['checkboxTemplate' =>
+                '<div class="checkbox">{beginLabel}{input}{labelTitle}<div class="switch-btn"></div>{endLabel}</div>'
+            ])->checkbox(['tabindex' => '3']) ?>
 
             <div class="button-ready">
 

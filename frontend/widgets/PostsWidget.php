@@ -14,11 +14,10 @@ use yii\bootstrap\Widget;
 
 class PostsWidget extends Widget
 {
-    public $posts;
     public $postDataProvider;
 
     public function run()
     {
-        return $this->render('posts', ['posts' => $this->posts, 'postDataProvider' => $this->postDataProvider]);
+        return $this->render('posts', ['postDataProvider' => $this->postDataProvider]);
     }
 }

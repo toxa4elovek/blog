@@ -17,7 +17,7 @@ use yii\bootstrap\Modal;
     </div>
     <div class="col-sm-8 col-pad">
         <div class="rg-profile profile-input clearfix">
-            <div class="col-sm-4">
+            <div class="col-sm-5">
                 <div class="main-block-menu">
                     <ul class="menu-main">
                         <li><a href="#main" class="main-link current">Основное</a></li>
@@ -33,7 +33,7 @@ use yii\bootstrap\Modal;
                     </ul>
                 </div>
             </div>
-            <div class="col-sm-8">
+            <div class="col-sm-7">
                 <?= $this->render('__main', ['user' => $user])?>
                 <?= $this->render('__education', ['user' => $user, 'educations' => $educations])?>
                 <?= $this->render('__work', ['user' => $user])?>

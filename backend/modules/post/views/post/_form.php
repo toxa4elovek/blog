@@ -56,9 +56,9 @@ $this->registerJs("hljs.initHighlightingOnLoad()");*/
             'accept' => 'image/*',
         ]
     ];
-    ($model->isNewRecord) ? : $optionsFile['pluginOptions']['initialPreview'] = [
+    /*($model->isNewRecord) ? : $optionsFile['pluginOptions']['initialPreview'] = [
         Html::img($model->img, ['class' => 'post-image'])
-    ];
+    ];*/
     ?>
 
     <?= $form->field($model, 'fileImg')->widget(\kartik\file\FileInput::className(), $optionsFile) ?>

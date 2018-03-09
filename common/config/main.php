@@ -25,6 +25,14 @@ return [
             'class' => 'yii\i18n\Formatter',
             'defaultTimeZone' => 'Europe/Moscow',
         ],
+        'i18n' => [
+            'translations' => [
+                'app' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@backend/messages',
+                ],
+            ],
+        ],
     ],
     'modules' => [
         'rbac' => 'dektrium\rbac\RbacWebModule',
