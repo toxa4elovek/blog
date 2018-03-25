@@ -12,6 +12,8 @@ use Yii;
  * @property integer $post_id
  * @property integer $parent_id
  * @property string $text
+ * @property string $created_at
+ * @property string $updated_at
  *
  * @property PostComments $parent
  * @property PostComments[] $postComments

@@ -1,7 +1,10 @@
 <?php
 /**
  * @var $this \yii\web\View
+ * @var $commentDataProvider \yii\data\ActiveDataProvider
  */
+
+use yii\widgets\ListView;
 ?>
 
 <div id="content-tab6" class="tab-content-hidden">
@@ -22,7 +25,12 @@
             </div>
             <div class="col-sm-7">
                 <div class="category-profile cat-sixth" id="category_1_1_1_1_1">
-                    <div class="body-list">
+                    <?= ListView::widget([
+                        'dataProvider' => $commentDataProvider,
+                        'itemView' => '@frontend/modules/profile/views/profile/itemViews/comments_post',
+                        'layout' => '{items}',
+                    ])?>
+                    <!--<div class="body-list">
                         <article class="block-list-article block-list-item block block-review">
                             <h3><a href="#" class="block-review-header">Заголовок поста</a>
                                 <div class="read_more"><a href="#">Полная статья</a></div>
@@ -121,7 +129,7 @@
                                 </ul>
                             </div>
                         </article>
-                    </div>
+                    </div>-->
                 </div>
                 <div class="category-profile cat-sixth" id="category_n_n_n_n_n">
                     <div class="body-list">

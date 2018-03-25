@@ -460,3 +460,63 @@ h2.namе-group{
 	padding: 21px 15px;
 	display: inline-block;
 }
+/*СТИЛИЗАЦИЯ CHECKBOX*/
+.toggle {position: relative;}
+.toggle label {padding: 0}
+.toggle input {
+	opacity: 0;
+	cursor: pointer;
+	position: absolute;
+}
+.toggle input:checked ~ .btn {left: 32px;}
+.toggle input:checked ~ .btn {background: #749C90;}
+.toggle .btn {
+	display: block;
+	position: absolute;
+	z-index: 4;
+	top: 2px;
+	left: 2px;
+	width: 20px;
+	height: 21px;
+	background: #ba6967;
+	border-radius: 50px;
+	transition: left 0.25s ease;
+}
+.toggle .labels {
+	position: absolute;
+	top: 10px;
+	z-index: 2;
+	width: 100%;
+	font-weight: bold;
+}
+.toggle .labels:before {
+	font-family: FontAwesome;
+	content: "\f00c";
+	position: absolute;
+	top: -5px;
+	left: 8px;
+	color: #749C90;
+}
+.toggle .labels:after {
+	font-family: FontAwesome;
+	content: "\f00d";
+	position: absolute;
+	top: -5px;
+	left: 41px;
+	color: #ba6967;
+}
+.toggle .bg {
+	display: inline-block;
+	width: 60px;
+	height: 25px;
+	background: #fff;
+	-moz-border-radius: 15px 15px 15px 15px;
+	-webkit-border-radius: 15px 15px 15px 15px;
+	-o-border-radius: 15px 15px 15px 15px;
+	border-radius: 15px 15px 15px 15px;
+	vertical-align: bottom;
+}
+.check-text {
+	line-height: 1.8em;
+	margin-left: 10px;
+}

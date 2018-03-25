@@ -66,7 +66,8 @@ $this->registerCssFile('/css/style-registration.css');
             <?php endif ?>
 
             <?= $form->field($model, 'rememberMe', ['checkboxTemplate' =>
-                '<div class="checkbox">{beginLabel}{input}{labelTitle}<div class="switch-btn"></div>{endLabel}</div>'
+                '<div class="toggle checkbox">{beginLabel}{input}
+                                <span class="btn"></span><span class="labels"></span><span class="bg"></span><span class="check-text">{labelTitle}</span>{endLabel}</div>'
             ])->checkbox(['tabindex' => '3']) ?>
 
             <div class="button-ready">

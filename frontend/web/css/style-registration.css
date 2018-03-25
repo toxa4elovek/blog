@@ -50,7 +50,7 @@
 .form-group input:focus:-moz-placeholder           {opacity: 0; transition: opacity 0.3s ease;}
 .form-group input:focus:-ms-input-placeholder      {opacity: 0; transition: opacity 0.3s ease;}
 .checkbox {
-    width: 50%;
+    width: 60%;
     margin-left: auto;
     margin-right: auto;
     color: #fff;

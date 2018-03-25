@@ -4,8 +4,10 @@ namespace frontend\modules\profile\controllers;
 
 use common\classes\Debug;
 use common\models\db\Post;
+use common\models\db\PostComments;
 use common\models\db\User;
 use yii\data\ActiveDataProvider;
+use yii\db\ActiveQuery;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 
@@ -22,19 +24,28 @@ class ProfileController extends Controller
     {
         $user = User::find()/*->with('higherEducation', 'middleEducation', 'profile')*/
             ->where(['id' => \Yii::$app->user->id])->one();
-
-        $postDataProvider = new ActiveDataProvider([
-            'query' => Post::find()->where([
-                'user_id' => $user->id,
-                'type' => Post::TYPE_POST
-            ])
-        ]);
-		
         return $this->render('index', [
             'user' => $user,
             'educations' => $user->currentEducations,
-            'postDataProvider' => $postDataProvider
+            'postDataProvider' => $this->createDataProvider(Post::find()->where([
+                'user_id' => $user->id,
+                'type' => Post::TYPE_POST
+            ])),
+            'commentDataProvider' => $this->createDataProvider(Post::find()->where([
+                'post_comments.user_id' => $user->id
+            ])->joinWith('comments'))
         ]);
+    }
+
+    private function createDataProvider(ActiveQuery $query)
+    {
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+
+        return $dataProvider;
     }
 
     public function actionUpdate($id)

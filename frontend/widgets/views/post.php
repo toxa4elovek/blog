@@ -7,7 +7,7 @@
 ?>
 
 
-    <div class="col-9">
+    <div class="col-sm-8">
         <div class="body-header">
             <h1 class="namе-group"><?php echo $post->categories[0]->name ?></h1>
         </div>

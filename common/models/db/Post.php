@@ -162,7 +162,7 @@ class Post extends \common\models\Post
      */
     public function getComments()
     {
-        return $this->hasMany(PostComments::className(), ['post_id' => 'id'])->orderBy('created_at DESC');
+        return $this->hasMany(PostComments::className(), ['post_id' => 'id'])->orderBy('post_comments.created_at DESC');
     }
 
     /**

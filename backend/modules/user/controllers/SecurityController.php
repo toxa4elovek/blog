@@ -11,6 +11,7 @@
 
 namespace backend\modules\user\controllers;
 
+use common\classes\Debug;
 use dektrium\user\Finder;
 use dektrium\user\models\Account;
 use dektrium\user\models\LoginForm;

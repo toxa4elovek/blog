@@ -4,6 +4,7 @@
  * @var $user \common\models\db\User
  * @var $educations array
  * @var $postDataProvider \yii\data\ActiveDataProvider
+ * @var $commentDataProvider \yii\data\ActiveDataProvider
  */
 
 ?>
@@ -57,7 +58,7 @@
         <?= $this->render('elements/_favourites')?>
         <?= $this->render('elements/_questions')?>
         <?= $this->render('elements/_answers')?>
-        <?= $this->render('elements/_comments')?>
+        <?= $this->render('elements/_comments', ['commentDataProvider' => $commentDataProvider])?>
     </div>
 </div>
 
