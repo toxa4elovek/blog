@@ -41,7 +41,7 @@ use kartik\file\FileInput;
             ? '<img class="photo-user" src="'. $user->getAvatarUrl() . '">'
             : '<div class="letter-ava">' . $user->username[0] . '</div>';
 
-        $avatarBlock = '<div class="none-avatar" data-toggle="modal" data-target="#change-avatar">
+        $avatarBlock = '<div class="' . $avatarClass . '" data-toggle="modal" data-target="#change-avatar">
                 <a href="#">
                     ' . $avatarTag . '
                     <div class="change-ava">
@@ -60,7 +60,7 @@ use kartik\file\FileInput;
             'tag' => 'div'
         ],
         'options' => [
-            'class' => 'ava-block center',
+            'class' => 'ava-block',
             'tag' => 'div'
         ],
         //'activateItems' => true,
@@ -73,32 +73,32 @@ use kartik\file\FileInput;
             [
                 'label' => 'Профиль',
                 'url' => Url::to(['profile/index']),
-                'template' => '<a href="{url}" class="profile-menu"><i class="fa fa-user-o" aria-hidden="true"></i>{label}</a>'
+                'template' => '<a href="{url}" class="profile-menu tab-checked"><i class="fa fa-user-o" aria-hidden="true"></i>{label}</a>'
             ],
             [
                 'label' => 'Записи',
                 'url' => Url::to(['profile/posts']),
-                'template' => '<a href="{url}" class="profile-menu"><i class="fa fa-files-o" aria-hidden="true"></i>{label}</a>'
+                'template' => '<a href="{url}" class="profile-menu tab-checked"><i class="fa fa-files-o" aria-hidden="true"></i>{label}</a>'
             ],
             [
                 'label' => 'Закладки',
                 'url' => Url::to(['profile/favourites']),
-                'template' => '<a href="{url}" class="profile-menu"><i class="fa fa-paperclip" aria-hidden="true"></i>{label}</a>'
+                'template' => '<a href="{url}" class="profile-menu tab-checked"><i class="fa fa-paperclip" aria-hidden="true"></i>{label}</a>'
             ],
             [
                 'label' => 'Вопросы',
                 'url' => Url::to(['profile/questions']),
-                'template' => '<a href="{url}" class="profile-menu"><i class="fa fa-question-circle-o" aria-hidden="true"></i>{label}</a>'
+                'template' => '<a href="{url}" class="profile-menu tab-checked"><i class="fa fa-question-circle-o" aria-hidden="true"></i>{label}</a>'
             ],
             [
                 'label' => 'Ответы',
                 'url' => Url::to(['profile/answers']),
-                'template' => '<a href="{url}" class="profile-menu"><i class="fa fa-reply-all" aria-hidden="true"></i>{label}</a>'
+                'template' => '<a href="{url}" class="profile-menu tab-checked"><i class="fa fa-reply-all" aria-hidden="true"></i>{label}</a>'
             ],
             [
                 'label' => 'Комментарии',
                 'url' => Url::to(['profile/comments']),
-                'template' => '<a href="{url}" class="profile-menu"><i class="fa fa-commenting-o" aria-hidden="true"></i>{label}</a>'
+                'template' => '<a href="{url}" class="profile-menu tab-checked"><i class="fa fa-commenting-o" aria-hidden="true"></i>{label}</a>'
             ],
         ]
     ])?>
