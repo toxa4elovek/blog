@@ -7,8 +7,8 @@
 use yii\helpers\Url;
 use yii\widgets\ListView;
 ?>
-<div class="body-list">
-    <article class="block-list-article block-list-item block block-review">
+<li class="block-list-item block-list-item-post abbreviated-list">
+    <article class="block block-review">
         <h3><a href="<?= Url::to(['/post/view', 'slug' => $model->slug])?>" class="block-review-header"><?= $model->title?></a>
             <div class="read_more"><a href="<?= Url::to(['/post/view', 'slug' => $model->slug])?>">Полная статья</a></div>
         </h3>
@@ -22,4 +22,4 @@ use yii\widgets\ListView;
             </ul>
         </div>
     </article>
-</div>
+</li>

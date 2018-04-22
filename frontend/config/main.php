@@ -26,6 +26,9 @@ return [
                 'RegistrationForm' => 'frontend\modules\user\models\RegistrationForm'
             ],
         ],
+        'userview' => [
+            'class' => 'frontend\modules\userview\UserView',
+        ],
     ],
     'components' => [
         'request' => [
@@ -92,6 +95,7 @@ return [
                 'post/<slug>' => 'post/view',
                 'profile/<action>' => 'profile/profile/<action>',
                 'profile' => 'profile/profile/index',
+                'userview' => 'userview/userview/index',
                 '<slug>' => 'post/search'
             ],
         ],

@@ -18,7 +18,10 @@ class File extends Model
 {
     const PATH_POSTS = 'posts';
     const PATH_OTHERS = 'others';
+    const PATH_AVATARS = 'avatars';
+
     public static $types = ['jpg', 'jpeg', 'png'];
+
     /**
      * @param $file UploadedFile
      * @param $directory string

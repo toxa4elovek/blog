@@ -1,10 +1,6 @@
 <?php
 /**
  * @var $this \yii\web\View
- * @var $user \common\models\db\User
- * @var $educations array
- * @var $postDataProvider \yii\data\ActiveDataProvider
- * @var $commentDataProvider \yii\data\ActiveDataProvider
  * @var $content string
  */
 
@@ -24,4 +20,5 @@
     </div>
 </div>
 
-<?php \frontend\assets\ProfileAsset::register($this);?>
+
+<?php \frontend\assets\UserViewAsset::register($this);?>

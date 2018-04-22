@@ -2,14 +2,18 @@
 
 namespace frontend\modules\profile\controllers;
 
+use backend\models\File;
 use common\classes\Debug;
+use common\models\db\Avatar;
 use common\models\db\Post;
-use common\models\db\PostComments;
 use common\models\db\User;
+use frontend\modules\profile\models\SearchForm;
 use yii\data\ActiveDataProvider;
 use yii\db\ActiveQuery;
+use yii\imagine\Image;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
+use yii\web\UploadedFile;
 
 /**
  * Default controller for the `profile` module
@@ -24,28 +28,66 @@ class ProfileController extends Controller
     {
         $user = User::find()/*->with('higherEducation', 'middleEducation', 'profile')*/
             ->where(['id' => \Yii::$app->user->id])->one();
-        return $this->render('index', [
+
+        return $this->render('elements/_profile', [
             'user' => $user,
             'educations' => $user->currentEducations,
-            'postDataProvider' => $this->createDataProvider(Post::find()->where([
-                'user_id' => $user->id,
-                'type' => Post::TYPE_POST
-            ])),
-            'commentDataProvider' => $this->createDataProvider(Post::find()->where([
-                'post_comments.user_id' => $user->id
-            ])->joinWith('comments'))
         ]);
     }
 
-    private function createDataProvider(ActiveQuery $query)
+    public function actionPosts()
     {
+        $searchModel      = new SearchForm(['type' => Post::TYPE_POST]);
+        $postDataProvider = $searchModel->search(\Yii::$app->request->post());
 
-        $dataProvider = new ActiveDataProvider([
-            'query' => $query,
+        return $this->render('elements/_posts', [
+            'searchModel' => $searchModel,
+            'postDataProvider' => $postDataProvider
         ]);
+    }
 
+    public function actionQuestions()
+    {
+        $searchModel          = new SearchForm(['type' => Post::TYPE_QUESTION]);
+        $questionDataProvider = $searchModel->search(\Yii::$app->request->post());
 
-        return $dataProvider;
+        return $this->render('elements/_posts', [
+            'searchModel' => $searchModel,
+            'postDataProvider' => $questionDataProvider
+        ]);
+    }
+
+    public function actionFavourites()
+    {
+        $searchModel            = new SearchForm();
+        $favouritesDataProvider = $searchModel->searchFavourites(\Yii::$app->request->post());
+
+        return $this->render('elements/_posts', [
+            'searchModel' => $searchModel,
+            'postDataProvider' => $favouritesDataProvider
+        ]);
+    }
+
+    public function actionAnswers()
+    {
+        $searchModel        = new SearchForm(['type' => Post::TYPE_QUESTION]);
+        $answerDataProvider = $searchModel->searchComments(\Yii::$app->request->post(), 0);
+
+        return $this->render('elements/_comments', [
+            'searchModel' => $searchModel,
+            'commentDataProvider' => $answerDataProvider
+        ]);
+    }
+
+    public function actionComments()
+    {
+        $searchModel        = new SearchForm();
+        $answerDataProvider = $searchModel->searchComments(\Yii::$app->request->post(), 0);
+
+        return $this->render('elements/_comments', [
+            'searchModel' => $searchModel,
+            'commentDataProvider' => $answerDataProvider
+        ]);
     }
 
     public function actionUpdate($id)
@@ -64,9 +106,31 @@ class ProfileController extends Controller
         ]);
     }
 
-    public function actionUpdateEducation($user_id)
+    public function actionUpload()
     {
+        $user_id = \Yii::$app->user->id;
+        $model   = Avatar::findOne(['user_id' => $user_id]);
 
+        if (empty($model)) {
+            $model = new Avatar();
+        }
+
+        $file           = UploadedFile::getInstance($model, 'file');
+        $model->user_id = $user_id;
+        $model->img     = File::upload($file, 'avatars');
+        $path           = \Yii::getAlias('@frontend/web') . $model->img;
+        $resize         = Image::resize($path, 200, 200);
+        $resize->save($path);
+
+
+        if ($model->save()) {
+            \Yii::$app->session->setFlash('error', 'Аватар успешно загружен');
+
+        } else {
+            \Yii::$app->session->setFlash('success', 'При загрузке произошла ошибка');
+        }
+
+        return $this->redirect('/profile');
     }
 
 

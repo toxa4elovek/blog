@@ -23,6 +23,7 @@ use common\models\db\Education;
  * @property int $flags
  * @property int $last_login_at
  *
+ * @property Avatar[] $avatars
  * @property CommentLikes[] $commentLikes
  * @property PostComments[] $comments
  * @property Education[] $educations
@@ -214,5 +215,13 @@ class User extends \dektrium\user\models\User
     public function getEducations()
     {
         return $this->hasMany(Education::className(), ['user_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAvatars()
+    {
+        return $this->hasMany(Avatar::className(), ['user_id' => 'id']);
     }
 }

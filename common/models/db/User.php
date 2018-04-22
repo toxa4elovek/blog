@@ -55,4 +55,15 @@ class User extends \common\models\User
         return $this->hasMany(Skill::className(), ['id' => 'skill_id'])->viaTable('user_skill', ['user_id' => 'id']);
     }
 
+    public function getAvatarUrl()
+    {
+        $avatar = $this->getAvatars()->orderBy('avatar.id DESC')->one();
+
+        if (!empty($avatar)) {
+            return $avatar->img;
+        }
+
+        return null;
+    }
+
 }

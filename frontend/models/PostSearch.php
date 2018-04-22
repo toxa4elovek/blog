@@ -49,8 +49,6 @@ class PostSearch extends Post
                 ->orFilterWhere(['like', 'post.text', $this->searchText]);
         }
 
-        Debug::prn($query);
-
         return $dataProvider;
 
     }

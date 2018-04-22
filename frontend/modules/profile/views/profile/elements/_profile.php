@@ -9,14 +9,10 @@ use yii\bootstrap\Modal;
 
 ?>
 
-<div id="content-tab1" class="tab-content-active">
-    <div class="col-sm-8">
-        <div class="rg-profile profile-prompt">
-            <div class="prompt"></div>
-        </div>
-    </div>
-    <div class="col-sm-8 col-pad">
-        <div class="rg-profile profile-input clearfix">
+
+        <?php $this->beginContent('@frontend/modules/profile/views/profile/index.php')?>
+
+        <div class="profile-input profile-block-input clearfix">
             <div class="col-sm-5">
                 <div class="main-block-menu">
                     <ul class="menu-main">
@@ -26,10 +22,9 @@ use yii\bootstrap\Modal;
                         <li><a href="#skill" class="skill-link">Навыки</a></li>
                         <li><a href="#about" class="about-link">О себе</a></li>
                         <li><a href="#" class="profile-link">Статистика</a></li>
-                        <li><!--<a href="#" class="change-password">Изменить пароль</a>-->
+                        <li>
                             <?= $this->render('__modals')?>
                         </li>
-                        <li><a href="#" class="profile-link">Изменить фото</a></li>
                     </ul>
                 </div>
             </div>
@@ -41,5 +36,6 @@ use yii\bootstrap\Modal;
                 <?= $this->render('__about', ['user' => $user])?>
             </div>
         </div>
-    </div>
-</div>
+
+        <?php $this->endContent()?>
+
